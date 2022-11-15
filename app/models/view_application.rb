@@ -1,0 +1,2 @@
+class ViewApplication < ApplicationRecord
+end

@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="d-grid gap-2 col-5 mx-auto">
+  <h2>管理者ログイン</h2>
+  </div>
+
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="row">
+    <div class="d-grid gap-2 col-5 mx-auto">
+      <div class="field h5">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      </div>
+    </div>
+  </div>
+<br>
+  <div class="row">
+    <div class="d-grid gap-2 col-5 mx-auto">
+      <div class="field h5">
+      <%= f.label :password %><br />
+      <%= f.password_field :password, autocomplete: "current-password" %>
+      </div>
+    </div>
+  </div>
+<br>
+  <div class="row">
+    <div class="d-grid gap-2 col-5 mx-auto">
+    <% if devise_mapping.rememberable? %>
+      <div class="field">
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me %>
+      </div>
+    <% end %>
+    </div>
+  </div>
+<br>
+  <div class="row">
+      <div class="d-grid gap-2 col-5 mx-auto">
+      <%= f.submit "ログイン", class: "btn btn-lg btn-primary btn-block", notice: "ようこそ。ログインに成功しました。" %>
+    </div>
+  <% end %>
+  </div>
+<br>
+<br>
+<%= render "admin/shared/links" %>
+</div>
