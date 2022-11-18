@@ -1,2 +1,33 @@
-<h1>Admin::Homes#top</h1>
-<p>Find me in app/views/admin/homes/top.html.erb</p>
+<div class="container">
+  <div class="d-grid gap-2 col-5 mx-auto text-center">
+<br>
+    <h2>管理者トップページ</h2>
+  </div>
+<br>
+<br>
+<br>
+<br>
+  <div class="row justify-content-center">
+    <div class="col-lg-5">
+      <%= link_to "メッセージ", admin_messages_path, class: "btn btn-primary text-light btn-lg btn-block p-3" %>
+    </div>
+  </div>
+<br>
+<br>
+  <div class="row justify-content-center">
+    <div class="col-lg-5">
+      <%= link_to "物件一覧", admin_properties_path, class: "btn btn-primary text-light btn-lg btn-block p-3" %>
+    </div>
+  </div>
+<br>
+<br>
+  <div class="row justify-content-center">
+    <div class="col-lg-5">
+      <%= link_to "会員一覧", admin_users_path, class: "btn btn-primary text-light btn-lg btn-block p-3" %>
+    </div>
+  </div>
+<br>
+<br>
+<br>
+<br>
+</div>

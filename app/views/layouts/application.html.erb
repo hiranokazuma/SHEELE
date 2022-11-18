@@ -5,12 +5,87 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="application.css">
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/49c3f1be0c.js" crossorigin="anonymous"></script>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="d-flex flex-column vh-100">
+    <header class="shadow-sm">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+          <a class="navbar-brand p-3" href="/"><%#= image_tag 'logo.png', size: '180x140' %></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+
+            <% if admin_signed_in? %>
+              <li class="nav-item">
+                <%= link_to 'トップ', admin_homes_top_path, class: 'btn btn-outline-dark mr-5' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'メッセージ', admin_messages_path, class: 'btn btn-outline-dark mr-5' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to '物件一覧', admin_properties_path, class: 'btn btn-outline-dark mr-5' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to '会員一覧', admin_users_path, class: 'btn btn-outline-dark mr-5' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-outline-dark mr-5' %>
+              </li>
+            <% elsif user_signed_in? %>
+              <h5 class="nav-item">ようこそ、<%= current_user.company_name %>様！</h5>
+              <li class="nav-item">
+                <%= link_to 'マイページ', users_mypage_path, class: 'btn btn-outline-dark mr-5' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to '物件一覧', properties_path, class: 'btn btn-outline-dark mr-5' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "物件登録", new_property_path, class: 'btn btn-outline-dark mr-5' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-outline-dark mr-5' %>
+              </li>
+            <% else %>
+              <li class="nav-item">
+                <%= link_to 'トップ', root_path, class: 'btn btn-outline-dark mr-5' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "新規登録", new_user_registration_path, class: 'btn btn-outline-dark mr-5' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "ログイン", new_user_session_path, class: 'btn btn-outline-dark mr-5' %>
+              </li>
+            <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div class="container px-2 px-sm-0">
+      <div class="text-success">
+        <h5><%= flash[:notice] %></h5>
+      </div>
+      <div class="text-danger">
+        <h5><%= flash[:alret] %></h5>
+      </div>
+    </div>
     <%= yield %>
+    <footer class="bg-dark text-white pt-5 pb-4">
+      <div class="container">
+        </br>
+        </br>
+        </br>
+      </div>
+    </footer>
   </body>
 </html>
+

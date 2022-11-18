@@ -3,16 +3,37 @@
 class Public::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
-
+  before_action :configure_permitted_parameters, if: :devise_controller?
   # GET /resource/sign_up
   # def new
   #   super
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    @user = User.new(sign_up_params)
+    render :new and return if params[:back]
+    super
+  end
+
+  def confirm
+    @user = User.new(sign_up_params)
+      if @user.invalid?
+        flash[:arlet] = '入力内容にエラーがあります。'
+        render :new
+      return
+      end
+    # i = 0
+    # @password = ""
+    # while i < @user.password.length
+    #   @password += "*"
+    #   i += 1
+    # end
+  end
+
+  def complete
+  end
+
 
   # GET /resource/edit
   # def edit
@@ -38,8 +59,19 @@ class Public::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
 
+  def after_sign_up_path_for(resource)
+    users_sign_up_complete_path(resource)
+  end
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up,keys:[:company_name, :location, :licensing_entity, :licensing_region, :update_number, :license_number, :representatives_name, :telephone_number, :manager_name])
+  end
+
+  def sign_up_params
+    params.require(:user).permit(:company_name, :location, :licensing_entity, :licensing_region, :update_number, :license_number, :representatives_name, :telephone_number, :manager_name, :email, :password, :password_confirmation)
+  end
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
   #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
@@ -59,4 +91,5 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
 end
