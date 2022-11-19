@@ -1,2 +1,46 @@
-<h1>Public::Properties#new</h1>
-<p>Find me in app/views/public/properties/new.html.erb</p>
+<br>
+<div class="container">
+  <div class="d-grid gap-2 col-5 mx-auto">
+  <h2>取り扱い物件新規登録</h2>
+  </div>
+<br>
+<br>
+  <% if @property.errors.any? %>
+    <div id="error_explanation">
+      <h3><%= @property.errors.count %>件のエラーがあります:</h3>
+      <ul>
+        <% @property.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<%= form_with model: @property, url: new_property_path(@property), local: true do |f| %>
+<!--<#%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>-->
+  <!--<#%= render "public/shared/error_messages", resource: resource %>-->
+  <div class="form-group row h5">
+    <div class="col-sm-3">
+      <label for="type">物件種別</label>
+    </div>
+    <div class="col-sm-4">
+      <%= f.select :type, [["土地", 0], ["戸建て", 1], ["区分マンション", 2], ["一棟ビル", 3], ["一棟マンション", 4]] %>
+    </div>
+  </div>
+  <div class="form-group row h5">
+    <div class="col-sm-3">
+      <label for="right">権利</label>
+    </div>
+    <div class="col-sm-4">
+      <%= f.select :right, [["所有権", 0], ["借地権", 1], ["底地権", 2]], {},  {class: 'form-select'} %>
+    </div>
+  </div>
+  <div class="form-group row h5">
+    <div class="col-sm-3">
+      <label for="prefecture">都道府県</label>
+    </div>
+    <div class="col-sm-4">
+      <%= f.select :prefecture, Property.prefectures.keys, {},  {class: 'form-select'} %>
+    </div>
+  </div>
+<% end %>
+</div>
