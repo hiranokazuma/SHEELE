@@ -84,7 +84,7 @@ ActiveRecord::Schema.define(version: 2022_11_19_142803) do
     t.integer "user_id", null: false
     t.integer "type", null: false
     t.integer "right", null: false
-    t.string "prefecture", null: false
+    t.integer "prefecture", null: false
     t.string "municipality", null: false
     t.string "city_block", null: false
     t.string "address", null: false
@@ -104,6 +104,7 @@ ActiveRecord::Schema.define(version: 2022_11_19_142803) do
     t.string "use_area"
     t.string "legal_restriction"
     t.string "road_contact"
+    t.string "condition", null: false
     t.boolean "release_status", default: false, null: false
     t.text "comment"
     t.datetime "created_at", precision: 6, null: false

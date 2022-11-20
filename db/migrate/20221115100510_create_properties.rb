@@ -4,7 +4,7 @@ class CreateProperties < ActiveRecord::Migration[6.1]
       t.integer :user_id,                 null: false
       t.integer :type,                    null: false
       t.integer :right,                   null: false
-      t.string :prefecture,               null: false
+      t.integer :prefecture,              null: false
       t.string :municipality,             null: false
       t.string :city_block,               null: false
       t.string :address,                  null: false
@@ -24,6 +24,7 @@ class CreateProperties < ActiveRecord::Migration[6.1]
       t.string :use_area
       t.string :legal_restriction
       t.string :road_contact
+      t.string :condition,                null: false
       t.boolean :release_status,          null: false, default: false
       t.text :comment
       t.timestamps
