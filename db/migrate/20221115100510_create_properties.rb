@@ -2,7 +2,7 @@ class CreateProperties < ActiveRecord::Migration[6.1]
   def change
     create_table :properties do |t|
       t.integer :user_id,                 null: false
-      t.integer :type,                    null: false
+      t.integer :kind,                    null: false
       t.integer :right,                   null: false
       t.integer :prefecture,              null: false
       t.string :municipality,             null: false
@@ -24,7 +24,7 @@ class CreateProperties < ActiveRecord::Migration[6.1]
       t.string :use_area
       t.string :legal_restriction
       t.string :road_contact
-      t.string :condition,                null: false
+      t.integer :condition,               null: false
       t.boolean :release_status,          null: false, default: false
       t.text :comment
       t.timestamps

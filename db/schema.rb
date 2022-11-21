@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(version: 2022_11_19_142803) do
 
   create_table "properties", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "type", null: false
+    t.integer "kind", null: false
     t.integer "right", null: false
     t.integer "prefecture", null: false
     t.string "municipality", null: false
@@ -104,7 +104,7 @@ ActiveRecord::Schema.define(version: 2022_11_19_142803) do
     t.string "use_area"
     t.string "legal_restriction"
     t.string "road_contact"
-    t.string "condition", null: false
+    t.integer "condition", null: false
     t.boolean "release_status", default: false, null: false
     t.text "comment"
     t.datetime "created_at", precision: 6, null: false

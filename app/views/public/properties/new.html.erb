@@ -18,12 +18,13 @@
 <%= form_with model: @property, url: properties_confirm_path(@property), local: true do |f| %>
 <!--<#%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>-->
   <!--<#%= render "public/shared/error_messages", resource: resource %>-->
+  <%= f.hidden_field :user_id, :value => current_user.id %>
   <div class="form-group row h5">
     <div class="col-sm-3">
-      <label for="type">物件種別</label>
+      <label for="kind">物件種別</label>
     </div>
     <div class="col-sm-4">
-      <%= f.select :type, [["土地", 0], ["戸建て", 1], ["区分マンション", 2], ["一棟ビル", 3], ["一棟マンション", 4],["その他", 5]] %>
+      <%= f.select :kind, Property.kinds.keys, {},  {class: 'form-select'} %>
     </div>
   </div>
   <div class="form-group row h5">
@@ -31,7 +32,7 @@
       <label for="right">権利</label>
     </div>
     <div class="col-sm-4">
-      <%= f.select :right, [["所有権", 0], ["借地権", 1], ["底地権", 2]], {},  {class: 'form-select'} %>
+      <%= f.select :right, Property.rights.keys, {},  {class: 'form-select'} %>
     </div>
   </div>
   <div class="form-group row h5">
@@ -119,7 +120,7 @@
         <label for="sell_category">売却カテゴリ</label>
     </div>
     <div class="col-sm-4">
-      <%= f.select :sell_category, [["相続", 0], ["財産分与", 1], ["債務整理", 2], ["その他早期売却", 3]] %>
+      <%= f.select :sell_category, Property.sell_categories.keys, {},  {class: 'form-select'} %>
     </div>
   </div>
   <div class="form-group row h5">
@@ -183,7 +184,7 @@
       <label for="legal_restriction">法令制限</label>
     </div>
     <div class="col-sm-4">
-      <%= f.text_field :use_area,  size: "60" %>
+      <%= f.text_field :legal_restriction,  size: "60" %>
     </div>
   </div>
   <div class="form-group row h5">
@@ -199,7 +200,7 @@
       <label for="condition">現況</label>
     </div>
     <div class="col-sm-4">
-      <%= f.select :condition, [["更地", 0], ["空室", 1], ["居住中", 2], ["賃貸中", 3], ["上物あり", 4]] %>
+      <%= f.select :condition, Property.conditions.keys, {},  {class: 'form-select'} %>
     </div>
   </div>
   <div class="form-group row h5">

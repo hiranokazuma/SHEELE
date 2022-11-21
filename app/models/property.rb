@@ -1,8 +1,31 @@
 class Property < ApplicationRecord
   has_one_attached :image
 
+  validates :kind, presence: true
+  validates :right, presence: true
+  validates :prefecture, presence: true
+  validates :municipality, presence: true
+  validates :city_block, presence: true
+  validates :address, presence: true
+  validates :line, presence: true
+  validates :station, presence: true
+  validates :walking_minute, presence: true
+  validates :land_area, presence: true
+  validates :building_area, presence: true
+  validates :price, presence: true
+  validates :sell_category, presence: true
+  validates :age, presence: true
+  validates :structure, presence: true
+  validates :building_coverage_ratio, presence: true
+  validates :floor_area_ratio, presence: true
+  validates :condition, presence: true
+
+
   belongs_to :user
   has_many :view_applications, dependent: :destroy
+
+  enum kind: { 土地: 0, 戸建て: 1, 区分マンション: 2, 一棟ビル: 3, 一棟マンション: 4, その他: 5 }
+  enum right: { 所有権: 0, 借地権: 1, 底地権: 2 }
 
   enum prefecture:{
      "----":0,
@@ -16,4 +39,6 @@ class Property < ApplicationRecord
      福岡県:40,佐賀県:41,長崎県:42,熊本県:43,大分県:44,宮崎県:45,鹿児島県:46,
      沖縄県:47
    }
+  enum sell_category: { 相続: 0, 財産分与: 1, 債務整理: 2, その他早期売却: 3 }
+  enum condition: { 更地: 0, 空室: 1, 居住中: 2, 賃貸中: 3, 上物あり: 4 }
 end
