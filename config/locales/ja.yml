@@ -2,11 +2,11 @@
 ja:
   enums:
     property:
-      kind: 
-      right: 
-      prefecture: 
-      sell_category: 
-      condition: 
+      kind:
+      right:
+      prefecture:
+      sell_category:
+      condition:
   activerecord:
     errors:
       messages:
@@ -18,16 +18,17 @@ ja:
       user:
     attributes :
       user:
-        # company_name:
-        # location:
-        # licensing_entity:
-        # update_number:
-        # license_number:
-        # representatives_name:
-        # telephone_number:
-        # email:
-        # password:
-        # password_confirmation:
+        company_name:
+        location:
+        licensing_entity:
+        update_number:
+        license_number:
+        representatives_name:
+        manager_name:
+        telephone_number:
+        email:
+        password:
+        password_confirmation:
       property:
         user: "ユーザーID"
         kind: "物件種別"

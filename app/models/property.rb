@@ -19,6 +19,7 @@ class Property < ApplicationRecord
   validates :building_coverage_ratio, presence: true
   validates :floor_area_ratio, presence: true
   validates :condition, presence: true
+  validates :release_status, presence: true
 
 
   belongs_to :user

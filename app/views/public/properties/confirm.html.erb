@@ -192,6 +192,18 @@
   </div>
   <div class="form-group row h5">
     <div class="col-sm-3">
+      <label for="release_status">公開ステータス</label>
+    </div>
+    <div class="col-sm-4">
+      <% if @property.release_status %>
+        <b class="text-success">公開</b>
+      <% else %>
+        <b class="text-danger">非公開</b>
+      <% end %>
+    </div>
+  </div>
+  <div class="form-group row h5">
+    <div class="col-sm-3">
       <label for="comment">コメント</label>
     </div>
     <div class="col-sm-4">
@@ -224,6 +236,7 @@
     <%= f.hidden_field :legal_restriction %>
     <%= f.hidden_field :road_contact %>
     <%= f.hidden_field :condition %>
+    <%= f.hidden_field :release_status %>
     <%= f.hidden_field :comment %>
   <div class="form-group row h5">
     <div class="actions col-3 mx-auto">

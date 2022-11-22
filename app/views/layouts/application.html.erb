@@ -41,7 +41,7 @@
                 <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-outline-dark mr-5' %>
               </li>
             <% elsif user_signed_in? %>
-              <h5 class="nav-item">ようこそ、<%= current_user.company_name %>様！</h5>
+              <h5 class="nav-item mr-5">ようこそ、<%= current_user.company_name %>様！</h5>
               <li class="nav-item">
                 <%= link_to 'マイページ', users_mypage_path, class: 'btn btn-outline-dark mr-5' %>
               </li>

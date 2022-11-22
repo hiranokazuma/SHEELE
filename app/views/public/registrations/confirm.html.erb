@@ -5,13 +5,11 @@
   </div>
 <br>
 <br>
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <div class="form-group row h5">
     <div class="col-sm-3">
       <label for="company_name">会社名</label>
     </div>
     <div class="col-sm-4">
-      <%= f.text_field :company_name, value: @user.company_name, readonly: true, size: "30" %>
       <%= @user.company_name %>
     </div>
   </div>
@@ -20,7 +18,7 @@
       <label for="location">所在地</label>
     </div>
     <div class="col-sm-4">
-      <%= f.text_field :location, value: @user.location, readonly: true, size: "40" %>
+      <%= @user.location %>
     </div>
   </div>
   <div class="form-group row h5">
@@ -28,7 +26,7 @@
       <label for="licensing_entity">免許主体</label>
     </div>
     <div class="col-sm-4">
-      <%= f.text_field :licensing_entity, value: @user.licensing_entity, readonly: true, size: "20" %>
+      <%= @user.licensing_entity %>
     </div>
   </div>
   <div class="form-group row h5">
@@ -36,7 +34,7 @@
       <label for="licensing_region">免許地</label>
     </div>
     <div class="col-sm-4">
-      <%= f.text_field :licensing_region, value: @user.licensing_region, readonly: true, size: "20" %>
+      <%= @user.licensing_region %>
     </div>
   </div>
   <div class="form-group row h5">
@@ -44,7 +42,7 @@
       <label for="update_number">免許更新数</label>
     </div>
     <div class="col-sm-4">
-      (<%= f.text_field :update_number, value: @user.update_number, readonly: true, size: "1" %>)
+      (<%= @user.update_number %>)
     </div>
   </div>
   <div class="form-group row h5">
@@ -52,7 +50,7 @@
       <label for="license_number">免許番号</label>
     </div>
     <div class="col-sm-4">
-      第<%= f.text_field :license_number, value: @user.license_number, readonly: true %>号
+      第<%= @user.license_number %>号
     </div>
   </div>
   <div class="form-group row h5">
@@ -60,7 +58,7 @@
       <label for="representatives_name">代表者名</label>
     </div>
     <div class="col-sm-4">
-      <%= f.text_field :representatives_name, value: @user.representatives_name, readonly: true %>
+      <%= @user.representatives_name %>
     </div>
   </div>
   <div class="form-group row h5">
@@ -68,7 +66,7 @@
       <label for="manager_name">担当者名</label>
     </div>
     <div class="col-sm-4">
-      <%= f.text_field :manager_name, value: @user.manager_name, readonly: true, size: "20" %>
+      <%= @user.manager_name %>
     </div>
   </div>
   <div class="form-group row h5">
@@ -76,7 +74,7 @@
       <label for="telephone_number">電話番号(ハイフンなし)</label>
     </div>
     <div class="col-sm-4">
-      <%= f.text_field :telephone_number, value: @user.telephone_number, readonly: true %>
+      <%= @user.telephone_number %>
     </div>
   </div>
   <div class="form-group row h5">
@@ -84,7 +82,7 @@
       <label for="email">メールアドレス</label>
     </div>
     <div class="col-sm-4">
-      <%= f.email_field :email, value: @user.email, readonly: true %>
+      <%= @user.email %>
     </div>
   </div>
   <div class="form-group row h5">
@@ -95,7 +93,8 @@
     <% end %>
     </div>
     <div class="col-sm-4">
-    <%= f.password_field :password, value: @user.password, readonly: true %>
+      <%= @user.password %>
+    <!--<%#= f.password_field :password, value: @user.password, readonly: true %>-->
     </div>
   </div>
   <div class="form-group row h5">
@@ -103,11 +102,25 @@
       <label for="password">パスワード(確認用)</label>
     </div>
     <div class="col-sm-4">
-    <%= f.password_field :password_confirmation, value: @user.password_confirmation, readonly: true %>
+      <%= @user.password_confirmation %>
+    <!--<%#= f.password_field :password_confirmation, value: @user.password_confirmation, readonly: true %>-->
     </div>
   </div>
 <br>
 <br>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= f.hidden_field :company_name %>
+    <%= f.hidden_field :location %>
+    <%= f.hidden_field :licensing_entity %>
+    <%= f.hidden_field :licensing_region %>
+    <%= f.hidden_field :update_number %>
+    <%= f.hidden_field :license_number %>
+    <%= f.hidden_field :representatives_name %>
+    <%= f.hidden_field :manager_name %>
+    <%= f.hidden_field :telephone_number %>
+    <%= f.hidden_field :email %>
+    <%= f.hidden_field :password %>
+    <%= f.hidden_field :password_confirmation %>
   <div class="form-group row h5">
     <div class="actions col-3 mx-auto">
     <%= f.submit "戻る", name: :back, class: "btn btn-secondary btn-lg btn-block"%>

@@ -1,2 +1,47 @@
-<h1>Admin::Users#index</h1>
-<p>Find me in app/views/admin/users/index.html.erb</p>
+<div class="container">
+<br>
+  <div class="d-grid gap-2 col-5 mx-auto text-center">
+    <h2>登録会員一覧</h2>
+  </div>
+<br>
+<br>
+  <table class="table table-bordered">
+    <thead class="h5 table-secondary text-center">
+      <tr>
+        <th style="width: 8%">会員ID</th>
+        <th style="width: 12%">ステータス</th>
+        <th style="width: 66%">概要</th>
+        <th style="width: 24%"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+      <tr class="h5 text-center">
+        <td class="align-middle text-center"><%= user.id %></td>
+        <td class="align-middle text-center"><% if user.is_deleted %>
+            退会
+            <% else %>
+            <b class="text-success">有効</b>
+            <% end %>
+        </td>
+        <td class="align-middle text-center"><%= user.company_name %>
+            <%= user.licensing_region %>
+            <%= user.licensing_entity %>
+            (<%= user.update_number %>)
+            第<%= user.license_number %>号
+            <%= user.location %><br>
+            電話番号<%= user.telephone_number %>
+            メールアドレス<%= user.email %>
+        </td>
+        <td class="align-middle text-center">
+          <%= link_to "詳細を見る", admin_user_path(user), class: "btn btn-primary text-light btn-block"  %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+<%= paginate @users %>
+
+<br>
+<br>
+</div>
