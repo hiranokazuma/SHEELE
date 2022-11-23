@@ -1,2 +1,237 @@
-<h1>Admin::Properties#show</h1>
-<p>Find me in app/views/admin/properties/show.html.erb</p>
+<div class="container">
+  <div class="d-grid gap-2 col-5 mx-auto text-center">
+  <h2>登録物件一覧</h2>
+  </div>
+<br>
+<br>
+  <div class="form-group row h5">
+    <div class="col-sm-3">
+      <label for="kind">物件種別</label>
+    </div>
+    <div class="col-sm-4">
+      <%= @property.kind %>
+    </div>
+  </div>
+  <div class="form-group row h5">
+    <div class="col-sm-3">
+      <label for="kind">権利</label>
+    </div>
+    <div class="col-sm-4">
+      <%= @property.right %>
+    </div>
+  </div>
+  <div class="form-group row h5">
+    <div class="col-sm-3">
+      <label for="prefecture">都道府県</label>
+    </div>
+    <div class="col-sm-4">
+      <%= @property.prefecture %>
+    </div>
+  </div>
+  <div class="form-group row h5">
+    <div class="col-sm-3">
+      <label for="municipality">市区町村</label>
+    </div>
+    <div class="col-sm-4">
+      <%= @property.municipality %>
+    </div>
+  </div>
+  <div class="form-group row h5">
+    <div class="col-sm-3">
+      <label for="city_block">丁目</label>
+    </div>
+    <div class="col-sm-4">
+      <%= @property.city_block %>
+    </div>
+  </div>
+  <div class="form-group row h5">
+    <div class="col-sm-3">
+      <label for="address">番地</label>
+    </div>
+    <div class="col-sm-4">
+      <%= @property.address %>
+    </div>
+  </div>
+  <div class="form-group row h5">
+    <div class="col-sm-3">
+      <label for="line">路線</label>
+    </div>
+    <div class="col-sm-4">
+      <%= @property.line %>線
+    </div>
+  </div>
+  <div class="form-group row h5">
+    <div class="col-sm-3">
+      <label for="station">駅名</label>
+    </div>
+    <div class="col-sm-4">
+      <%= @property.station %>駅
+    </div>
+  </div>
+  <div class="form-group row h5">
+    <div class="col-sm-3">
+      <label for="walking_minute">徒歩分(半角数字)</label>
+    </div>
+    <div class="col-sm-4">
+      徒歩<%= @property.walking_minute %>分
+    </div>
+  </div>
+  <div class="form-group row h5">
+    <div class="col-sm-3">
+      <label for="land_area">土地面積(半角数字)</label>
+    </div>
+    <div class="col-sm-4">
+      <%= @property.land_area %>㎡
+    </div>
+  </div>
+  <div class="form-group row h5">
+    <div class="col-sm-3">
+      <label for="building_area">建物面積(半角数字)</label>
+    </div>
+    <div class="col-sm-4">
+      <%= @property.building_area %>㎡
+    </div>
+  </div>
+  <div class="form-group row h5">
+    <div class="col-sm-3">
+      <label for="price">価格(半角数字)</label>
+    </div>
+    <div class="col-sm-4">
+      <%= @property.price %>万円
+    </div>
+  </div>
+  <div class="form-group row h5">
+    <div class="col-sm-3">
+        <label for="sell_category">売却カテゴリ</label>
+    </div>
+    <div class="col-sm-4">
+      <%= @property.sell_category %>
+    </div>
+  </div>
+  <div class="form-group row h5">
+    <div class="col-sm-3">
+      <label for="age">築年月(西暦)</label>
+    </div>
+    <div class="col-sm-4">
+      <%= @property.age %>
+    </div>
+  </div>
+  <div class="form-group row h5">
+    <div class="col-sm-3">
+      <label for="structure">構造</label>
+    </div>
+    <div class="col-sm-4">
+      <%= @property.structure %>
+    </div>
+  </div>
+  <div class="form-group row h5">
+    <div class="col-sm-3">
+      <label for="location_floor">所在階(半角数字)</label>
+    </div>
+    <div class="col-sm-4">
+      <%= @property.location_floor %>階
+    </div>
+  </div>
+  <div class="form-group row h5">
+    <div class="col-sm-3">
+      <label for="building_coverage_ratio">建ぺい率(半角数字)</label>
+    </div>
+    <div class="col-sm-4">
+      <%= @property.building_coverage_ratio %>％
+    </div>
+  </div>
+  <div class="form-group row h5">
+    <div class="col-sm-3">
+      <label for="floor_area_ratio">容積率(半角数字)</label>
+    </div>
+    <div class="col-sm-4">
+      <%= @property.floor_area_ratio %>％
+    </div>
+  </div>
+  <div class="form-group row h5">
+    <div class="col-sm-3">
+      <label for="city_planning">都市計画</label>
+    </div>
+    <div class="col-sm-4">
+      <%= @property.city_planning %>
+    </div>
+  </div>
+  <div class="form-group row h5">
+    <div class="col-sm-3">
+      <label for="use_area">用途地域</label>
+    </div>
+    <div class="col-sm-4">
+      <%= @property.use_area %>
+    </div>
+  </div>
+  <div class="form-group row h5">
+    <div class="col-sm-3">
+      <label for="legal_restriction">法令制限</label>
+    </div>
+    <div class="col-sm-4">
+      <%= @property.legal_restriction %>
+    </div>
+  </div>
+  <div class="form-group row h5">
+    <div class="col-sm-3">
+      <label for="road_contact">接道</label>
+    </div>
+    <div class="col-sm-4">
+      <%= @property.road_contact %>
+    </div>
+  </div>
+  <div class="form-group row h5">
+    <div class="col-sm-3">
+      <label for="condition">現況</label>
+    </div>
+    <div class="col-sm-4">
+      <%= @property.condition %>
+    </div>
+  </div>
+  <div class="form-group row h5">
+    <div class="col-sm-3">
+      <label for="release_status">公開ステータス</label>
+    </div>
+    <div class="col-sm-4">
+      <% if @property.release_status %>
+        <b class="text-success">公開</b>
+      <% else %>
+        <b class="text-danger">非公開</b>
+      <% end %>
+    </div>
+  </div>
+  <div class="form-group row h5">
+    <div class="col-sm-3">
+      <label for="comment">コメント</label>
+    </div>
+    <div class="col-sm-4">
+      <%= @property.comment %>
+    </div>
+  </div>
+  <div class="form-group row h5">
+    <div class="col-sm-3">
+      <label for="property_image">物件画像</label>
+    </div>
+    <div class="col-sm-4">
+      <% if @property.image.attached? %>
+        <%= image_tag @property.image, size: "320x260" %>
+      <% else %>
+        <%= image_tag 'default-image', size: "200x200" %>
+      <% end %>
+    </div>
+  </div>
+<br>
+  <div class="row">
+    <div class="col-sm-3">
+    </div>
+    <div class="col-sm-3">
+      <%= link_to "　一覧へ戻る　", admin_properties_path, class: "btn btn-success text-light btn-lg"%>
+    </div>
+    <div class="col-sm-3">
+      <%= link_to "　編集する　", edit_admin_property_path(@property), class: "btn btn-primary btn-lg"%>
+    </div>
+  </div>
+<br>
+<br>
+<br>
+</div>

@@ -26,7 +26,7 @@ Rails.application.routes.draw do
 
     post 'view_applications/confirm' => 'view_applications#confirm'
     get 'view_applications/complete' => 'view_applications#complete'
-  resources :view_applications, except: [:new, :show]
+  resources :view_applications, except: [:create, :show]
 
     post 'properties/confirm' => 'properties#confirm'
     get 'properties/complete' => 'properties#complete'

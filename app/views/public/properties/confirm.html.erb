@@ -210,6 +210,18 @@
       <%= @property.comment %>
     </div>
   </div>
+  <div class="form-group row h5">
+    <div class="col-sm-3">
+      <label for="property_image">物件画像</label>
+    </div>
+    <div class="col-sm-4">
+      <% if @property.image.attached? %>
+        <%= image_tag @property.image, size: "320x260" %>
+      <% else %>
+        <%= image_tag 'default-image', size: "200x200" %>
+      <% end %>
+    </div>
+  </div>
 <br>
   <%= form_with model: @property, url: properties_path(@property), local: true do |f| %>
     <%= f.hidden_field :user_id %>
@@ -238,6 +250,7 @@
     <%= f.hidden_field :condition %>
     <%= f.hidden_field :release_status %>
     <%= f.hidden_field :comment %>
+    <%= f.hidden_field :image %>
   <div class="form-group row h5">
     <div class="actions col-3 mx-auto">
       <%= f.submit "戻る", name: :back, class: "btn btn-secondary btn-lg btn-block"%>

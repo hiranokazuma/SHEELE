@@ -142,8 +142,13 @@
 <br>
 <br>
   <div class="form-group row h5">
+    <div class="col-sm-2">
+    </div>
+    <div class="col-sm-3 mx-1">
+      <%= link_to "　詳細へ戻る　", admin_user_path(@user), class: "btn btn-secondary text-light btn-lg"%>
+    </div>
     <div class="actions col-5 mx-auto">
-    <%= f.submit "編集確認画面へ進む", class: "btn btn-success btn-lg btn-block"%>
+    <%= f.submit "編集確認画面へ進む", class: "btn btn-success btn-lg"%>
     </div>
   </div>
 <% end %>

@@ -1,2 +1,59 @@
-<h1>Public::Properties#index</h1>
-<p>Find me in app/views/public/properties/index.html.erb</p>
+<div class="container">
+  <div class="d-grid gap-2 col-5 mx-auto text-center">
+  <h2>買取募集物件一覧</h2>
+  </div>
+<br>
+<br>
+  <table class="table table-bordered">
+    <thead class="h5 table-secondary text-center">
+      <tr>
+        <th style="width: 8%">物件ID</th>
+        <th style="width: 14%">物件画像</th>
+        <th style="width: 64%">概要</th>
+        <th style="width: 24%"> </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @properties.each do |property| %>
+      <tr class="h5 text-center">
+        <td class="align-middle text-center"><%= property.id %></td>
+        <td class="align-middle text-center">
+          <% if @property.image.attached? %>
+            <%= image_tag @property.image, size: "100x100" %>
+          <% else %>
+            <%= image_tag 'default-image', size: "100x100" %>
+          <% end %>
+        </td>
+        <td class="align-middle text-center">
+            <%= property.sell_category %>&emsp;
+            <%= property.prefecture %>
+            <%= property.municipality %>
+            <%= property.city_block %>&emsp;
+            <%= property.kind %>&emsp;<br>
+            <%= property.line %>線&emsp;
+            <%= property.station %>駅&emsp;
+            徒歩<%= property.walking_minute %>分<br>
+            <%= property.price %>万円&emsp;
+            <% if @property.kind = 0 %>
+              <%= property.land_area %>㎡&emsp;
+            <% else %>
+              <%= property.land_area %>㎡&emsp;
+              <%= property.building_area %>㎡&emsp;
+            <% end %>
+            <%= property.right %>&emsp;
+            <%= property.use_area %><br>
+            建ぺい率<%= property.building_coverage_ratio %>％&emsp;
+            容積率<%= property.floor_area_ratio %>％
+        </td>
+        <td class="align-middle text-center">
+          <%= link_to "閲覧申請する", new_view_application_path, class: "btn btn-primary text-light btn-block"  %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+<%= paginate @properties %>
+
+<br>
+<br>
+</div>

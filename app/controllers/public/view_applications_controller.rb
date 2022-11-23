@@ -2,7 +2,8 @@ class Public::ViewApplicationsController < ApplicationController
   def index
   end
 
-  def create
+  def new
+    @view_application = ViewApplication.new
   end
 
   def edit
