@@ -2,6 +2,7 @@ class Public::PropertiesController < ApplicationController
   def index
     @properties = Property.all.page(params[:page]).per(15)
     @property = Property.new
+    @view_application = ViewApplication.new
   end
 
   def show

@@ -46,7 +46,13 @@
             容積率<%= property.floor_area_ratio %>％
         </td>
         <td class="align-middle text-center">
-          <%= link_to "閲覧申請する", new_view_application_path, class: "btn btn-primary text-light btn-block"  %>
+          <% if @view_application.apply_status = 0 || @view_application.apply_status = 3 %>
+          <%= link_to "閲覧申請する", view_applications_confirm_path, class: "btn btn-primary text-light btn-block"  %>
+          <% elsif @view_application.apply_status = 1 %>
+          <%= link_to "申請中", edit_view_application_path(@view_application), class: "btn btn-primary text-light btn-block"  %>
+          <% elsif @view_application.apply_status = 2 %>
+          <%= link_to "詳細を見る", property_path(@property), class: "btn btn-success text-light btn-block"  %>
+          <% end %>
         </td>
       </tr>
       <% end %>

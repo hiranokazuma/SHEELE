@@ -26,6 +26,7 @@ ja:
         representatives_name:
         manager_name:
         telephone_number:
+        is_deleted:
         email:
         password:
         password_confirmation:
@@ -50,6 +51,7 @@ ja:
         building_coverage_ratio: "建ぺい率"
         floor_area_ratio: "容積率"
         condition: "現況"
+        release_status: "公開ステータス"
   date:
     abbr_day_names:
     - 日

@@ -136,7 +136,7 @@ ActiveRecord::Schema.define(version: 2022_11_19_142803) do
   create_table "view_applications", force: :cascade do |t|
     t.integer "user_id"
     t.integer "property_id"
-    t.boolean "apply_status"
+    t.integer "apply_status", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
