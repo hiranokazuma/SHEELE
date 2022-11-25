@@ -18,18 +18,18 @@ ja:
       user:
     attributes :
       user:
-        company_name:
-        location:
-        licensing_entity:
-        update_number:
-        license_number:
-        representatives_name:
-        manager_name:
-        telephone_number:
-        is_deleted:
-        email:
-        password:
-        password_confirmation:
+        company_name: "会社名"
+        location: "所在地"
+        licensing_entity: "免許主体"
+        update_number: "免許更新番号"
+        license_number: "免許番号"
+        representatives_name: "代表者名"
+        manager_name: "担当者名"
+        telephone_number: "電話番号"
+        is_deleted: "退会ステータス"
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "パスワード確認用"
       property:
         user: "ユーザーID"
         kind: "物件種別"

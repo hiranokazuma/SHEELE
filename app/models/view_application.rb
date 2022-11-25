@@ -1,5 +1,9 @@
 class ViewApplication < ApplicationRecord
 
+  validates :user_id, presence: true
+  validates :property_id, presence: true
+  validates :apply_status, presence: true
+
   belongs_to :user
   belongs_to :property
 

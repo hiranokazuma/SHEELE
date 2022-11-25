@@ -27,18 +27,20 @@ class Public::ViewApplicationsController < ApplicationController
   def confirm
     @user = current_user
     @properties = Property.all
-    @property = Property.new
+
+    @apply_status = 1
     @view_application = ViewApplication.new
-    # if @view_application.invalid?
-    #   flash[:arlet] = '入力内容にエラーがあります。'
-    #   render :index
-    # return
-    # end
+    if @view_application.invalid?
+      flash[:arlet] = '入力内容にエラーがあります。'
+      render :confirm
+    return
+    end
   end
 
   def create
     @view_application = ViewApplication.new(view_application_params)
     if params[:back] || !@view_application.save
+      flash[:arlet] = "申請に失敗しました。"
       render :confirm
     else
       redirect_to view_applications_complete_path
