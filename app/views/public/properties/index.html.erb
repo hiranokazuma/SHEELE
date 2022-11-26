@@ -18,8 +18,8 @@
       <tr class="h5 text-center">
         <td class="align-middle text-center"><%= property.id %></td>
         <td class="align-middle text-center">
-          <% if @property.image.attached? %>
-            <%= image_tag @property.image, size: "100x100" %>
+          <% if property.image.attached? %>
+            <%= image_tag property.image, size: "100x100" %>
           <% else %>
             <%= image_tag 'default-image', size: "100x100" %>
           <% end %>
@@ -34,7 +34,7 @@
             <%= property.station %>駅&emsp;
             徒歩<%= property.walking_minute %>分<br>
             <%= property.price %>万円&emsp;
-            <% if @property.kind = 0 %>
+            <% if property.kind = 0 %>
               <%= property.land_area %>㎡&emsp;
             <% else %>
               <%= property.land_area %>㎡&emsp;
