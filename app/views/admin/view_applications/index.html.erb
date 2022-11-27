@@ -12,7 +12,7 @@
         <th style="width: 7%">会員ID</th>
         <th style="width: 14%" class="h5 align-middle font-weight-bold">物件画像</th>
         <th style="width: 53%" class="h5 align-middle font-weight-bold">概要</th>
-        <th style="width: 12%"></th>
+        <th style="width: 12%" class="h5 align-middle font-weight-bold">状況</th>
       </tr>
     </thead>
     <tbody>
@@ -52,7 +52,13 @@
         </td>
 
         <td class="align-middle text-center">
+          <% if view_application.apply_status %>
+            <b class="text-success">申請中</b>
           <%= link_to "編集する", edit_admin_view_application_path(view_application), class: "btn btn-primary text-light btn-block"  %>
+          <% else %>
+            <b class="text-warning">許可</b>
+          <% end %>
+
         </td>
       </tr>
           <% end %>
