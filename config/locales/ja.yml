@@ -26,10 +26,13 @@ ja:
         representatives_name: "代表者名"
         manager_name: "担当者名"
         telephone_number: "電話番号"
-        is_deleted: "退会ステータス"
+        is_deleted: "利用状況"
         email: "メールアドレス"
         password: "パスワード"
         password_confirmation: "パスワード確認用"
+      admin:
+        email: "メールアドレス"
+        password: "パスワード"
       property:
         user: "ユーザーID"
         kind: "物件種別"

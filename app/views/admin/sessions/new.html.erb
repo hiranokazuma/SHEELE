@@ -3,7 +3,8 @@
   <div class="d-grid gap-2 col-5 mx-auto">
   <h2>管理者ログイン</h2>
   </div>
-
+<br>
+<br>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="row">
     <div class="d-grid gap-2 col-5 mx-auto">
@@ -28,7 +29,7 @@
     <% if devise_mapping.rememberable? %>
       <div class="field">
         <%= f.check_box :remember_me %>
-        <%= f.label :remember_me %>
+        <%= f.label :ログイン情報を保存する %>
       </div>
     <% end %>
     </div>
