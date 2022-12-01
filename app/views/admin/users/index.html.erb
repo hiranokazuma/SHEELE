@@ -15,7 +15,7 @@
       <%= f.label :id, "会員ID" %>
     </div>
     <div class="col-sm-4">
-      <%= f.search_field :id_eq %>
+      <%= f.search_field :id_eq ,class: "form-control", style: "width:80%"%>
     </div>
   </div>
   <div class="form-group row h5">
@@ -25,7 +25,7 @@
       <%= f.label :company_name, "会社名" %>
     </div>
     <div class="col-sm-4">
-      <%= f.search_field :company_name_cont %>
+      <%= f.search_field :company_name_cont ,class: "form-control", style: "width:80%" %>
     </div>
   </div>
   <div class="form-group row h5">
@@ -35,7 +35,7 @@
       <%= f.label :location, "所在地" %>
     </div>
     <div class="col-sm-4">
-      <%= f.search_field :location_cont %>
+      <%= f.search_field :location_cont ,class: "form-control", style: "width:80%"%>
     </div>
   </div>
   <div class="form-group row h5">
@@ -45,7 +45,7 @@
       <%= f.label :telephone_number, "電話番号(ハイフンなし)" %>
     </div>
     <div class="col-sm-4">
-      <%= f.search_field :telephone_number_eq %>
+      <%= f.search_field :telephone_number_eq ,class: "form-control", style: "width:80%"%>
     </div>
   </div>
   <div class="form-group row h5">
@@ -55,9 +55,10 @@
       <%= f.label :email, "メールアドレス" %>
     </div>
     <div class="col-sm-4">
-      <%= f.search_field :email_cont %>
+      <%= f.search_field :email_cont ,class: "form-control", style: "width:80%"%>
     </div>
   </div>
+<br>
   <div class="row justify-content-center">
     <div class="col-sm-2">
       <%= f.submit "検索する", class: "btn btn-success text-light btn-lg btn-block" %>
