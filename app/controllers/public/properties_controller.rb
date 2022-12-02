@@ -6,6 +6,13 @@ class Public::PropertiesController < ApplicationController
     @view_application = ViewApplication.new
   end
 
+  def myproperties
+    @q = Property.ransack(current_user)
+    @properties = @q.result(distinct: true).page(params[:page]).per(15)
+    @property = Property.new
+    @view_application = ViewApplication.new
+  end
+
   def show
     @property = Property.find(params[:id])
   end
@@ -60,7 +67,7 @@ class Public::PropertiesController < ApplicationController
   private
 
   def property_params
-    params.require(:property).permit(:user_id, :kind, :right, :prefecture, :municipality,
+    params.require(:property).permit(:kind, :right, :prefecture, :municipality,
                                       :city_block, :address, :line, :station, :walking_minute,
                                       :land_area, :building_area, :price, :sell_category, :age,
                                       :structure, :location_floor, :building_coverage_ratio,

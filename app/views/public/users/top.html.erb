@@ -1,2 +1,45 @@
-<h1>Public::Users#top</h1>
-<p>Find me in app/views/public/users/top.html.erb</p>
+<div class="container">
+  <div class="d-grid gap-2 col-5 mx-auto text-center">
+<br>
+  <h2>マイページ</h2>
+  </div>
+<br>
+<br>
+<br>
+<br>
+  <div class="row justify-content-center">
+    <div class="col-lg-5">
+      <%= link_to "メッセージ", messages_path, class: "btn btn-primary text-light btn-lg btn-block p-3" %>
+    </div>
+  </div>
+<br>
+<br>
+  <div class="row justify-content-center">
+    <div class="col-lg-5">
+      <%= link_to "会員情報編集", users_information_edit_path(current_user), class: "btn btn-primary text-light btn-lg btn-block p-3" %>
+    </div>
+  </div>
+<br>
+<br>
+  <div class="row justify-content-center">
+    <div class="col-lg-5">
+      <%= link_to "物件一覧", properties_path, class: "btn btn-primary text-light btn-lg btn-block p-3" %>
+    </div>
+  </div>
+<br>
+<br>
+  <div class="row justify-content-center">
+    <div class="col-lg-5">
+      <%= link_to "取り扱い物件一覧", properties_myproperties_path, class: "btn btn-primary text-light btn-lg btn-block p-3" %>
+    </div>
+  </div>
+<br>
+<br>
+  <div class="row justify-content-center">
+    <div class="col-lg-5">
+      <%= link_to "閲覧申請一覧", view_applications_path, class: "btn btn-primary text-light btn-lg btn-block p-3" %>
+    </div>
+  </div>
+<br>
+<br>
+</div>

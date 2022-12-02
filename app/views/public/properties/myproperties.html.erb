@@ -1,15 +1,16 @@
 <div class="container">
   <div class="d-grid gap-2 col-5 mx-auto text-center">
-  <h2>買取募集物件一覧</h2>
+  <h2>取り扱い物件一覧</h2>
   </div>
 <br>
 <br>
 <div class="d-grid gap-2 col-4 mx-auto text-center">
-  <button type="button" class="btn btn-info btn-lg btn-block" data-toggle="collapse" data-target="#search">物件を検索する</button>
+<button type="button" class="btn btn-info btn-lg btn-block" data-toggle="collapse" data-target="#search">物件を検索する</button>
 </div>
-  <div id="search" class="collapse">
+<div id="search" class="collapse">
+
 <br>
-<%= search_form_for @q, url: properties_path do |f| %>
+<%= search_form_for @q, url: properties_myproperties_path do |f| %>
   <div class="form-group row h5">
     <div class="col-sm-3">
     </div>
@@ -158,6 +159,7 @@
   </div>
 <% end %>
 </div>
+
 <br>
 <br>
   <table class="table table-bordered">
