@@ -1,2 +1,150 @@
-<h1>Public::Users#edit</h1>
-<p>Find me in app/views/public/users/edit.html.erb</p>
+<div class="container">
+<br>
+  <div class="d-grid gap-2 col-5 mx-auto text-center">
+    <h2>登録情報編集</h2>
+  </div>
+<br>
+<br>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h3><%= @user.errors.count %>件のエラーがあります:</h3>
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<%= form_with model: @user, url: users_information_path(current_user), method: :patch do |f| %>
+<!--<#%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>-->
+  <!--<#%= render "public/shared/error_messages", resource: resource %>-->
+  <div class="form-group row h5">
+    <div class="col-sm-3">
+      <label for="company_name">会社名</label>
+    </div>
+    <div class="col-sm-4">
+      <%= f.text_field :company_name, autofocus: true, placeholder: "会社名", autocomplete: "name", size: "30" %>
+    </div>
+  </div>
+  <div class="form-group row h5">
+    <div class="col-sm-3">
+      <label for="location">所在地</label>
+    </div>
+    <div class="col-sm-4">
+      <%= f.text_field :location, autofocus: true, placeholder: "所在地", autocomplete: "address", size: "40" %>
+    </div>
+  </div>
+  <div class="form-group row h5">
+    <div class="col-sm-3">
+      <label for="licensing_entity">免許主体</label>
+    </div>
+    <div class="col-sm-4">
+      <%= f.text_field :licensing_entity, autofocus: true, placeholder: "知事or国土交通大臣",  size: "20" %>
+    </div>
+  </div>
+  <div class="form-group row h5">
+    <div class="col-sm-3">
+      <label for="licensing_region">免許地</label>
+    </div>
+    <div class="col-sm-4">
+      <%= f.text_field :licensing_region, autofocus: true, placeholder: "東京都",  size: "20" %>
+    </div>
+  </div>
+  <div class="form-group row h5">
+    <div class="col-sm-3">
+      <label for="update_number">免許更新数</label>
+    </div>
+    <div class="col-sm-4">
+      (<%= f.text_field :update_number, autofocus: true, placeholder: "１", style: "width:10%" %>)
+    </div>
+  </div>
+  <div class="form-group row h5">
+    <div class="col-sm-3">
+      <label for="license_number">免許番号</label>
+    </div>
+    <div class="col-sm-4">
+      第<%= f.text_field :license_number, autofocus: true, placeholder: "１２３４５",  size: "10" %>号
+    </div>
+  </div>
+  <div class="form-group row h5">
+    <div class="col-sm-3">
+      <label for="representatives_name">代表者名</label>
+    </div>
+    <div class="col-sm-4">
+      <%= f.text_field :representatives_name, autofocus: true, placeholder: "仕入太郎",  size: "20" %>
+    </div>
+  </div>
+  <div class="form-group row h5">
+    <div class="col-sm-3">
+      <label for="manager_name">担当者名</label>
+    </div>
+    <div class="col-sm-4">
+      <%= f.text_field :manager_name, autofocus: true, placeholder: "仕入次郎",  size: "20" %>
+    </div>
+  </div>
+  <div class="form-group row h5">
+    <div class="col-sm-3">
+      <label for="telephone_number">電話番号(ハイフンなし)</label>
+    </div>
+    <div class="col-sm-4">
+      <%= f.text_field :telephone_number, autofocus: true, placeholder: "0123456789", autocomplete: "telephone_number",  size: "20" %>
+    </div>
+  </div>
+  <div class="form-group row h5">
+    <div class="col-sm-3">
+      <label for="email">メールアドレス</label>
+    </div>
+    <div class="col-sm-4">
+      <%= f.email_field :email, autofocus: true, placeholder: "example@example", autocomplete: "email",  size: "40" %>
+    </div>
+  </div>
+  <div class="form-group row h5">
+    <div class="col-sm-3">
+      <label for="password">パスワード</label>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> 文字以上)</em>
+    <% end %>
+    </div>
+    <div class="col-sm-4">
+    <%= f.password_field :password, autofocus: true, autocomplete: "password" %>
+    </div>
+  </div>
+  <div class="form-group row h5">
+    <div class="col-sm-3">
+      <label for="password">パスワード(確認用)</label>
+    </div>
+    <div class="col-sm-4">
+    <%= f.password_field :password_confirmation, autofocus: true, autocomplete: "password" %>
+    </div>
+  </div>
+  <div class="form-group row h5">
+    <div class="col-sm-3">
+      <label for="release_status">会員ステータス</label>
+    </div>
+    <div class="col-sm-4">
+      <% if current_user.is_deleted %>
+        <b class="text-secondary">退会</b>
+      <% else %>
+        <b class="text-success">有効</b>
+      <% end %>
+    </div>
+  </div>
+<br>
+<br>
+  <div class="form-group row h5">
+    <div class="col-sm-2">
+    </div>
+    <div class="col-sm-3 mx-1">
+      <%= link_to "　マイページへ戻る　", users_mypage_path, class: "btn btn-secondary text-light btn-lg"%>
+    </div>
+    <div class="col-3 mx-auto">
+    <%= f.submit "　編集確認画面へ進む　", class: "btn btn-success btn-lg"%>
+    </div>
+    <div class="col-sm-3 mx-1">
+      <%= link_to "　退会する　", users_unsubscribe_path, class: "btn btn-danger text-light btn-lg"%>
+    </div>
+  </div>
+<% end %>
+<br>
+<br>
+</div>

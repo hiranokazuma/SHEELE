@@ -1,2 +1,123 @@
-<h1>Public::Users#show</h1>
-<p>Find me in app/views/public/users/show.html.erb</p>
+<div class="container">
+<br>
+  <div class="d-grid gap-2 col-5 mx-auto text-center">
+    <h2>登録会員詳細</h2>
+  </div>
+<br>
+<br>
+  <div class="form-group row h5">
+    <div class="col-sm-3">
+      <label for="company_name">会社名</label>
+    </div>
+    <div class="col-sm-4">
+      <%= current_user.company_name %>
+    </div>
+  </div>
+  <div class="form-group row h5">
+    <div class="col-sm-3">
+      <label for="location">所在地</label>
+    </div>
+    <div class="col-sm-4">
+      <%= current_user.location %>
+    </div>
+  </div>
+  <div class="form-group row h5">
+    <div class="col-sm-3">
+      <label for="licensing_entity">免許主体</label>
+    </div>
+    <div class="col-sm-4">
+      <%= current_user.licensing_entity %>
+    </div>
+  </div>
+  <div class="form-group row h5">
+    <div class="col-sm-3">
+      <label for="licensing_region">免許地</label>
+    </div>
+    <div class="col-sm-4">
+      <%= current_user.licensing_region %>
+    </div>
+  </div>
+  <div class="form-group row h5">
+    <div class="col-sm-3">
+      <label for="update_number">免許更新数</label>
+    </div>
+    <div class="col-sm-4">
+      (<%= current_user.update_number %>)
+    </div>
+  </div>
+  <div class="form-group row h5">
+    <div class="col-sm-3">
+      <label for="license_number">免許番号</label>
+    </div>
+    <div class="col-sm-4">
+      第<%= current_user.license_number %>号
+    </div>
+  </div>
+  <div class="form-group row h5">
+    <div class="col-sm-3">
+      <label for="representatives_name">代表者名</label>
+    </div>
+    <div class="col-sm-4">
+      <%= current_user.representatives_name %>
+    </div>
+  </div>
+  <div class="form-group row h5">
+    <div class="col-sm-3">
+      <label for="manager_name">担当者名</label>
+    </div>
+    <div class="col-sm-4">
+      <%= current_user.manager_name %>
+    </div>
+  </div>
+  <div class="form-group row h5">
+    <div class="col-sm-3">
+      <label for="telephone_number">電話番号(ハイフンなし)</label>
+    </div>
+    <div class="col-sm-4">
+      <%= current_user.telephone_number %>
+    </div>
+  </div>
+  <div class="form-group row h5">
+    <div class="col-sm-3">
+      <label for="email">メールアドレス</label>
+    </div>
+    <div class="col-sm-4">
+      <%= current_user.email %>
+    </div>
+  </div>
+  <div class="form-group row h5">
+    <div class="col-sm-3">
+      <label for="password">パスワード</label>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> 文字以上)</em>
+    <% end %>
+    </div>
+    <div class="col-sm-4">
+      <%= current_user.password %>
+    <!--<%#= f.password_field :password, value: @user.password, readonly: true %>-->
+    </div>
+  </div>
+  <div class="form-group row h5">
+    <div class="col-sm-3">
+      <label for="release_status">会員ステータス</label>
+    </div>
+    <div class="col-sm-4">
+      <% if current_user.is_deleted %>
+        <b class="text-secondary">退会</b>
+      <% else %>
+        <b class="text-success">有効</b>
+      <% end %>
+    </div>
+  </div>
+<br>
+<br>
+  <div class="row">
+    <div class="col-sm-3">
+    </div>
+    <div class="col-sm-3">
+      <%= link_to "　マイページへ戻る　", users_mypage_path, class: "btn btn-secondary text-light btn-lg"%>
+    </div>
+<br>
+<br>
+<br>
+</div>
