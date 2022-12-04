@@ -1,5 +1,4 @@
 <div class="container">
-<br>
   <div class="d-grid gap-2 col-5 mx-auto text-center">
     <h2>登録情報編集</h2>
   </div>
@@ -132,15 +131,13 @@
 <br>
 <br>
   <div class="form-group row h5">
-    <div class="col-sm-2">
-    </div>
-    <div class="col-sm-3 mx-1">
+    <div class="col-sm-4 mx-auto">
       <%= link_to "　マイページへ戻る　", users_mypage_path, class: "btn btn-secondary text-light btn-lg"%>
     </div>
-    <div class="col-3 mx-auto">
+    <div class="col-sm-4 mx-auto">
     <%= f.submit "　編集確認画面へ進む　", class: "btn btn-success btn-lg"%>
     </div>
-    <div class="col-sm-3 mx-1">
+    <div class="col-sm-4 mx-auto">
       <%= link_to "　退会する　", users_unsubscribe_path, class: "btn btn-danger text-light btn-lg"%>
     </div>
   </div>

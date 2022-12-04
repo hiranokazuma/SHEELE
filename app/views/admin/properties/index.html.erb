@@ -4,160 +4,160 @@
   </div>
 <br>
 <br>
-<div class="d-grid gap-2 col-4 mx-auto text-center">
-  <button type="button" class="btn btn-info btn-lg btn-block" data-toggle="collapse" data-target="#search">物件を検索する</button>
-</div>
-  <div id="search" class="collapse">
-<br>
-<%= search_form_for @q, url: admin_properties_path do |f| %>
-  <div class="form-group row h5">
-    <div class="col-sm-3">
-    </div>
-    <div class="col-sm-2">
-      <%= f.label :id, "物件ID" %>
-    </div>
-    <div class="col-sm-4">
-      <%= f.search_field :id_eq , class: "form-control", style: "width:60%" %>
-    </div>
+  <div class="d-grid gap-2 col-4 mx-auto text-center">
+    <button type="button" class="btn btn-info btn-lg btn-block" data-toggle="collapse" data-target="#search">物件を検索する</button>
   </div>
-  <div class="form-group row h5">
-    <div class="col-sm-3">
+    <div id="search" class="collapse">
+  <br>
+  <%= search_form_for @q, url: admin_properties_path do |f| %>
+    <div class="form-group row h5">
+      <div class="col-sm-3">
+      </div>
+      <div class="col-sm-2">
+        <%= f.label :id, "物件ID" %>
+      </div>
+      <div class="col-sm-4">
+        <%= f.search_field :id_eq , class: "form-control", style: "width:60%" %>
+      </div>
     </div>
-    <div class="col-sm-2">
-      <%= f.label :prefecture, "都道府県" %>
+    <div class="form-group row h5">
+      <div class="col-sm-3">
+      </div>
+      <div class="col-sm-2">
+        <%= f.label :prefecture, "都道府県" %>
+      </div>
+      <div class="col-sm-4">
+        <%= f.collection_select(:prefecture, Property.all, :id, :prefecture , include_blank: '選択') %>
+      </div>
     </div>
-    <div class="col-sm-4">
-      <%= f.collection_select(:prefecture, Property.all, :id, :prefecture , include_blank: '選択') %>
+    <div class="form-group row h5">
+      <div class="col-sm-3">
+      </div>
+      <div class="col-sm-2">
+        <%= f.label :municipality, "市区町村" %>
+      </div>
+      <div class="col-sm-4">
+        <%= f.search_field :municipality_cont, class: "form-control", style: "width:60%" %>
+      </div>
     </div>
+    <div class="form-group row h5">
+      <div class="col-sm-3">
+      </div>
+      <div class="col-sm-2">
+        <%= f.label :kind, "物件種別" %>
+      </div>
+      <div class="col-sm-4">
+        <%= f.collection_select(:kind, Property.all, :id, :kind, include_blank: '選択')  %>
+      </div>
+    </div>
+    <div class="form-group row h5">
+      <div class="col-sm-3">
+      </div>
+      <div class="col-sm-2">
+        <%= f.label :right, "権利種別" %>
+      </div>
+      <div class="col-sm-4">
+        <%= f.collection_select(:right, Property.all, :id, :right, include_blank: '選択')  %>
+      </div>
+    </div>
+    <div class="form-group row h5">
+      <div class="col-sm-3">
+      </div>
+      <div class="col-sm-2">
+        <%= f.label :line, "路線" %>
+      </div>
+      <div class="col-sm-4">
+        <%= f.search_field :line_cont, class: "form-control" , style: "width:60%" %>
+      </div>
+    </div>
+    <div class="form-group row h5">
+      <div class="col-sm-3">
+      </div>
+      <div class="col-sm-2">
+        <%= f.label :station, "駅名" %>
+      </div>
+      <div class="col-sm-4">
+        <%= f.search_field :station_cont, class: "form-control", style: "width:60%" %>
+      </div>
+    </div>
+    <div class="form-group row h5">
+      <div class="col-sm-3">
+      </div>
+      <div class="col-sm-2">
+        <%= f.label :walking_minute, "徒歩" %>
+      </div>
+      <div class="col-sm-2">
+        <%= f.number_field :walking_minute_gteq, class: "form-control", style: "width:60%" ,min:1%>
+        <p class="align-middle">分〜</p>
+      </div>
+      <div class="col-sm-2">
+        <%= f.number_field :walking_minute_lt, class: "form-control", style: "width:60%" ,min:1 %>
+        <p class="align-middle">分未満</p>
+      </div>
+    </div>
+    <div class="form-group row h5">
+      <div class="col-sm-3">
+      </div>
+      <div class="col-sm-2">
+        <%= f.label :price, "価格" %>
+      </div>
+      <div class="col-sm-3">
+        <%= f.number_field :price_gteq, class: "form-control", style: "width:60%" ,min:0 %>
+        <p class="align-middle">万円〜</p>
+      </div>
+      <div class="col-sm-3">
+        <%= f.number_field :price_lt, class: "form-control", style: "width:60%" ,min:0 %>
+        <p class="align-middle">万円未満</p>
+      </div>
+    </div>
+    <div class="form-group row h5">
+      <div class="col-sm-3">
+      </div>
+      <div class="col-sm-2">
+        <%= f.label :building_coverage_ratio, "建ぺい率" %>
+      </div>
+      <div class="col-sm-3">
+        <%= f.number_field :building_coverage_ratio_gteq, class: "form-control", style: "width:50%" ,min:0 %>
+        <p class="align-middle">％〜</p>
+      </div>
+      <div class="col-sm-3">
+        <%= f.number_field :building_coverage_ratio_lt, class: "form-control", style: "width:50%" ,min:0 %>
+        <p class="align-middle">％未満</p>
+      </div>
+    </div>
+    <div class="form-group row h5">
+      <div class="col-sm-3">
+      </div>
+      <div class="col-sm-2">
+        <%= f.label :floor_area_ratio, "容積率" %>
+      </div>
+      <div class="col-sm-3">
+        <%= f.number_field :floor_area_ratio_gteq, class: "form-control", style: "width:50%" ,min:0 %>
+        <p class="align-middle">％〜</p>
+      </div>
+      <div class="col-sm-3">
+        <%= f.number_field :floor_area_ratio_lt, class: "form-control", style: "width:50%" ,min:0 %>
+        <p class="align-middle">％未満</p>
+      </div>
+    </div>
+    <div class="form-group row h5">
+      <div class="col-sm-3">
+      </div>
+      <div class="col-sm-2">
+        <%= f.label :use_area, "用途地域" %>
+      </div>
+      <div class="col-sm-4">
+        <%= f.search_field :use_area_cont, class: "form-control" %>
+      </div>
+    </div>
+  <br>
+    <div class="row justify-content-center">
+      <div class="col-sm-3">
+        <%= f.submit "検索する", class: "btn btn-success text-light btn-lg btn-block" %>
+      </div>
+    </div>
+  <% end %>
   </div>
-  <div class="form-group row h5">
-    <div class="col-sm-3">
-    </div>
-    <div class="col-sm-2">
-      <%= f.label :municipality, "市区町村" %>
-    </div>
-    <div class="col-sm-4">
-      <%= f.search_field :municipality_cont, class: "form-control", style: "width:60%" %>
-    </div>
-  </div>
-  <div class="form-group row h5">
-    <div class="col-sm-3">
-    </div>
-    <div class="col-sm-2">
-      <%= f.label :kind, "物件種別" %>
-    </div>
-    <div class="col-sm-4">
-      <%= f.collection_select(:kind, Property.all, :id, :kind, include_blank: '選択')  %>
-    </div>
-  </div>
-  <div class="form-group row h5">
-    <div class="col-sm-3">
-    </div>
-    <div class="col-sm-2">
-      <%= f.label :right, "権利種別" %>
-    </div>
-    <div class="col-sm-4">
-      <%= f.collection_select(:right, Property.all, :id, :right, include_blank: '選択')  %>
-    </div>
-  </div>
-  <div class="form-group row h5">
-    <div class="col-sm-3">
-    </div>
-    <div class="col-sm-2">
-      <%= f.label :line, "路線" %>
-    </div>
-    <div class="col-sm-4">
-      <%= f.search_field :line_cont, class: "form-control" , style: "width:60%" %>
-    </div>
-  </div>
-  <div class="form-group row h5">
-    <div class="col-sm-3">
-    </div>
-    <div class="col-sm-2">
-      <%= f.label :station, "駅名" %>
-    </div>
-    <div class="col-sm-4">
-      <%= f.search_field :station_cont, class: "form-control", style: "width:60%" %>
-    </div>
-  </div>
-  <div class="form-group row h5">
-    <div class="col-sm-3">
-    </div>
-    <div class="col-sm-2">
-      <%= f.label :walking_minute, "徒歩" %>
-    </div>
-    <div class="col-sm-2">
-      <%= f.number_field :walking_minute_gteq, class: "form-control", style: "width:60%" ,min:1%>
-      <p class="align-middle">分〜</p>
-    </div>
-    <div class="col-sm-2">
-      <%= f.number_field :walking_minute_lt, class: "form-control", style: "width:60%" ,min:1 %>
-      <p class="align-middle">分未満</p>
-    </div>
-  </div>
-  <div class="form-group row h5">
-    <div class="col-sm-3">
-    </div>
-    <div class="col-sm-2">
-      <%= f.label :price, "価格" %>
-    </div>
-    <div class="col-sm-3">
-      <%= f.number_field :price_gteq, class: "form-control", style: "width:60%" ,min:0 %>
-      <p class="align-middle">万円〜</p>
-    </div>
-    <div class="col-sm-3">
-      <%= f.number_field :price_lt, class: "form-control", style: "width:60%" ,min:0 %>
-      <p class="align-middle">万円未満</p>
-    </div>
-  </div>
-  <div class="form-group row h5">
-    <div class="col-sm-3">
-    </div>
-    <div class="col-sm-2">
-      <%= f.label :building_coverage_ratio, "建ぺい率" %>
-    </div>
-    <div class="col-sm-3">
-      <%= f.number_field :building_coverage_ratio_gteq, class: "form-control", style: "width:50%" ,min:0 %>
-      <p class="align-middle">％〜</p>
-    </div>
-    <div class="col-sm-3">
-      <%= f.number_field :building_coverage_ratio_lt, class: "form-control", style: "width:50%" ,min:0 %>
-      <p class="align-middle">％未満</p>
-    </div>
-  </div>
-  <div class="form-group row h5">
-    <div class="col-sm-3">
-    </div>
-    <div class="col-sm-2">
-      <%= f.label :floor_area_ratio, "容積率" %>
-    </div>
-    <div class="col-sm-3">
-      <%= f.number_field :floor_area_ratio_gteq, class: "form-control", style: "width:50%" ,min:0 %>
-      <p class="align-middle">％〜</p>
-    </div>
-    <div class="col-sm-3">
-      <%= f.number_field :floor_area_ratio_lt, class: "form-control", style: "width:50%" ,min:0 %>
-      <p class="align-middle">％未満</p>
-    </div>
-  </div>
-  <div class="form-group row h5">
-    <div class="col-sm-3">
-    </div>
-    <div class="col-sm-2">
-      <%= f.label :use_area, "用途地域" %>
-    </div>
-    <div class="col-sm-4">
-      <%= f.search_field :use_area_cont, class: "form-control" %>
-    </div>
-  </div>
-<br>
-  <div class="row justify-content-center">
-    <div class="col-sm-2">
-      <%= f.submit "検索する", class: "btn btn-success text-light btn-lg btn-block" %>
-    </div>
-  </div>
-<% end %>
-</div>
 <br>
 <br>
   <table class="table table-bordered">

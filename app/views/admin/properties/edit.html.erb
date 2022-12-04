@@ -234,15 +234,13 @@
 <br>
 <br>
   <div class="row">
-    <div class="col-sm-2">
-    </div>
-    <div class="col-sm-3 mx-1">
+    <div class="col-sm-4 mx-auto">
       <%= link_to "　詳細へ戻る　", admin_property_path(@property), class: "btn btn-secondary text-light btn-lg"%>
     </div>
-    <div class="col-sm-3 mx-1">
+    <div class="col-sm-4 mx-auto">
       <%= f.submit '　変更を保存　', class: "btn btn-success btn-lg" %>
     </div>
-    <div class="col-sm-3 mx-1">
+    <div class="col-sm-4 mx-auto">
       <%= link_to "　削除する　", admin_property_path(@property), class: "btn btn-danger text-white btn-lg", method: :delete, "data-confirm" => "本当に削除しますか？" %>
     </div>
   </div>

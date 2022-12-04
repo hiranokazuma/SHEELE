@@ -216,6 +216,10 @@ form {
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
+.form-control-file {
+    border: none;
+}
+
 /*input {*/
 /*    writing-mode: horizontal-tb !important;*/
 /*    text-rendering: auto;*/
@@ -249,7 +253,7 @@ input, button, select, optgroup, textarea {
     font-family: inherit;
     font-size: inherit;
     line-height: inherit;
-    height: calc(2.4em);
+
     padding: 0.375rem 0.75rem;
     font-size: 1.1rem;
     font-weight: 400;
@@ -266,8 +270,12 @@ button, input {
     overflow: visible;
 }
 textarea {
-    overflow: auto;
+    overflow: visible;
     resize: vertical;
+}
+
+image {
+    border: 0px;
 }
 
 .row {
