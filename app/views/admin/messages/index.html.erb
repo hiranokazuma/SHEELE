@@ -1,2 +1,78 @@
-<h1>Admin::Messages#index</h1>
-<p>Find me in app/views/admin/messages/index.html.erb</p>
+<div class="container">
+  <div class="d-grid gap-2 col-5 mx-auto text-center">
+    <h2>メッセージ一覧</h2>
+  </div>
+<br>
+<br>
+<% @messages.each do |message| %>
+  <div>
+    <div class="media-left">
+      <img class="media-object img-circle" src="<%= gravatar_url( message.user, { size: 50 }) %>" alt="">
+    </div>
+  <div class="media-body">
+    <div>
+      <%= link_to message.user.company_name, user_path(message.user) %> <span class="text-muted">posted at <%= message.created_at %></span>
+    </div>
+  <div>
+    <%= message.kind %>
+  <br>
+    <%= message.title %>
+  <br>
+    <%= message.content %>
+  <br>
+      <% if current_user == message.user %>
+      <%= link_to "削除", user_message_path(current_user, message), method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-xs' %>
+    <% end %>
+  </div>
+  </div>
+  <hr>
+  </div>
+<% end %>
+
+<%= form_with model: @message, url: admin_messages_path, local: true do |f| %>
+<!--<#%= form_for message, :url => {:action => :create} do |f| %>-->
+  <div class="form-group row h5 justify-content-center">
+    <div class="col-sm-2">
+      <label for="kind">種類</label>
+    </div>
+    <div class="col-sm-4">
+    <%= f.select :kind, [['全体へのお知らせ', 0], ['管理者メッセージ', 1]],  {class: 'form-select'} %>
+    </div>
+  </div>
+
+  <div class="form-group row h5 justify-content-center">
+    <div class="col-sm-2">
+      <label for="title">タイトル</label>
+    </div>
+    <div class="col-sm-4">
+    <%= f.text_field :title, size: "50" %>
+    </div>
+  </div>
+
+  <div class="form-group row h5 justify-content-center">
+    <div class="col-sm-2">
+      <label for="content">本文</label>
+    </div>
+    <div class="col-sm-4">
+    <%= f.text_area :content, size: "60x15" %>
+    </div>
+  </div>
+<br>
+  <div class="row">
+    <div class="col-sm-3">
+    </div>
+    <div class="col-sm-3">
+      <%= link_to "　管理メニューへ戻る　", admin_homes_top_path, class: "btn btn-secondary text-light btn-lg"%>
+    </div>
+    <div class="col-sm-3 ml-auto justify-content-center">
+      <%= f.submit '　送信する　', class: "btn btn-success btn-lg btn-block" %>
+    </div>
+    <div class="col-sm-3 mx-auto">
+      <%= link_to "　管理メニューへ戻る　", admin_homes_top_path, class: "btn btn-secondary text-light btn-lg"%>
+    </div>
+  </div>
+<% end %>
+<br>
+<br>
+<br>
+</div>
