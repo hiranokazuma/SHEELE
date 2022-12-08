@@ -53,7 +53,11 @@ Rails.application.routes.draw do
 
   resources :notifications, only: [:index, :destroy]
 
-  resources :messages
+  resources :messages do
+    collection do
+      get 'messages/get_users' => 'messages#get_users'
+    end
+  end
 
   resources :view_applications, only: [:index, :edit, :update, :destroy]
 

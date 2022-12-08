@@ -70,3 +70,5 @@ gem 'pry-byebug', group: :development
 gem 'net-smtp'
 gem 'net-imap'
 gem 'net-pop'
+
+gem 'jquery-rails'
