@@ -1,25 +1,30 @@
 class Public::MessagesController < ApplicationController
   def index
-    @user = current_user
-    @admin = Admin.all
-    send_ids = current_user.messages.where(receive_user_id: @user.id).pluck(:id)
-    receive_ids = @user.messages.where(receive_user_id: current_user.id).pluck(:id)
-    # send_ids = @admin.messages.where(receive_admin_id: @admin.id).pluck(:id)
-    # receive_ids = @admin.messages.where(receive_admin_id: @admin.id).pluck(:id)
-    @messages = Message.where(id: send_ids + receive_ids).order(created_at: :desc)
+    @q = User.ransack(params[:q])
+    @users = @q.result(distinct: true).page(params[:page]).per(15)
+
+    @messages = Message.all
     @message = Message.new
   end
 
-  def create
+  def new
+    @message = Message.new
     @user = current_user
-    @message = current_user.messages.build(message_params)
-    @message.receive_user_id = @user.id
+
+  end
+
+  def create
+    @message = Message.new
+    # @user = User.find(params[:user_id])
+    # @admin = Admin.find(params[:admin_id])
+    # @message = current_user.messages.build(message_params)
+    # @message = @admin.messages.build(message_params)
     if @message.save
-      flash[:success] = 'メッセージを送信しました。'
-      redirect_back(fallback_location: root_path)
+    flash[:success] = 'メッセージを送信しました。'
+    redirect_to messages_path
     else
-      flash[:danger] = 'メッセージを送信できませんでした。'
-      redirect_back(fallback_location: root_path)
+    flash[:danger] = 'メッセージを送信できませんでした。'
+    render :new
     end
   end
 
@@ -36,6 +41,10 @@ class Public::MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit(:title, :content)
+    params.require(:message).permit(:kind, :title, :content)
+  end
+
+  def get_users
+    render partial: 'select_users', locals: {user_id: params[:user_id]}
   end
 end

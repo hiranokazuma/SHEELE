@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   resources :notifications, only: [:index, :destroy]
 
-  resources :messages, only: [:index, :show, :destroy]
+  resources :messages, except: [:update]
 
     get 'view_applications/confirm' => 'view_applications#confirm'
     get 'view_applications/complete' => 'view_applications#complete'

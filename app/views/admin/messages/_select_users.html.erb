@@ -4,7 +4,7 @@
             <%= f.label :company_name, "宛先" %>
           </div>
           <div class="col-sm-4">
-            <%= f.collection_select :company_name, User.all, :id, :company_name ,class: "form-control", style: "width:80%" %>
+            <%= f.collection_select :company_name, User.all, :id, :company_name ,:prompt => "---", class: "form-control", style: "width:80%" %>
           </div>
         </div>
 

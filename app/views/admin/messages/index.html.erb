@@ -29,52 +29,20 @@
   </div>
 <% end %>
 
-<%= form_with model: @message, url: admin_messages_path, local: true do |f| %>
-<!--<#%= form_for message, :url => {:action => :create} do |f| %>-->
-  <div class="form-group row h5 justify-content-center">
-    <div class="col-sm-2">
-      <label for="kind">種類</label>
-    </div>
-    <div class="col-sm-4">
-    <%= f.select :kind, [['全体へのお知らせ', 0], ['管理者メッセージ', 1]],  {class: 'form-select'} %>
-    </div>
-  </div>
-    <%= render 'select_users', {user: @user} %>
-
-
-
-  <div class="form-group row h5 justify-content-center">
-    <div class="col-sm-2">
-      <label for="title">タイトル</label>
-    </div>
-    <div class="col-sm-4">
-    <%= f.text_field :title, size: "50" %>
-    </div>
-  </div>
-
-  <div class="form-group row h5 justify-content-center">
-    <div class="col-sm-2">
-      <label for="content">本文</label>
-    </div>
-    <div class="col-sm-4">
-    <%= f.text_area :content, size: "60x15" %>
-    </div>
-  </div>
+<br>
 <br>
   <div class="row">
-    <div class="col-sm-3">
+    <div class="col-sm-3 ">
     </div>
-    <div class="col-sm-3">
-      <%= link_to "　管理トップへ戻る　", admin_homes_top_path, class: "btn btn-secondary text-light btn-lg"%>
+    <div class="col-sm-3 d-grid gap-2 mx-auto">
+      <%= link_to "　新規作成　", new_admin_message_path, class: "btn btn-success text-light btn-lg"%>
     </div>
-    <div class="col-sm-3 ml-auto justify-content-center">
-      <%= f.submit '　送信する　', class: "btn btn-success btn-lg btn-block" %>
-    </div>
-    <div class="col-sm-3 mx-auto">
-      <%= link_to "　管理トップへ戻る　", admin_homes_top_path, class: "btn btn-secondary text-light btn-lg"%>
+
+    <div class="col-sm-3 d-grid gap-2 mx-auto">
+      <%= link_to "管理トップへ戻る", admin_homes_top_path, class: "btn btn-secondary text-light btn-lg"%>
     </div>
   </div>
-<% end %>
+
 <br>
 <br>
 <br>

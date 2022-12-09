@@ -2,10 +2,15 @@ class Admin::MessagesController < ApplicationController
   def index
     @q = User.ransack(params[:q])
     @users = @q.result(distinct: true).page(params[:page]).per(15)
-    @user = User.new
-    @admin = current_admin
+
     @messages = Message.all
     @message = Message.new
+  end
+
+  def new
+    @message = Message.new
+    @users = User.all
+    @admin = current_admin
   end
 
   def create
@@ -16,10 +21,10 @@ class Admin::MessagesController < ApplicationController
     # @message = @admin.messages.build(message_params)
     if @message.save
     flash[:success] = 'メッセージを送信しました。'
-    redirect_back(fallback_location: root_path)
+    redirect_to admin_messages_path
     else
     flash[:danger] = 'メッセージを送信できませんでした。'
-    redirect_back(fallback_location: root_path)
+    render :new
     end
   end
 
@@ -42,7 +47,7 @@ class Admin::MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit(:title, :content)
+    params.require(:message).permit(:kind, :title, :content)
   end
 
   def get_users
