@@ -4,31 +4,29 @@
   </div>
 <br>
 <br>
-<% @messages.each do |message| %>
-  <div>
-    <div class="media-left">
-      <img class="media-object img-circle" src="<%= gravatar_url( message.user, { size: 50 }) %>" alt="">
-    </div>
-    <div class="media-body">
-      <div>
-        <%= link_to message.user.company_name, user_path(message.user) %> <span class="text-muted">posted at <%= message.created_at %></span>
-      </div>
-      <div>
-        <%= message.kind %>
-      <br>
-        <%= message.title %>
-      <br>
-        <%= message.content %>
-      <br>
-        <% if current_user == message.user %>
-          <%= link_to "削除", user_message_path(current_user, message), method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-xs' %>
-        <% end %>
-      </div>
-    </div>
-  <hr>
-  </div>
-<% end %>
 
+  <table class="table table-bordered">
+    <thead class="h5 table-secondary text-center">
+      <tr>
+        <th style="width: 20%">送信日時</th>
+        <th style="width: 70%">メッセージ</th>
+        <th style="width: 10%"> </th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @messages.each do |message| %>
+      <tr class="h5 text-center">
+        <td class="align-middle text-center"><%= simple_format(message.created_at.to_s(:datetime_jp)) %></td>
+        <td class="align-middle text-left">タイトル：<%= message.title %><br>本文：<%= message.content %></td>
+        <td class="align-middle text-center">
+          <% if current_user.id == message.user.id %>
+            <%= link_to "削除", message_path(current_user), method: :delete, data: { confirm: "削除してもよろしいですか？" }, class: 'btn btn-danger text-light' %>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
 <br>
 <br>
 <br>

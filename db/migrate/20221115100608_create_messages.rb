@@ -5,7 +5,6 @@ class CreateMessages < ActiveRecord::Migration[6.1]
       t.integer :admin_id
       t.string :title,                  null: false
       t.text :content,                  null: false
-      t.integer :kind,                  null: false
       t.boolean :release_status,        null: false, default: false
       t.timestamps
     end

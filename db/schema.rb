@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_19_142803) do
+ActiveRecord::Schema.define(version: 2022_11_16_103206) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -57,7 +57,6 @@ ActiveRecord::Schema.define(version: 2022_11_19_142803) do
     t.integer "admin_id"
     t.string "title", null: false
     t.text "content", null: false
-    t.integer "kind", null: false
     t.boolean "release_status", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -70,11 +69,6 @@ ActiveRecord::Schema.define(version: 2022_11_19_142803) do
     t.integer "admin_notice_receive_id"
     t.integer "notice_type"
     t.boolean "read", default: false, null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "prefectures", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

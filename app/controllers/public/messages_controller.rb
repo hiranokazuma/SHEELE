@@ -14,11 +14,8 @@ class Public::MessagesController < ApplicationController
   end
 
   def create
-    @message = Message.new
-    # @user = User.find(params[:user_id])
-    # @admin = Admin.find(params[:admin_id])
-    # @message = current_user.messages.build(message_params)
-    # @message = @admin.messages.build(message_params)
+    @message = Message.new(message_params)
+    @message.user_id = current_user.id
     if @message.save
     flash[:success] = 'メッセージを送信しました。'
     redirect_to messages_path
@@ -41,7 +38,7 @@ class Public::MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit(:kind, :title, :content)
+    params.require(:message).permit(:title, :content)
   end
 
   def get_users
