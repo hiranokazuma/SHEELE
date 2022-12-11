@@ -14,11 +14,8 @@ class Admin::MessagesController < ApplicationController
   end
 
   def create
-    @message = Message.new
-    # @user = User.find(params[:user_id])
-    # @admin = Admin.find(params[:admin_id])
-    # @message = current_user.messages.build(message_params)
-    # @message = @admin.messages.build(message_params)
+    @message = Message.new(message_params)
+
     if @message.save
     flash[:success] = 'メッセージを送信しました。'
     redirect_to admin_messages_path
@@ -29,19 +26,22 @@ class Admin::MessagesController < ApplicationController
   end
 
   def show
+    @message = Message.find(params[:id])
   end
 
   def edit
+    @message = Message.find(params[:id])
   end
 
   def update
+    @message = Message.find(params[:id])
   end
 
   def destroy
     @message = Message.find(params[:id])
     @message.destroy
     flash[:success] = 'メッセージを削除しました。'
-    redirect_back(fallback_location: root_path)
+    redirect_to admin_messages_path
   end
 
   private

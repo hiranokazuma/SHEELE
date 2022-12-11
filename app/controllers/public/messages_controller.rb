@@ -32,7 +32,7 @@ class Public::MessagesController < ApplicationController
     @message = Message.find(params[:id])
     @message.destroy
     flash[:success] = 'メッセージを削除しました。'
-    redirect_back(fallback_location: root_path)
+    redirect_to messages_path
   end
 
   private
