@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
@@ -40,6 +41,10 @@ Rails.application.routes.draw do
     get 'users/unsubscribe' => 'users#unsubscribe'
     patch 'users/withdraw' => 'users#withdraw'
 
+    post 'replies/confirm' => 'replies#confirm'
+    get 'replies/complete' => 'replies#complete'
+  resources :replies, only: [:create, :new]
+
   end
 
   devise_scope :admin do
@@ -65,6 +70,9 @@ Rails.application.routes.draw do
 
   resources :properties, except: [:create, :new]
 
+    post 'replies/confirm' => 'replies#confirm'
+    get 'replies/complete' => 'replies#complete'
+  resources :replies, only: [:create, :new]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

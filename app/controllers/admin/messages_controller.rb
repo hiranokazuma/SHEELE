@@ -2,7 +2,6 @@ class Admin::MessagesController < ApplicationController
   def index
     @q = User.ransack(params[:q])
     @users = @q.result(distinct: true).page(params[:page]).per(15)
-
     @messages = Message.all
     @message = Message.new
   end
@@ -27,6 +26,7 @@ class Admin::MessagesController < ApplicationController
 
   def show
     @message = Message.find(params[:id])
+    @reply = Reply.all
   end
 
   def edit

@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="d-grid gap-2 col-5 mx-auto text-center">
+    <h2>返信フォーム</h2>
+  </div>
+<br>
+<br>
+  <% if @reply.errors.any? %>
+    <div id="error_explanation">
+      <h3><%= @reply.errors.count %>件のエラーがあります:</h3>
+      <ul>
+        <% @reply.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<%= form_with model: @reply, url: admin_replies_confirm_path, local: true do |f| %>
+  <div class="form-group row h5 justify-content-center">
+    <div class="col-sm-2">
+      <label for="user">宛先</label>
+    </div>
+    <div class="col-sm-4">
+      <%= @message.user.company_name %>様
+    </div>
+  </div>
+  <div class="form-group row h5 justify-content-center">
+    <div class="col-sm-2">
+      <label for="title">タイトル</label>
+    </div>
+    <div class="col-sm-4">
+      RE:<%= @message.title %>
+    </div>
+  </div>
+  <div class="form-group row h5 justify-content-center">
+    <div class="col-sm-2">
+      <label for="content">本文</label>
+    </div>
+    <div class="col-sm-4">
+    <%= f.text_area :content, size: "60x15" %>
+    </div>
+  </div>
+<br>
+  <div class="row">
+    <div class="col-sm-3 ">
+    </div>
+    <div class="col-sm-3 d-grid gap-2 mx-auto">
+      <%= link_to "メッセージ詳細へ戻る", admin_message_path(@message), class: "btn btn-secondary text-light btn-lg"%>
+    </div>
+    <%= f.hidden_field :user_id, :value => @message.user_id %>
+    <!--<#%= f.hidden_field :admin_id, :value => @message.admin_id %>-->
+    <%= f.hidden_field :message_id, :value => @message.id %>
+    <div class="col-sm-3 d-grid gap-2 mx-auto">
+      <%= f.submit "返信内容を確認", class: "btn btn-success text-light btn-lg"%>
+    </div>
+  </div>
+<% end %>
+<br>
+<br>
+<br>
+</div>

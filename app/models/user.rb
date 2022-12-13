@@ -20,5 +20,6 @@ has_many :notifications, dependent: :destroy
 has_many :properties, dependent: :destroy
 has_many :view_applications, dependent: :destroy
 has_many :messages, dependent: :destroy
+has_many :replies, dependent: :destroy
 
 end
