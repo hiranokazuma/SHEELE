@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
@@ -43,8 +42,10 @@ Rails.application.routes.draw do
 
     post 'replies/confirm' => 'replies#confirm'
     get 'replies/complete' => 'replies#complete'
-  resources :replies, only: [:create, :new]
+  resources :replies, except: [:index, :edit, :update]
 
+  resources :management_notices, only: [:show]
+  
   end
 
   devise_scope :admin do
@@ -73,6 +74,11 @@ Rails.application.routes.draw do
     post 'replies/confirm' => 'replies#confirm'
     get 'replies/complete' => 'replies#complete'
   resources :replies, only: [:create, :new]
+
+    post 'management_notices/confirm' => 'management_notices#confirm'
+    get 'management_notices/complete' => 'management_notices#complete'
+  resources :management_notices, except: [:index]
+  
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

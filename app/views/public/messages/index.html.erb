@@ -1,10 +1,38 @@
 <div class="container">
+  <div class="d-grid gap-2 col-6 mx-auto text-center">
+    <h2>運営からのお知らせ一覧</h2>
+  </div>
+ <table class="table table-bordered">
+    <thead class="h5 table-secondary text-center">
+      <tr>
+        <th style="width: 20%">送信日時</th>
+        <th style="width: 5%">ID</th>
+        <th style="width: 65%">運営からのお知らせ</th>
+        <th style="width: 10%"> </th>
+      </tr>
+    </thead>
+    <tbody>
+<br>
+<br>
+    <% @management_notices.each do |management_notice| %>
+      <tr class="h5 text-center">
+        <td class="align-middle text-center"><%= simple_format(management_notice.created_at.to_s(:datetime_jp)) %></td>
+        <td class="align-middle text-center"><%= management_notice.id %></td>
+        <td class="align-middle text-left">
+          <%= link_to management_notice_path(management_notice) do %>
+            タイトル：<%= management_notice.title %><br>本文：<%= management_notice.content.truncate(30) %>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
   <div class="d-grid gap-2 col-5 mx-auto text-center">
     <h2>メッセージ一覧</h2>
   </div>
 <br>
 <br>
-
   <table class="table table-bordered">
     <thead class="h5 table-secondary text-center">
       <tr>
@@ -25,6 +53,42 @@
         </td>
       </tr>
       <% end %>
+    </tbody>
+  </table>
+<br>
+<br>
+  <table class="table table-bordered">
+    <thead class="h5 table-secondary text-center">
+      <tr>
+        <th style="width: 20%">受信日時</th>
+        <th style="width: 70%">お問い合わせに対する返信</th>
+        <th style="width: 10%"> </th>
+      </tr>
+    </thead>
+    <tbody>
+    <% if current_user.reply_ids.nil? %>
+      <tr class="h5 text-center">
+        <td class="align-middle text-center"></td>
+        <td class="align-middle text-center">返信はまだありません</td>
+        <td class="align-middle text-center"></td>
+      </tr>
+    <% else %>
+      <% @replies.each do |reply| %>
+        <tr class="h5 text-center">
+          <td class="align-middle text-center"><%= simple_format(reply.created_at.to_s(:datetime_jp)) %></td>
+          <td class="align-middle text-left">
+            <%= link_to reply_path(reply) do %>
+              タイトル：RE: <%= reply.message.title %><br>本文：<%= reply.content %>
+            <% end %>
+          </td>
+          <td class="align-middle text-center">
+            <% if current_user.id == reply.user.id %>
+              <%= link_to "削除", message_path(current_user), method: :delete, data: { confirm: "削除してもよろしいですか？" }, class: 'btn btn-danger text-light' %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
     </tbody>
   </table>
 <br>

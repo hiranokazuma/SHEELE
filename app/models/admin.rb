@@ -7,5 +7,6 @@ class Admin < ApplicationRecord
 has_many :notifications
 has_many :messages
 has_many :replies
+has_many :management_notices
 
 end

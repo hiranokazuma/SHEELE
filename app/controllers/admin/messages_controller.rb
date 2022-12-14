@@ -2,8 +2,10 @@ class Admin::MessagesController < ApplicationController
   def index
     @q = User.ransack(params[:q])
     @users = @q.result(distinct: true).page(params[:page]).per(15)
-    @messages = Message.all
-    @message = Message.new
+    @replies = Reply.all
+    @management_notices = ManagementNotice.all
+    @q = Message.ransack(params[:q])
+    @messages = @q.result(distinct: true).page(params[:page]).per(15)
   end
 
   def new

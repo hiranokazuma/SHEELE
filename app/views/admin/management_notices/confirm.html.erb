@@ -1,49 +1,42 @@
 <div class="container">
 <br>
   <div class="d-grid gap-2 col-5 mx-auto text-center">
-    <h2>返信内容確認</h2>
+    <h2>運営からのお知らせ<br>送信内容確認</h2>
   </div>
 <br>
 <br>
-  <div class="form-group row h5 justify-content-center">
-    <div class="col-sm-2">
-      <label for="user">宛先会員</label>
-    </div>
-    <div class="col-sm-4">
-      <%= @reply.user.company_name %>
-    </div>
-  </div>
+<br>
+<br>
   <div class="form-group row h5 justify-content-center">
     <div class="col-sm-2">
       <label for="title">タイトル</label>
     </div>
     <div class="col-sm-4">
-      RE: <%= @reply.message.title %>
+      <%= @management_notice.title %>
     </div>
   </div>
   <div class="form-group row h5 justify-content-center">
     <div class="col-sm-2">
-      <label for="content">返信本文</label>
+      <label for="content">本文</label>
     </div>
     <div class="col-sm-4">
-      <%= @reply.content %>
+      <%= @management_notice.content %>
     </div>
   </div>
 <br>
 <br>
 <br>
 <br>
-  <%= form_with model: @reply, url: admin_replies_path, local: true do |f| %>
-    <%= f.hidden_field :user_id %>
+  <%= form_with model: @management_notice, url: admin_management_notices_path, local: true do |f| %>
     <%= f.hidden_field :admin_id %>
-    <%= f.hidden_field :message_id %>
+    <%= f.hidden_field :title %>
     <%= f.hidden_field :content %>
   <div class="form-group row h5">
     <div class="actions col-3 mx-auto">
       <%= f.submit "　戻る　", name: :back, class: "btn btn-secondary btn-lg btn-block"%>
     </div>
     <div class="actions col-3 mx-auto">
-      <%= f.submit " 返信する ", class: "btn btn-success btn-lg btn-block"%>
+      <%= f.submit " 送信する ", class: "btn btn-success btn-lg btn-block"%>
     </div>
   </div>
   <% end %>
