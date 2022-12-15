@@ -48,6 +48,7 @@ class Public::ViewApplicationsController < ApplicationController
   end
 
   def complete
+    create_notification_user(current_user)
   end
 
   def deatroy

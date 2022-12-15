@@ -1,5 +1,15 @@
 <div class="container">
   <div class="d-grid gap-2 col-6 mx-auto text-center">
+    <h2>通知一覧</h2>
+  </div>
+  <%= @notifications = @notifications.where.not(visitor_id: current_user.id) %>
+    <% if notification.exists? %>
+      <%= render notifications %>
+      <%= paginate notifications %>
+    <% else %>
+    <p>通知はありません</p>
+    <% end %>
+
     <h2>運営からのお知らせ一覧</h2>
   </div>
  <table class="table table-bordered">

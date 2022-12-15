@@ -2,6 +2,7 @@ class Public::MessagesController < ApplicationController
   def index
     @replies = Reply.all
     @management_notices = ManagementNotice.all
+    @notifications = Notification.all
     @q = Message.ransack(params[:q])
     @messages = @q.result(distinct: true).page(params[:page]).per(15)
   end
