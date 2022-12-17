@@ -13,6 +13,8 @@ class ViewApplication < ApplicationRecord
   def create_notification_user(current_user)
     # すでに「申請」されているか検索
       temp = Notification.where(["visitor_id = ? and visited_id = ? and view_application_id = ? and notice_type = ? ", current_user.id, user_id, id, 'apply'])
+      # temp = Notification.where(["visitor_id = ? and visited_id = ? and notice_type = ? ", current_user.id, user_id, 'apply'])
+# binding.pry
     # 申請されていない場合のみ、通知レコードを作成
     if temp.blank?
       notification = current_user.active_notifications.new(
@@ -21,9 +23,9 @@ class ViewApplication < ApplicationRecord
         notice_type: 'apply'
       )
     # 自分の物件に対する申請の場合は、通知済みとする
-      if notification.visitor_id == notification.visited_id
-        notification.read = true
-      end
+      # if notification.visitor_id == notification.visited_id
+      #   notification.read = true
+      # end
       notification.save if notification.valid?
     end
   end

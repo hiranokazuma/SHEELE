@@ -2,6 +2,8 @@ class Public::ViewApplicationsController < ApplicationController
   def index
     @view_applications = ViewApplication.all
     @view_application = ViewApplication.new
+    @properties = Property.all
+    @user = current_user.id
   end
 
   def edit
@@ -19,14 +21,14 @@ class Public::ViewApplicationsController < ApplicationController
     end
   end
 
-  # def new
-  #   @view_application = ViewApplication.new
-  #   render :new and return if params[:back]
-  # end
+  def new
+    @view_application = ViewApplication.new
+    render :new and return if params[:back]
+  end
 
   def confirm
     @user = current_user
-    @properties = Property.all
+    @property = Property.find_by(params[:id])
 
     @apply_status = 1
     @view_application = ViewApplication.new
@@ -43,16 +45,20 @@ class Public::ViewApplicationsController < ApplicationController
       flash[:arlet] = "申請に失敗しました。"
       render :confirm
     else
+      @view_application.create_notification_user(current_user)
       redirect_to view_applications_complete_path
     end
   end
 
   def complete
-    create_notification_user(current_user)
   end
 
   def deatroy
+    @view_application = ViewApplication.find(params[:id])
+    @view_application.destroy
+    redirect_to admin_view_applications_path, notice: "閲覧申請を削除しました。"
   end
+
   private
 
   def view_application_params

@@ -46,6 +46,7 @@ class Public::PropertiesController < ApplicationController
 
   def confirm
     @property = Property.new(property_params)
+    @property.user_id = current_user.id
       if @property.invalid?
         flash[:arlet] = '入力内容にエラーがあります。'
         render :new
@@ -54,11 +55,13 @@ class Public::PropertiesController < ApplicationController
   end
 
   def create
+    # binding.pry
+    
     @property = Property.new(property_params)
     if params[:back] || !@property.save
       render :new
     else
-      redirect_to properties_complete_path
+      redirect_to properties_complete_path(@property.id)
     end
   end
 
@@ -68,7 +71,7 @@ class Public::PropertiesController < ApplicationController
   private
 
   def property_params
-    params.require(:property).permit(:kind, :right, :prefecture, :municipality,
+    params.require(:property).permit(:user_id, :kind, :right, :prefecture, :municipality,
                                       :city_block, :address, :line, :station, :walking_minute,
                                       :land_area, :building_area, :price, :sell_category, :age,
                                       :structure, :location_floor, :building_coverage_ratio,

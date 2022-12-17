@@ -12,36 +12,35 @@
       </tr>
     </thead>
     <tbody>
-      <% @properties.each do |property| %>
       <tr class="h5 text-center">
-        <td class="align-middle text-center"><%= property.id %></td>
+        <td class="align-middle text-center"><%= @property.id %></td>
         <td class="align-middle text-center">
-          <% if property.image.attached? %>
-            <%= image_tag property.image, size: "100x100" %>
+          <% if @property.image.attached? %>
+            <%= image_tag @property.image, size: "100x100" %>
           <% else %>
             <%= image_tag 'default-image', size: "100x100" %>
           <% end %>
         </td>
         <td class="align-middle text-center">
-          <%= property.sell_category %>&emsp;
-          <%= property.prefecture %>
-          <%= property.municipality %>
-          <%= property.city_block %>&emsp;
-          <%= property.kind %>&emsp;<br>
-          <%= property.line %>線&emsp;
-          <%= property.station %>駅&emsp;
-          徒歩<%= property.walking_minute %>分<br>
-          <%= property.price %>万円&emsp;
-          <% if property.kind = 0 %>
-            <%= property.land_area %>㎡&emsp;
+          <%= @property.sell_category %>&emsp;
+          <%= @property.prefecture %>
+          <%= @property.municipality %>
+          <%= @property.city_block %>&emsp;
+          <%= @property.kind %>&emsp;<br>
+          <%= @property.line %>線&emsp;
+          <%= @property.station %>駅&emsp;
+          徒歩<%= @property.walking_minute %>分<br>
+          <%= @property.price %>万円&emsp;
+          <% if @property.kind = 0 %>
+            <%= @property.land_area %>㎡&emsp;
           <% else %>
-            <%= property.land_area %>㎡&emsp;
-            <%= property.building_area %>㎡&emsp;
+            <%= @property.land_area %>㎡&emsp;
+            <%= @property.building_area %>㎡&emsp;
           <% end %>
-          <%= property.right %>&emsp;
-          <%= property.use_area %><br>
-          建ぺい率<%= property.building_coverage_ratio %>％&emsp;
-          容積率<%= property.floor_area_ratio %>％
+          <%= @property.right %>&emsp;
+          <%= @property.use_area %><br>
+          建ぺい率<%= @property.building_coverage_ratio %>％&emsp;
+          容積率<%= @property.floor_area_ratio %>％
         </td>
       </tr>
     </tbody>
@@ -53,18 +52,18 @@
   </div>
 <br>
 <br>
-  <div class="row">
-    <div class="col-sm-4 mx-auto">
+  <div class="row justify-content-center">
+    <div class="col-sm-3 mx-auto">
       <%= link_to "　一覧へ戻る　", properties_path, class: "btn btn-secondary text-light btn-lg"%>
     </div>
     <div class="col-sm-4 mx-auto">
       <%= form_with model: @view_application, url: view_applications_path, method: :post do |f| %>
       <%= f.hidden_field :user_id, :value => @user.id %>
-      <%= f.hidden_field :property_id , :value => property.id %>
+      <%= f.hidden_field :property_id, :value => @property.id %>
       <%= f.hidden_field :apply_status ,:value => "申請中" %>
       <%= f.submit "　申請する　", class: "btn btn-primary text-light btn-lg btn-block"  %>
       <% end %>
-      <% end %>
+
     </div>
   </div>
 <br>

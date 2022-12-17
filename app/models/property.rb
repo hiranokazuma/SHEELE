@@ -25,7 +25,7 @@ class Property < ApplicationRecord
   belongs_to :user
   has_many :view_applications, dependent: :destroy
   has_many :notifications, dependent: :destroy
-  
+
   enum kind: { 土地: 0, 戸建て: 1, 区分マンション: 2, 一棟ビル: 3, 一棟マンション: 4, その他: 5 }
   enum right: { 所有権: 0, 借地権: 1, 底地権: 2 }
 

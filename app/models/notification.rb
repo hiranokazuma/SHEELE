@@ -1,7 +1,7 @@
 class Notification < ApplicationRecord
 
-  belongs_to :user
-  belongs_to :admin
+  belongs_to :user,optional: :true
+  belongs_to :admin, optional: :true
 
 default_scope -> { order(created_at: :desc) }
   belongs_to :view_application, optional: true

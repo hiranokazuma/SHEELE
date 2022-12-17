@@ -2,7 +2,13 @@ class Public::MessagesController < ApplicationController
   def index
     @replies = Reply.all
     @management_notices = ManagementNotice.all
-    @notifications = Notification.all
+    @notifications = current_user.passive_notifications.page(params[:page]).per(20)
+    @notifications.where(read: false).each do |notification|
+      # binding.pry
+      # notification.update_attributes(read: true)
+      notification.read = true
+      # notification.update_attributes(read: true)
+    end
     @q = Message.ransack(params[:q])
     @messages = @q.result(distinct: true).page(params[:page]).per(15)
   end
