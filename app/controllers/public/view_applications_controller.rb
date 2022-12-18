@@ -2,7 +2,7 @@ class Public::ViewApplicationsController < ApplicationController
   def index
     @view_applications = ViewApplication.all
     @view_application = ViewApplication.new
-    @properties = Property.all
+    @properties = Property.where(user: current_user)
     @user = current_user.id
   end
 
@@ -29,8 +29,6 @@ class Public::ViewApplicationsController < ApplicationController
   def confirm
     @user = current_user
     @property = Property.find_by(params[:id])
-
-    @apply_status = 1
     @view_application = ViewApplication.new
     if @view_application.invalid?
       flash[:arlet] = '入力内容にエラーがあります。'
@@ -42,6 +40,7 @@ class Public::ViewApplicationsController < ApplicationController
   def create
     @view_application = ViewApplication.new(view_application_params)
     if params[:back] || !@view_application.save
+      @apply_status = 1
       flash[:arlet] = "申請に失敗しました。"
       render :confirm
     else

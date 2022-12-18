@@ -188,13 +188,13 @@
             <%= property.kind %>&emsp;<br>
             <%= property.line %>線&emsp;
             <%= property.station %>駅&emsp;
-            徒歩<%= property.walking_minute %>分<br>
-            <%= property.price %>万円&emsp;
-            <% if property.kind = 0 %>
-              <%= property.land_area %>㎡&emsp;
+            徒歩<%= property.walking_minute %>分&emsp;
+            <%= property.price %>万円&emsp;<br>
+            <% if property.kind == 0 %>
+              土地<%= property.land_area %>㎡&emsp;
             <% else %>
-              <%= property.land_area %>㎡&emsp;
-              <%= property.building_area %>㎡&emsp;
+              土地<%= property.land_area %>㎡&emsp;
+              建物<%= property.building_area %>㎡&emsp;
             <% end %>
             <%= property.right %>&emsp;
             <%= property.use_area %><br>
@@ -202,6 +202,9 @@
             容積率<%= property.floor_area_ratio %>％
         </td>
         <td class="align-middle text-center">
+      <% if property.user_id == current_user.id %>
+          <button type="button" class="btn btn-outline-dark text-danger font-weight-bold" disabled data-bs-toggle="button" autocomplete="off">登録物件</button>
+      <% else %>
           <% if @view_application.apply_status = 0 || @view_application.apply_status = 3 %>
           <%= link_to "閲覧申請する", view_applications_confirm_path, class: "btn btn-primary text-light btn-block"  %>
           <% elsif @view_application.apply_status = 1 %>
@@ -209,8 +212,10 @@
           <% elsif @view_application.apply_status = 2 %>
           <%= link_to "詳細を見る", property_path(@property), class: "btn btn-success text-light btn-block"  %>
           <% end %>
+      <% end %>
         </td>
       </tr>
+
       <% end %>
     </tbody>
   </table>

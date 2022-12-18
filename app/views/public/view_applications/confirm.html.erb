@@ -31,7 +31,7 @@
           <%= @property.station %>駅&emsp;
           徒歩<%= @property.walking_minute %>分<br>
           <%= @property.price %>万円&emsp;
-          <% if @property.kind = 0 %>
+          <% if @property.kind == 0 %>
             <%= @property.land_area %>㎡&emsp;
           <% else %>
             <%= @property.land_area %>㎡&emsp;
@@ -58,9 +58,9 @@
     </div>
     <div class="col-sm-4 mx-auto">
       <%= form_with model: @view_application, url: view_applications_path, method: :post do |f| %>
-      <%= f.hidden_field :user_id, :value => @user.id %>
-      <%= f.hidden_field :property_id, :value => @property.id %>
-      <%= f.hidden_field :apply_status ,:value => "申請中" %>
+        <%= f.hidden_field :user_id, :value => @user.id %>
+        <%= f.hidden_field :property_id, :value => @property.id %>
+        <%= f.hidden_field :apply_status ,:value => "申請中" %>
       <%= f.submit "　申請する　", class: "btn btn-primary text-light btn-lg btn-block"  %>
       <% end %>
 

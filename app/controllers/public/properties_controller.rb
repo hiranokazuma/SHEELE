@@ -7,7 +7,7 @@ class Public::PropertiesController < ApplicationController
   end
 
   def myproperties
-    @q = Property.ransack(current_user)
+    @q = Property.where(user: current_user).ransack(params[:q])
     @properties = @q.result(distinct: true).page(params[:page]).per(15)
     @property = Property.new
     @view_application = ViewApplication.new
@@ -56,7 +56,7 @@ class Public::PropertiesController < ApplicationController
 
   def create
     # binding.pry
-    
+
     @property = Property.new(property_params)
     if params[:back] || !@property.save
       render :new
