@@ -8,7 +8,7 @@ class ViewApplication < ApplicationRecord
   belongs_to :property
   has_many :notifications, dependent: :destroy
 
-  enum apply_status: { 未申請: 0, 申請中: 1, 許可: 2, 否認: 3 }
+  enum apply_status:{ 申請中: 1, 許可: 2, 否認: 3 }
 
   def create_notification_user(current_user)
     # すでに「申請」されているか検索

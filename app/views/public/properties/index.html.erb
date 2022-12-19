@@ -171,50 +171,51 @@
     </thead>
     <tbody>
       <% @properties.each do |property| %>
-      <tr class="h5 text-center">
-        <td class="align-middle text-center"><%= property.id %></td>
-        <td class="align-middle text-center">
-          <% if property.image.attached? %>
-            <%= image_tag property.image, size: "100x100" %>
-          <% else %>
-            <%= image_tag 'default-image', size: "100x100" %>
-          <% end %>
-        </td>
-        <td class="align-middle text-center">
-            <%= property.sell_category %>&emsp;
-            <%= property.prefecture %>
-            <%= property.municipality %>
-            <%= property.city_block %>&emsp;
-            <%= property.kind %>&emsp;<br>
-            <%= property.line %>線&emsp;
-            <%= property.station %>駅&emsp;
-            徒歩<%= property.walking_minute %>分&emsp;
-            <%= property.price %>万円&emsp;<br>
-            <% if property.kind == 0 %>
-              土地<%= property.land_area %>㎡&emsp;
+        <% view_application = @view_applications.find_by(property_id: property.id) %>
+        <tr class="h5 text-center">
+          <td class="align-middle text-center"><%= property.id %></td>
+          <td class="align-middle text-center">
+            <% if property.image.attached? %>
+              <%= image_tag property.image, size: "100x100" %>
             <% else %>
-              土地<%= property.land_area %>㎡&emsp;
-              建物<%= property.building_area %>㎡&emsp;
+              <%= image_tag 'default-image', size: "100x100" %>
             <% end %>
-            <%= property.right %>&emsp;
-            <%= property.use_area %><br>
-            建ぺい率<%= property.building_coverage_ratio %>％&emsp;
-            容積率<%= property.floor_area_ratio %>％
-        </td>
-        <td class="align-middle text-center">
-      <% if property.user_id == current_user.id %>
-          <button type="button" class="btn btn-outline-dark text-danger font-weight-bold" disabled data-bs-toggle="button" autocomplete="off">登録物件</button>
-      <% else %>
-          <% if @view_application.apply_status = 0 || @view_application.apply_status = 3 %>
-          <%= link_to "閲覧申請する", view_applications_confirm_path, class: "btn btn-primary text-light btn-block"  %>
-          <% elsif @view_application.apply_status = 1 %>
-          <%= link_to "申請中", edit_view_application_path(@view_application), class: "btn btn-warning text-light btn-block"  %>
-          <% elsif @view_application.apply_status = 2 %>
-          <%= link_to "詳細を見る", property_path(@property), class: "btn btn-success text-light btn-block"  %>
-          <% end %>
-      <% end %>
-        </td>
-      </tr>
+          </td>
+          <td class="align-middle text-center">
+              <%= property.sell_category %>&emsp;
+              <%= property.prefecture %>
+              <%= property.municipality %>
+              <%= property.city_block %>&emsp;
+              <%= property.kind %>&emsp;<br>
+              <%= property.line %>線&emsp;
+              <%= property.station %>駅&emsp;
+              徒歩<%= property.walking_minute %>分&emsp;
+              <%= property.price %>万円&emsp;<br>
+              <% if property.kind == 0 %>
+                土地<%= property.land_area %>㎡&emsp;
+              <% else %>
+                土地<%= property.land_area %>㎡&emsp;
+                建物<%= property.building_area %>㎡&emsp;
+              <% end %>
+              <%= property.right %>&emsp;
+              <%= property.use_area %><br>
+              建ぺい率<%= property.building_coverage_ratio %>％&emsp;
+              容積率<%= property.floor_area_ratio %>％
+          </td>
+          <td class="align-middle text-center">
+            <% if property.user_id == current_user.id %>
+              <button type="button" class="btn btn-outline-dark text-danger font-weight-bold" disabled data-bs-toggle="button" autocomplete="off">登録物件</button>
+            <% else %>
+              <% if view_application.apply_status == 1 %>
+                <%= link_to "申請中", edit_view_application_path(view_application), class: "btn btn-warning text-light btn-block"  %>
+              <% elsif view_application.apply_status == 2 %>
+                <%= link_to "詳細を見る", property_path(@property), class: "btn btn-success text-light btn-block"  %>
+              <% else %>
+                <%= link_to "閲覧申請する", view_applications_confirm_path(property_id: property.id), class: "btn btn-primary text-light btn-block"  %>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
 
       <% end %>
     </tbody>

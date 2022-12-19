@@ -1,13 +1,16 @@
 class Public::ViewApplicationsController < ApplicationController
+  before_action :set_property, only: [:confirm, :create, :complete]
+
   def index
     @view_applications = ViewApplication.all
     @view_application = ViewApplication.new
-    @properties = Property.where(user: current_user)
+    @properties = current_user.view_application_properties.select_status("申請中", "許可")
     @user = current_user.id
   end
 
   def edit
     @view_application = ViewApplication.find(params[:id])
+    @property = @view_application.property
   end
 
   def update
@@ -28,7 +31,7 @@ class Public::ViewApplicationsController < ApplicationController
 
   def confirm
     @user = current_user
-    @property = Property.find_by(params[:id])
+    @property = Property.find_by(id: params[:property_id])
     @view_application = ViewApplication.new
     if @view_application.invalid?
       flash[:arlet] = '入力内容にエラーがあります。'
@@ -38,29 +41,29 @@ class Public::ViewApplicationsController < ApplicationController
   end
 
   def create
-    @view_application = ViewApplication.new(view_application_params)
-    if params[:back] || !@view_application.save
-      @apply_status = 1
-      flash[:arlet] = "申請に失敗しました。"
-      render :confirm
-    else
-      @view_application.create_notification_user(current_user)
-      redirect_to view_applications_complete_path
-    end
+    current_user.create_view_application(@property)
+    flash[:success] = "申請しました"
+    redirect_to view_applications_complete_url(property_id: params[:property_id])
   end
 
   def complete
+    redirect_to root_url unless @property
   end
 
-  def deatroy
-    @view_application = ViewApplication.find(params[:id])
-    @view_application.destroy
-    redirect_to admin_view_applications_path, notice: "閲覧申請を削除しました。"
+  def destroy
+    @view_application = ViewApplication.find_by(id: params[:id])
+    @view_application.destroy if @view_application
+    redirect_to view_applications_path, notice: "閲覧申請を削除しました。"
   end
 
   private
 
   def view_application_params
     params.require(:view_application).permit(:user_id, :property_id, :apply_status)
+  end
+
+  def set_property
+    @property = Property.find_by(id: params[:property_id])
+    redirect_to root_url unless @property
   end
 end

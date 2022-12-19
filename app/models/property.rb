@@ -1,6 +1,8 @@
 class Property < ApplicationRecord
   has_one_attached :image
-
+  
+  scope :select_status, -> (*status) { joins(:view_applications).distinct.where(view_applications: { apply_status: status }) }
+  
   validates :kind, presence: true
   validates :right, presence: true
   validates :prefecture, presence: true

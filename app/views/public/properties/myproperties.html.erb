@@ -171,6 +171,7 @@
     </thead>
     <tbody>
       <% @properties.each do |property| %>
+        <% view_applications = property.view_applications %>
       <tr class="h5 text-center">
         <td class="align-middle text-center"><%= property.id %></td>
         <td class="align-middle text-center">
@@ -202,10 +203,12 @@
             容積率<%= property.floor_area_ratio %>％
         </td>
         <td class="align-middle text-center">
-          <% if @view_application.apply_status = 0 || @view_application.apply_status = 3 %>
-          <%= link_to "編集する", edit_property_path(current_user), class: "btn btn-primary text-light btn-block"  %>
-          <% elsif @view_application.apply_status = 1 || @view_application.apply_status = 2 %>
-          <%= link_to "閲覧申請あり", edit_view_application_path(@view_application), class: "btn btn-warning text-light btn-block"  %>
+          <% view_applications.each do |view_application| %>
+            <% if view_application.apply_status == 1 || view_application.apply_status = 2 %>
+              <%= link_to "閲覧申請あり", edit_view_application_path(view_application), class: "btn btn-warning text-light btn-block"  %>
+            <% else %>
+              <%= link_to "編集する", edit_property_path(current_user), class: "btn btn-primary text-light btn-block"  %>
+            <% end %>
           <% end %>
         </td>
       </tr>

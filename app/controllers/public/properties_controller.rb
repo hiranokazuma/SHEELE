@@ -1,16 +1,16 @@
 class Public::PropertiesController < ApplicationController
   def index
-    @q = Property.ransack(params[:q])
+    @q = Property.joins(:view_applications).distinct.ransack(params[:q])
     @properties = @q.result(distinct: true).page(params[:page]).per(15)
     @property = Property.new
-    @view_application = ViewApplication.new
+    @view_applications = current_user.view_applications.includes(:property)
   end
 
   def myproperties
-    @q = Property.where(user: current_user).ransack(params[:q])
+    @q = Property.joins(:view_applications).distinct.where(user: current_user).ransack(params[:q])
     @properties = @q.result(distinct: true).page(params[:page]).per(15)
     @property = Property.new
-    @view_application = ViewApplication.new
+    @view_applications = current_user.view_applications.includes(:property)
   end
 
   def show
@@ -26,7 +26,7 @@ class Public::PropertiesController < ApplicationController
     @property = Property.find(params[:id])
     if @property.update(property_params)
       flash[:notice] = "変更を保存しました。"
-      redirect_to admin_property_path(@property)
+      redirect_to property_path(@property)
     else
       flash[:arlet] = "変更の保存に失敗しました。"
       render:edit

@@ -148,13 +148,18 @@ ActiveRecord::Schema.define(version: 2022_12_14_095036) do
   end
 
   create_table "view_applications", force: :cascade do |t|
-    t.integer "user_id"
+    t.integer "user_id", null: false
     t.integer "property_id"
-    t.integer "apply_status"
+    t.integer "apply_status", default: 1
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["property_id"], name: "index_view_applications_on_property_id"
+    t.index ["user_id", "property_id"], name: "index_view_applications_on_user_id_and_property_id", unique: true
+    t.index ["user_id"], name: "index_view_applications_on_user_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "view_applications", "properties"
+  add_foreign_key "view_applications", "users"
 end
