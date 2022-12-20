@@ -17,8 +17,9 @@
       </tr>
     </thead>
     <tbody>
-    <% if @view_application.user != current_user %>
-      <% @view_applications.each do |view_application| %>
+
+    <% @view_applications.each do |view_application| %>
+    <% if view_application.user_id != current_user.id %>
       <% @properties.each do |property| %>
         <tr class="h5 text-center">
           <td class="align-middle text-center"><%= simple_format(view_application.created_at.to_s(:datetime_jp)) %></td>
@@ -49,12 +50,14 @@
           </td>
         </tr>
       <% end %>
-      <% end %>
     <% else %>
-      <td></td>
-      <td></td>
-      <td>申請された物件は<br>まだありません。</td>
-      <td></td>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>申請された物件は<br>まだありません。</td>
+        <td></td>
+      </tr>
+    <% end %>
     <% end %>
     </tbody>
   </table>
@@ -69,8 +72,7 @@
       <tr>
         <th style="width: 7%">申請ID</th>
         <th style="width: 7%">物件ID</th>
-        <th style="width: 14%" class="h5 align-middle font-weight-bold">物件画像</th>
-        <th style="width: 53%" class="h5 align-middle font-weight-bold">概要</th>
+        <th style="width: 74%" class="h5 align-middle font-weight-bold">概要</th>
         <th style="width: 12%" class="h5 align-middle font-weight-bold">状況</th>
       </tr>
     </thead>
@@ -122,7 +124,7 @@
         <tr>
           <td></td>
           <td></td>
-          <td class="align-middle text-center">申請した物件は<br>まだありません。</td>
+          <td class="h5 align-middle text-center">申請した物件はまだありません。</td>
           <td></td>
         </tr>
       <% end %>

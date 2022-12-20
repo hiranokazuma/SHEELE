@@ -11,6 +11,7 @@ class Public::ViewApplicationsController < ApplicationController
   def edit
     @view_application = ViewApplication.find(params[:id])
     @property = @view_application.property
+    @users = User.all
   end
 
   def update

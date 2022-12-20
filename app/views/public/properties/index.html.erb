@@ -171,7 +171,8 @@
     </thead>
     <tbody>
       <% @properties.each do |property| %>
-        <% view_application = @view_applications.find_by(property_id: property.id) %>
+        <% @view_applications.each do |view_application| %>
+        <!--<#% view_application = @view_applications.find_by(property_id: property.id) %>-->
         <tr class="h5 text-center">
           <td class="align-middle text-center"><%= property.id %></td>
           <td class="align-middle text-center">
@@ -216,7 +217,7 @@
             <% end %>
           </td>
         </tr>
-
+        <% end %>
       <% end %>
     </tbody>
   </table>

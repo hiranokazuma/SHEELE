@@ -1,9 +1,9 @@
 class Public::PropertiesController < ApplicationController
   def index
-    @q = Property.joins(:view_applications).distinct.ransack(params[:q])
+    @q = Property.ransack(params[:q])
     @properties = @q.result(distinct: true).page(params[:page]).per(15)
     @property = Property.new
-    @view_applications = current_user.view_applications.includes(:property)
+    @view_applications = ViewApplication.all
   end
 
   def myproperties
