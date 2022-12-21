@@ -2,7 +2,7 @@ class Public::ViewApplicationsController < ApplicationController
   before_action :set_property, only: [:confirm, :create, :complete]
 
   def index
-    @view_applications = ViewApplication.all
+    @view_applications = ViewApplication.where.not(user_id: current_user.id)
     @view_application = ViewApplication.new
     @properties = current_user.view_application_properties.select_status("申請中", "許可")
     @user = current_user.id

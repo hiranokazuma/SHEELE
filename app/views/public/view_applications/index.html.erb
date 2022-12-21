@@ -17,48 +17,45 @@
       </tr>
     </thead>
     <tbody>
-
-    <% @view_applications.each do |view_application| %>
-    <% if view_application.user_id != current_user.id %>
-      <% @properties.each do |property| %>
-        <tr class="h5 text-center">
-          <td class="align-middle text-center"><%= simple_format(view_application.created_at.to_s(:datetime_jp)) %></td>
-          <td class="align-middle text-center"><%= view_application.id %></td>
-          <td class="align-middle text-center">
-            <%= property.sell_category %>&emsp;
-            <%= property.prefecture %>
-            <%= property.municipality %>
-            <%= property.city_block %>&emsp;
-            <%= property.kind %>&emsp;<br>
-            <%= property.line %>線&emsp;
-            <%= property.station %>駅&emsp;
-            徒歩<%= property.walking_minute %>分<br>
-            <%= property.price %>万円&emsp;
-            <% if property.kind = 0 %>
-              <%= property.land_area %>㎡&emsp;
-            <% else %>
-              <%= property.land_area %>㎡&emsp;
-              <%= property.building_area %>㎡&emsp;
-            <% end %>
-            <%= property.right %>&emsp;
-            <%= property.use_area %><br>
-            建ぺい率<%= property.building_coverage_ratio %>％&emsp;
-            容積率<%= property.floor_area_ratio %>％
-          </td>
-          <td class="align-middle text-center">
-              <%= link_to "詳細", view_application_path(view_application), class: 'btn btn-primary text-light' %>
-          </td>
+      <% if @view_applications.count <= 0 %>
+        <tr>
+          <td></td>
+          <td></td>
+          <td class="h5 align-middle text-center">申請された物件はまだありません。</td>
+          <td></td>
         </tr>
+      <% else %>
+        <% @view_applications.each do |view_application| %>
+          <tr class="h5 text-center">
+            <td class="align-middle text-center"><%= simple_format(view_application.created_at.to_s(:datetime_jp)) %></td>
+            <td class="align-middle text-center"><%= view_application.id %></td>
+            <td class="align-middle text-center">
+              <%= view_application.property.sell_category %>&emsp;
+              <%= view_application.property.prefecture %>
+              <%= view_application.property.municipality %>
+              <%= view_application.property.city_block %>&emsp;
+              <%= view_application.property.kind %>&emsp;<br>
+              <%= view_application.property.line %>線&emsp;
+              <%= view_application.property.station %>駅&emsp;
+              徒歩<%= view_application.property.walking_minute %>分<br>
+              <%= view_application.property.price %>万円&emsp;
+              <% if view_application.property.kind = 0 %>
+                <%= view_application.property.land_area %>㎡&emsp;
+              <% else %>
+                <%= view_application.property.land_area %>㎡&emsp;
+                <%= view_application.property.building_area %>㎡&emsp;
+              <% end %>
+              <%= view_application.property.right %>&emsp;
+              <%= view_application.property.use_area %><br>
+              建ぺい率<%= view_application.property.building_coverage_ratio %>％&emsp;
+              容積率<%= view_application.property.floor_area_ratio %>％
+            </td>
+            <td class="align-middle text-center">
+                <%= link_to "詳細", view_application_path(view_application), class: 'btn btn-primary text-light' %>
+            </td>
+          </tr>
+        <% end %>
       <% end %>
-    <% else %>
-      <tr>
-        <td></td>
-        <td></td>
-        <td>申請された物件は<br>まだありません。</td>
-        <td></td>
-      </tr>
-    <% end %>
-    <% end %>
     </tbody>
   </table>
 <br>
@@ -81,7 +78,7 @@
         <% @properties.each do |property| %>
           <% view_application = property.view_applications.find_by(user_id: current_user.id) %>
           <tr class="h5 text-center">
-            <td class="align-middle text-center"><%= property.id %></td>
+            <td class="align-middle text-center"><%= view_application.id %></td>
             <td class="align-middle text-center">
               <% if property.image.attached? %>
                 <%= image_tag property.image, size: "100x100" %>
@@ -109,11 +106,10 @@
               建ぺい率<%= property.building_coverage_ratio %>％&emsp;
               容積率<%= property.floor_area_ratio %>％
             </td>
-
             <td class="align-middle text-center">
               <% if view_application.apply_status == "申請中" %>
                 <b class="text-success">申請中</b>
-              <%= link_to "削除する", view_application_path(view_application), method: :delete, data: { confirm: "削除してもよろしいですか？" }, class: "btn btn-primary text-light btn-block"  %>
+              <%= link_to "削除する", view_application_path(view_application), method: :delete, data: { confirm: "削除してもよろしいですか？" }, class: "btn btn-danger text-light btn-block"  %>
               <% else %>
                 <b class="text-warning">許可</b>
               <% end %>
@@ -142,5 +138,3 @@
 <br>
 <br>
 </div>
-
-<%= @properties.inspect %>

@@ -171,8 +171,6 @@
     </thead>
     <tbody>
       <% @properties.each do |property| %>
-        <% @view_applications.each do |view_application| %>
-        <!--<#% view_application = @view_applications.find_by(property_id: property.id) %>-->
         <tr class="h5 text-center">
           <td class="align-middle text-center"><%= property.id %></td>
           <td class="align-middle text-center">
@@ -207,17 +205,10 @@
             <% if property.user_id == current_user.id %>
               <button type="button" class="btn btn-outline-dark text-danger font-weight-bold" disabled data-bs-toggle="button" autocomplete="off">登録物件</button>
             <% else %>
-              <% if view_application.apply_status == 1 %>
-                <%= link_to "申請中", edit_view_application_path(view_application), class: "btn btn-warning text-light btn-block"  %>
-              <% elsif view_application.apply_status == 2 %>
-                <%= link_to "詳細を見る", property_path(@property), class: "btn btn-success text-light btn-block"  %>
-              <% else %>
-                <%= link_to "閲覧申請する", view_applications_confirm_path(property_id: property.id), class: "btn btn-primary text-light btn-block"  %>
-              <% end %>
+              <%= link_to "閲覧申請する", view_applications_confirm_path(property_id: property.id), class: "btn btn-primary text-light btn-block"  %>
             <% end %>
           </td>
         </tr>
-        <% end %>
       <% end %>
     </tbody>
   </table>
