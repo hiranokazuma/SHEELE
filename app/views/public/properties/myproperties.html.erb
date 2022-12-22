@@ -166,7 +166,7 @@
         <th style="width: 8%">物件ID</th>
         <th style="width: 14%">物件画像</th>
         <th style="width: 64%">概要</th>
-        <th style="width: 24%"></th>
+        <th style="width: 24%">閲覧申請</th>
       </tr>
     </thead>
     <tbody>
@@ -203,12 +203,11 @@
             容積率<%= property.floor_area_ratio %>％
         </td>
         <td class="align-middle text-center">
-          <% view_applications.each do |view_application| %>
-            <% if view_application.apply_status == 1 || view_application.apply_status = 2 %>
-              <%= link_to "閲覧申請あり", edit_view_application_path(view_application), class: "btn btn-warning text-light btn-block"  %>
-            <% else %>
-              <%= link_to "編集する", edit_property_path(current_user), class: "btn btn-primary text-light btn-block"  %>
-            <% end %>
+            <%#= link_to "編集する", edit_property_path(current_user), class: "btn btn-primary text-light btn-block"  %>
+          <% if view_applications.any? {|view_application| view_application.apply_status == "申請中" || view_application.apply_status == "許可"} %>
+            <%= link_to "閲覧申請あり",  property_view_applications_path(property), class: "btn btn-warning text-light btn-block"  %>
+          <% else %>
+        　　申請なし
           <% end %>
         </td>
       </tr>

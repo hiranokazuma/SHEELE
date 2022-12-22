@@ -1,0 +1,142 @@
+<div class="container">
+  <div class="d-grid gap-2 col-5 mx-auto text-center">
+    <h2>閲覧申請確認・許可画面</h2>
+  </div>
+<br>
+<br>
+<br>
+  <div class="d-grid gap-2 col-5 mx-auto text-center">
+    <h2>申請を受けた物件概要</h2>
+  </div>
+<br>
+  <table class="table table-bordered">
+    <thead class="h5 table-secondary text-center">
+      <tr>
+        <th style="width: 8%">物件ID</th>
+        <th style="width: 14%">物件画像</th>
+        <th style="width: 78%">概要</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="h5 text-center">
+        <td class="align-middle text-center"><%= @property.id %></td>
+        <td class="align-middle text-center">
+          <% if @property.image.attached? %>
+            <%= image_tag property.image, size: "100x100" %>
+          <% else %>
+            <%= image_tag 'default-image', size: "100x100" %>
+          <% end %>
+        </td>
+        <td class="align-middle text-center">
+            <%= @property.sell_category %>&emsp;
+            <%= @property.kind %>&emsp;
+            <%= @property.right %>&emsp;<br>
+            <%= @property.prefecture %>
+            <%= @property.municipality %>
+            <%= @property.city_block %>
+            <%= @property.address %>&emsp;<br>
+            <%= @property.line %>線&emsp;
+            <%= @property.station %>駅&emsp;
+            徒歩<%= @property.walking_minute %>分<br>
+            <%= @property.price %>万円&emsp;
+            <% if @property.kind == "土地" %>
+              土地面積：<%= @property.land_area %>㎡&emsp;
+            <% else %>
+              土地面積：<%= @property.land_area %>㎡&emsp;
+              建物面積：<%= @property.building_area %>㎡&emsp;
+            <% end %>
+            <br>
+            <%= @property.use_area %>&emsp;
+            建ぺい率<%= @property.building_coverage_ratio %>％&emsp;
+            容積率<%= @property.floor_area_ratio %>％
+        </td>
+      </tr>
+    </tbody>
+  </table>
+<br>
+<br>
+  <div class="d-grid gap-2 col-5 mx-auto text-center">
+    <h2>申請をした会員情報</h2>
+  </div>
+<br>
+  <table class="table table-bordered">
+    <thead class="h5 table-secondary text-center">
+      <tr>
+        <th style="width: 14%">申請日時</th>
+        <th style="width: 7%">申請ID</th>
+        <th style="width: 7%">会員ID</th>
+        <th style="width: 42%">概要</th>
+        <th style="width: 15%">操作</th>
+        <th style="width: 15%">登録</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @view_applications.each do |view_application|%>
+        <tr class="h5 text-center">
+          <td class="align-middle text-center"><%= simple_format(view_application.created_at.to_s(:datetime_jp)) %></td>
+          <td class="align-middle text-center"><%= view_application.id %></td>
+          <td class="align-middle text-center"><%= view_application.user.id %></td>
+          <td class="align-middle text-center">
+                <%= view_application.user.company_name %>
+                <%= view_application.user.licensing_region %>
+                <%= view_application.user.licensing_entity %>
+                (<%= view_application.user.update_number %>)
+                第<%= view_application.user.license_number %>号<br>
+                <%= view_application.user.location %><br>
+                代表者名：<%= view_application.user.representatives_name %><br>
+                担当者名：<%= view_application.user.manager_name %><br>
+                電話番号：<%= view_application.user.telephone_number %><br>
+                メールアドレス：<%= view_application.user.email %>
+          </td>
+        <%= form_with model: @view_application, url: view_application_path(view_application), method: :patch do |f| %>
+          <td class="align-middle text-center">
+              <%= f.hidden_field :user_id, :value => view_application.user.id %>
+              <%= f.hidden_field :property_id, :value => @property.id %>
+            <% if view_application.apply_status == "申請中" %>
+              <div class="col-sm btn-block" data-toggle="buttons">
+                <label class="btn btn-outline-primary">
+                  <h5><%= f.radio_button :apply_status, 2, checked: true %> 許 可 </h5>
+                </label>
+              </div>
+              <div class="col-sm btn-block" data-toggle="buttons">
+                <label class="btn btn-outline-danger">
+                  <h5><%= f.radio_button :apply_status, 3, {} %> 否 認 </h5>
+                </label>
+              </div>
+            <% elsif view_application.apply_status == "許可" %>
+              <b class="text-warning">許可済</b>
+              <div class="col-sm btn-block" data-toggle="buttons">
+                <label class="btn btn-outline-danger">
+                  <h5><%= f.radio_button :apply_status, 3, {} %> 否 認 </h5>
+                </label>
+              </div>
+            <% elsif view_application.apply_status == "否認" %>
+              <b class="text-danger">否認</b>
+              <div class="col-sm btn-block" data-toggle="buttons">
+                <label class="btn btn-outline-primary">
+                  <h5><%= f.radio_button :apply_status, 2, checked: true %> 許 可 </h5>
+                </label>
+              </div>
+            <% end %>
+          </td>
+          <td class="align-middle text-center">
+              <%= f.submit "登録する",  data: { confirm: "登録してもよろしいですか？" }, class: "btn btn-lg btn-warning text-light btn-block"  %>
+          </td>
+        <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<br>
+<br>
+<br>
+    <div class="row justify-content-center">
+      <div class="col-sm-3 justify-content-center">
+        <%= link_to "　取扱物件一覧へ戻る　", properties_myproperties_path, class: "btn btn-secondary text-light btn-lg"%>
+      </div>
+    </div>
+<br>
+<br>
+<br>
+<br>
+</div>

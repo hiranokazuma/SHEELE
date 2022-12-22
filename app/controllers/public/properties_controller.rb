@@ -8,10 +8,17 @@ class Public::PropertiesController < ApplicationController
   end
 
   def myproperties
-    @q = Property.joins(:view_applications).distinct.where(user: current_user).ransack(params[:q])
+    @q = Property.where(user: current_user).ransack(params[:q])
     @properties = @q.result(distinct: true).page(params[:page]).per(15)
     @property = Property.new
     @view_applications = current_user.view_applications.includes(:property)
+  end
+
+  def view_applications
+    @view_application = ViewApplication.find_by(id: params[:view_application_id])
+    @property = Property.find(params[:id])
+    @view_applications = @property.view_applications
+    @users = User.all
   end
 
   def show
