@@ -18,53 +18,53 @@
     <header class="shadow-sm">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-          <a class="navbar-brand p-3" href="/"><%#= image_tag 'logo.png', size: '180x140' %></a>
+          <a class="navbar-brand p-3" href="/"><%= image_tag 'logo.jpg', size: '200x80' %></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav ml-1">
 
             <% if admin_signed_in? %>
               <li class="nav-item">
-                <%= link_to 'トップ', admin_homes_top_path, class: 'btn btn-outline-dark mr-5' %>
+                <%= link_to 'トップ', admin_homes_top_path, class: 'btn btn-outline-dark mr-3' %>
               </li>
               <li class="nav-item">
-                <%= link_to 'メッセージ', admin_messages_path, class: 'btn btn-outline-dark mr-5' %>
+                <%= link_to 'メッセージ', admin_messages_path, class: 'btn btn-outline-dark mr-3' %>
               </li>
               <li class="nav-item">
-                <%= link_to '物件一覧', admin_properties_path, class: 'btn btn-outline-dark mr-5' %>
+                <%= link_to '物件一覧', admin_properties_path, class: 'btn btn-outline-dark mr-3' %>
               </li>
               <li class="nav-item">
-                <%= link_to '会員一覧', admin_users_path, class: 'btn btn-outline-dark mr-5' %>
+                <%= link_to '会員一覧', admin_users_path, class: 'btn btn-outline-dark mr-3' %>
               </li>
               <li class="nav-item">
-                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-outline-dark mr-5' %>
+                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-outline-dark mr-3' %>
               </li>
             <% elsif user_signed_in? %>
-              <h5 class="nav-item mr-5">ようこそ、<%= current_user.company_name %>様！</h5>
+              <h5 class="nav-item mr-5 py-1">ようこそ、<%= current_user.company_name %>様！</h5>
               <li class="nav-item">
-                <%= link_to 'マイページ', users_mypage_path, class: 'btn btn-outline-dark mr-5' %>
+                <%= link_to 'マイページ', users_mypage_path, class: 'btn btn-outline-dark mr-3' %>
               </li>
               <li class="nav-item">
-                <%= link_to '物件一覧', properties_path, class: 'btn btn-outline-dark mr-5' %>
+                <%= link_to '物件一覧', properties_path, class: 'btn btn-outline-dark mr-3' %>
               </li>
               <li class="nav-item">
-                <%= link_to "物件登録", new_property_path, class: 'btn btn-outline-dark mr-5' %>
+                <%= link_to "物件登録", new_property_path, class: 'btn btn-outline-dark mr-3' %>
               </li>
               <li class="nav-item">
-                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-outline-dark mr-5' %>
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-outline-dark mr-3' %>
               </li>
             <% else %>
               <li class="nav-item">
-                <%= link_to 'トップ', root_path, class: 'btn btn-outline-dark mr-5' %>
+                <%= link_to 'トップ', root_path, class: 'btn btn-outline-dark mr-3' %>
               </li>
               <li class="nav-item">
-                <%= link_to "新規登録", new_user_registration_path, class: 'btn btn-outline-dark mr-5' %>
+                <%= link_to "新規登録", new_user_registration_path, class: 'btn btn-outline-dark mr-3' %>
               </li>
               <li class="nav-item">
-                <%= link_to "ログイン", new_user_session_path, class: 'btn btn-outline-dark mr-5' %>
+                <%= link_to "ログイン", new_user_session_path, class: 'btn btn-outline-dark mr-3' %>
               </li>
             <% end %>
             </ul>
