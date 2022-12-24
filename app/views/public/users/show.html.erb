@@ -114,7 +114,9 @@
     <div class="col-sm-3">
     </div>
     <div class="col-sm-3">
-      <%= link_to "　マイページへ戻る　", users_mypage_path, class: "btn btn-secondary text-light btn-lg"%>
+      <%= link_to  users_mypage_path, class: "btn btn-secondary text-light btn-lg" do %>
+      <i class="fa-solid fa-backward-step fa-lg"></i>　マイページへ戻る
+      <% end %>
     </div>
 <br>
 <br>

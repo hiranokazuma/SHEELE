@@ -28,43 +28,67 @@
 
             <% if admin_signed_in? %>
               <li class="nav-item">
-                <%= link_to 'トップ', admin_homes_top_path, class: 'btn btn-outline-dark mr-3' %>
+                <%= link_to admin_homes_top_path, class: 'btn btn-outline-dark mr-3' do %>
+                <i class="fa-duotone fa-star-christmas"></i> トップ
+                <% end %>
               </li>
               <li class="nav-item">
-                <%= link_to 'メッセージ', admin_messages_path, class: 'btn btn-outline-dark mr-3' %>
+                <%= link_to admin_messages_path, class: 'btn btn-outline-dark mr-3' do %>
+                <i class="fa-solid fa-message"></i> メッセージ
+                <% end %>
               </li>
               <li class="nav-item">
-                <%= link_to '物件一覧', admin_properties_path, class: 'btn btn-outline-dark mr-3' %>
+                <%= link_to admin_properties_path, class: 'btn btn-outline-dark mr-3' do %>
+                <i class="fa-solid fa-city"></i> 物件一覧
+                <% end %>
               </li>
               <li class="nav-item">
-                <%= link_to '会員一覧', admin_users_path, class: 'btn btn-outline-dark mr-3' %>
+                <%= link_to admin_users_path, class: 'btn btn-outline-dark mr-3' do %>
+                <i class="fa-solid fa-users"></i> 会員一覧
+                <% end %>
               </li>
               <li class="nav-item">
-                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-outline-dark mr-3' %>
+                <%= link_to destroy_admin_session_path, method: :delete, class: 'btn btn-outline-dark mr-3' do %>
+                <i class="fa-solid fa-right-from-bracket"></i> ログアウト
+                <% end %>
               </li>
             <% elsif user_signed_in? %>
               <h5 class="nav-item mr-5 py-1">ようこそ、<%= current_user.company_name %>様！</h5>
               <li class="nav-item">
-                <%= link_to 'マイページ', users_mypage_path, class: 'btn btn-outline-dark mr-3' %>
+                <%= link_to users_mypage_path, class: 'btn btn-outline-dark mr-3' do %>
+                <i class="fa-solid fa-user"></i> マイページ
+                <% end %>
               </li>
               <li class="nav-item">
-                <%= link_to '物件一覧', properties_path, class: 'btn btn-outline-dark mr-3' %>
+                <%= link_to properties_path, class: 'btn btn-outline-dark mr-3' do %>
+                <i class="fa-solid fa-city"></i> 物件一覧
+                <% end %>
               </li>
               <li class="nav-item">
-                <%= link_to "物件登録", new_property_path, class: 'btn btn-outline-dark mr-3' %>
+                <%= link_to  new_property_path, class: 'btn btn-outline-dark mr-3' do %>
+                <i class="fa-solid fa-file-circle-plus"></i> 物件登録
+                <% end %>
               </li>
               <li class="nav-item">
-                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-outline-dark mr-3' %>
+                <%= link_to destroy_user_session_path, method: :delete, class: 'btn btn-outline-dark mr-3' do %>
+                <i class="fa-solid fa-right-from-bracket"></i> ログアウト
+                <% end %>
               </li>
             <% else %>
               <li class="nav-item">
-                <%= link_to 'トップ', root_path, class: 'btn btn-outline-dark mr-3' %>
+                <%= link_to root_path, class: 'btn btn-outline-dark mr-3' do %>
+                <i class="fa-duotone fa-star-christmas"></i> トップ
+                <% end %>
               </li>
               <li class="nav-item">
-                <%= link_to "新規登録", new_user_registration_path, class: 'btn btn-outline-dark mr-3' %>
+                <%= link_to new_user_registration_path, class: 'btn btn-outline-dark mr-3' do %>
+                <i class="fa-solid fa-user-plus"></i> 新規登録
+                <% end %>
               </li>
               <li class="nav-item">
-                <%= link_to "ログイン", new_user_session_path, class: 'btn btn-outline-dark mr-3' %>
+                <%= link_to new_user_session_path, class: 'btn btn-outline-dark mr-3' do %>
+                <i class="fa-solid fa-right-to-bracket"></i> ログイン
+                <% end %>
               </li>
             <% end %>
             </ul>

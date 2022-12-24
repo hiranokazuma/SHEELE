@@ -132,7 +132,9 @@
 <br>
   <div class="form-group row h5">
     <div class="col-sm-4 mx-auto">
-      <%= link_to "　マイページへ戻る　", users_mypage_path, class: "btn btn-secondary text-light btn-lg"%>
+      <%= link_to  users_mypage_path, class: "btn btn-secondary text-light btn-lg" do %>
+      <i class="fa-solid fa-backward-step fa-lg"></i>　マイページへ戻る
+      <% end %>
     </div>
     <div class="col-sm-4 mx-auto">
     <%= f.submit "　編集確認画面へ進む　", class: "btn btn-success btn-lg"%>

@@ -8,28 +8,36 @@
 <br>
   <div class="row justify-content-center">
     <div class="col-lg-5">
-      <%= link_to "メッセージ", messages_path, class: "btn btn-primary text-light btn-lg btn-block p-3" %>
+      <%= link_to messages_path, class: "btn btn-primary text-light btn-lg btn-block p-3" do %>
+      <i class="fa-solid fa-message fa-lg"></i> メッセージ
+      <% end %>
     </div>
   </div>
 <br>
 <br>
   <div class="row justify-content-center">
     <div class="col-lg-5">
-      <%= link_to "会員情報編集", users_information_edit_path(current_user), class: "btn btn-primary text-light btn-lg btn-block p-3" %>
+      <%= link_to users_information_edit_path(current_user), class: "btn btn-primary text-light btn-lg btn-block p-3" do %>
+      <i class="fa-solid fa-user-pen fa-lg"></i> 会員情報編集
+      <% end %>
     </div>
   </div>
 <br>
 <br>
   <div class="row justify-content-center">
     <div class="col-lg-5">
-      <%= link_to "取り扱い物件一覧", properties_myproperties_path, class: "btn btn-primary text-light btn-lg btn-block p-3" %>
+      <%= link_to properties_myproperties_path, class: "btn btn-primary text-light btn-lg btn-block p-3" do %>
+      <i class="fa-solid fa-building-user fa-lg"></i> 取り扱い物件一覧
+      <% end %>
     </div>
   </div>
 <br>
 <br>
   <div class="row justify-content-center">
     <div class="col-lg-5">
-      <%= link_to "閲覧申請一覧", view_applications_path, class: "btn btn-primary text-light btn-lg btn-block p-3" %>
+      <%= link_to view_applications_path, class: "btn btn-primary text-light btn-lg btn-block p-3" do %>
+      <i class="fa-sharp fa-solid fa-file-lines fa-lg"></i> 閲覧申請一覧
+      <% end %>
     </div>
   </div>
 <br>

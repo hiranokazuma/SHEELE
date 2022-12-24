@@ -9,28 +9,36 @@
 <br>
   <div class="row justify-content-center">
     <div class="col-lg-5">
-      <%= link_to "メッセージ", admin_messages_path, class: "btn btn-primary text-light btn-lg btn-block p-3" %>
+      <%= link_to admin_messages_path, class: "btn btn-primary text-light btn-lg btn-block p-3" do %>
+      <i class="fa-solid fa-message fa-lg"></i> メッセージ
+      <% end %>
     </div>
   </div>
 <br>
 <br>
   <div class="row justify-content-center">
     <div class="col-lg-5">
-      <%= link_to "物件一覧", admin_properties_path, class: "btn btn-primary text-light btn-lg btn-block p-3" %>
+      <%= link_to admin_properties_path, class: "btn btn-primary text-light btn-lg btn-block p-3" do %>
+      <i class="fa-solid fa-city fa-lg"></i> 物件一覧
+      <% end %>
     </div>
   </div>
 <br>
 <br>
   <div class="row justify-content-center">
     <div class="col-lg-5">
-      <%= link_to "会員一覧", admin_users_path, class: "btn btn-primary text-light btn-lg btn-block p-3" %>
+      <%= link_to admin_users_path, class: "btn btn-primary text-light btn-lg btn-block p-3" do %>
+      <i class="fa-solid fa-users fa-lg"></i> 会員一覧
+      <% end %>
     </div>
   </div>
 <br>
 <br>
   <div class="row justify-content-center">
     <div class="col-lg-5">
-      <%= link_to "閲覧申請一覧", admin_view_applications_path, class: "btn btn-primary text-light btn-lg btn-block p-3" %>
+      <%= link_to admin_view_applications_path, class: "btn btn-primary text-light btn-lg btn-block p-3" do %>
+      <i class="fa-sharp fa-solid fa-file-lines fa-lg"></i> 閲覧申請一覧
+      <% end %>
     </div>
   </div>
 <br>
