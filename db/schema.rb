@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 2022_12_14_095036) do
     t.integer "property_id"
     t.integer "message_id"
     t.integer "reply_id"
+    t.integer "management_notice_id"
     t.integer "visitor_id"
     t.integer "visited_id"
     t.integer "admin_send_id"

@@ -3,12 +3,7 @@ class Public::MessagesController < ApplicationController
     @replies = Reply.all
     @management_notices = ManagementNotice.all
     @notifications = current_user.passive_notifications.page(params[:page]).per(20)
-    @notifications.where(read: false).each do |notification|
-      # binding.pry
-      # notification.update_attributes(read: true)
-      notification.read = true
-      # notification.update_attributes(read: true)
-    end
+
     @q = Message.ransack(params[:q])
     @messages = @q.result(distinct: true).page(params[:page]).per(15)
   end
@@ -17,6 +12,11 @@ class Public::MessagesController < ApplicationController
     @message = Message.new
     @user = current_user
 
+  end
+
+  def update
+    Notification.find(params[:id]).update(read: true)
+    @notifications = current_user.passive_notifications.page(params[:page]).per(20)
   end
 
   def create

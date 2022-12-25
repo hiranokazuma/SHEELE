@@ -1,16 +1,59 @@
-<% visitor = notification.visitor %>
-<% visited = notification.visited %>
-<div class="col-sm-6">
-  <% if notification.notice_type == Notification.notice_types[:apply] %>
-    <p>新しい閲覧申請があります。</p>
-    <%= notification.property.prefecture %>
-    <%= notification.property.municipality %>
-    <%= notification.property.city_block %>
-    <%= notification.property.price %>万円
-  <% time_ago_in_words(notification.created_at).upcase %>
-  <% elsif notification.notice_type == Notification.notice_types[:message] %>
-  <% end %>
-</div>
+<%# notifications.each do |notification|%>
+<%# visitor = notification.visitor %>
+<%# visited = notification.visited %>
+
+ <table class="table table-bordered">
+    <thead class="h5 table-secondary text-center">
+      <tr>
+        <th style="width: 15%">既読・未読</th>
+        <th style="width: 20%">受領日時</th>
+        <th style="width: 55%">申請された物件</th>
+        <th style="width: 10%">経過</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% notifications.each do |notification| %>
+        <% if notification.notice_type == Notification.notice_types[:apply] %>
+          <% if notifications.where(read: false).count > 0 %>
+            <div class="col-sm-5">
+              <p class="h5 bg-warning text-danger font-weight-bold text-left d-flex align-items-center">
+                <span class="badge badge-danger mr-5">New!!</span>
+                新しい閲覧申請があります。
+              </p>
+            </div>
+          <% end %>
+          <tr class="h5 text-center">
+            <th class="align-middle text-center">
+              <% if notification.read %>
+                既読
+              <% else %>
+                <%= link_to '既読にする', message_path(notification.id), method: :patch, remote: true %>
+              <% end %>
+            </th>
+            <th class="align-middle text-center">
+              <%= notification.created_at.to_s(:date_jp) %><br>
+              <%= notification.created_at.to_s(:time_jp) %>
+            </th>
+            <th class="align-middle text-center">
+              <%= notification.property.kind %>
+              <%= notification.property.prefecture %>
+              <%= notification.property.municipality %>
+              <%= notification.property.city_block %>
+              <%= notification.property.price %>万円
+            </th>
+            <th class="align-middle text-center"><%= time_ago_in_words(notification.created_at).upcase %>前</th>
+            </th>
+          </tr>
+        <% end %>
+      <% end %>
+      <%# elsif notification.notice_type == Notification.notice_types[:message] %>
+      <%# elsif notification.notice_type == Notification.notice_types[:reply] %>
+      <%# end %>
+    </tbody>
+  </table>
+
 <br>
 <br>
 <br>
+<%# end %>
+<%= paginate notifications %>
