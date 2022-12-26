@@ -6,7 +6,7 @@
 <br>
 <br>
   <% if @user.errors.any? %>
-    <div id="error_explanation">
+    <div id="error_explanation text-danger">
       <h3><%= @user.errors.count %>件のエラーがあります:</h3>
       <ul>
         <% @user.errors.full_messages.each do |message| %>
@@ -145,10 +145,14 @@
     <div class="col-sm-2">
     </div>
     <div class="col-sm-3 mx-1">
-      <%= link_to "　詳細へ戻る　", admin_user_path(@user), class: "btn btn-secondary text-light btn-lg"%>
+      <%= link_to admin_user_path(@user), class: "btn btn-secondary text-light btn-lg" do %>
+      <i class="fa-solid fa-backward-step fa-lg"></i>　詳細へ戻る
+      <% end %>
     </div>
     <div class="actions col-5 mx-auto">
-    <%= f.submit "編集確認画面へ進む", class: "btn btn-success btn-lg"%>
+      <%= button_tag type: "submit", class: "btn btn-success btn-lg" do %>
+      <i class="fa-solid fa-address-card fa-lg"></i>　編集確認画面へ進む
+      <% end %>
     </div>
   </div>
 <% end %>

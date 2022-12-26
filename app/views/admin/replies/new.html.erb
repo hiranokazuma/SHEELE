@@ -44,13 +44,17 @@
     <div class="col-sm-3 ">
     </div>
     <div class="col-sm-3 d-grid gap-2 mx-auto">
-      <%= link_to "メッセージ詳細へ戻る", admin_message_path(@message), class: "btn btn-secondary text-light btn-lg"%>
+      <%= link_to admin_message_path(@message), class: "btn btn-secondary text-light btn-lg" do %>
+      <i class="fa-solid fa-backward-step fa-lg"></i>　メッセージ詳細へ戻る
+      <% end %>
     </div>
     <%= f.hidden_field :user_id, :value => @message.user_id %>
     <!--<#%= f.hidden_field :admin_id, :value => @message.admin_id %>-->
     <%= f.hidden_field :message_id, :value => @message.id %>
     <div class="col-sm-3 d-grid gap-2 mx-auto">
-      <%= f.submit "返信内容を確認", class: "btn btn-success text-light btn-lg"%>
+      <%= button_tag type: "submit", class: "btn btn-success text-light btn-lg" do %>
+      <i class="fa-solid fa-envelope-circle-check"></i>　返信内容を確認
+      <% end %>
     </div>
   </div>
 <% end %>

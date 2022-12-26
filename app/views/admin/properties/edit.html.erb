@@ -235,13 +235,19 @@
 <br>
   <div class="row">
     <div class="col-sm-4 mx-auto">
-      <%= link_to "　詳細へ戻る　", admin_property_path(@property), class: "btn btn-secondary text-light btn-lg"%>
+      <%= link_to admin_property_path(@property), class: "btn btn-secondary text-light btn-lg" do%>
+      <i class="fa-solid fa-backward-step fa-lg"></i>　詳細へ戻る
+      <% end %>
     </div>
     <div class="col-sm-4 mx-auto">
-      <%= f.submit '　変更を保存　', class: "btn btn-success btn-lg" %>
+      <%= button_tag type: "submit", '　変更を保存　', class: "btn btn-success btn-lg" do %>
+      <i class="fa-solid fa-file-arrow-up fa-lg"></i>　変更を保存
+      <% end %>
     </div>
     <div class="col-sm-4 mx-auto">
-      <%= link_to "　削除する　", admin_property_path(@property), class: "btn btn-danger text-white btn-lg", method: :delete, "data-confirm" => "本当に削除しますか？" %>
+      <%= link_to "　削除する　", admin_property_path(@property), class: "btn btn-danger text-white btn-lg", method: :delete, "data-confirm" => "本当に削除しますか？" do %>
+      <i class="fa-solid fa-trash-can fa-lg"></i>　削除する
+      <% end %>
     </div>
   </div>
 <% end %>

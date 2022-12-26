@@ -290,10 +290,11 @@
 <br>
     <div class="row justify-content-center">
       <div class="col-sm-3">
-
       </div>
       <div class="col-sm-3">
-        <%= link_to "　取扱物件一覧へ戻る　", properties_myproperties_path, class: "btn btn-secondary text-light btn-lg"%>
+        <%= link_to properties_myproperties_path, class: "btn btn-secondary text-light btn-lg" do %>
+        <i class="fa-solid fa-backward-step fa-lg"></i>　取扱物件一覧へ戻る
+        <% end %>
       </div>
     </div>
 <br>

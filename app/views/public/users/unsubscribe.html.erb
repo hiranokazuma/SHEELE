@@ -12,8 +12,12 @@
 <br>
 <br>
   <div style="text-align:center">
-    <%= link_to "　退会しない　", users_information_edit_path(current_user), class: "btn btn-primary text-light btn-lg mx-5" %>
-    <%= link_to "　退会する　", users_withdraw_path(current_user),  method: :patch, data: { confirm: "本当に退会しますか？" }, class: "btn btn-danger text-light btn-lg mx-5" %>
+    <%= link_to users_information_edit_path(current_user), class: "btn btn-primary text-light btn-lg mx-5" do %>
+    <i class="fa-solid fa-backward-step fa-lg"></i>　退会しない
+    <% end %>
+    <%= link_to users_withdraw_path(current_user),  method: :patch, data: { confirm: "本当に退会しますか？" }, class: "btn btn-danger text-light btn-lg mx-5" do %>
+    <i class="fa-solid fa-user-slash fa-lg"></i>　退会する
+    <% end %>
   </div>
     <br>
 </div>

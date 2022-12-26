@@ -6,8 +6,8 @@
 <br>
   <div class="d-grid gap-2 col-4 mx-auto text-center">
     <button type="button" class="btn btn-info btn-lg btn-block" data-toggle="collapse" data-target="#search">
-      <i class="fa-solid fa-magnifying-glass"></i> 物件を検索する
-      </button>
+      <i class="fa-solid fa-magnifying-glass"></i>　物件を検索する
+    </button>
   </div>
     <div id="search" class="collapse">
   <br>
@@ -155,7 +155,9 @@
   <br>
     <div class="row justify-content-center">
       <div class="col-sm-3">
-        <%= f.submit "検索する", class: "btn btn-success text-light btn-lg btn-block" %>
+        <%= button_tag type: "submit", class: "btn btn-success text-light btn-lg btn-block" do %>
+        <i class="fa-solid fa-magnifying-glass"></i>　検索する
+        <% end %>
       </div>
     </div>
   <% end %>
@@ -207,7 +209,9 @@
             <% if property.user_id == current_user.id %>
               <button type="button" class="btn btn-outline-dark text-danger font-weight-bold" disabled data-bs-toggle="button" autocomplete="off">登録物件</button>
             <% else %>
-              <%= link_to "閲覧申請する", view_applications_confirm_path(property_id: property.id), class: "btn btn-primary text-light btn-block"  %>
+              <%= link_to view_applications_confirm_path(property_id: property.id), class: "btn btn-primary text-light btn-block" do %>
+              <i class="fa-solid fa-magnifying-glass-location"></i> 閲覧申請する
+              <% end %>
             <% end %>
           </td>
         </tr>

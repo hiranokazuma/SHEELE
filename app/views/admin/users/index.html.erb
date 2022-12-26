@@ -65,7 +65,9 @@
   <br>
     <div class="row justify-content-center">
       <div class="col-sm-3">
-        <%= f.submit "検索する", class: "btn btn-success text-light btn-lg btn-block" %>
+        <%= button_tag type: "submit", class: "btn btn-success text-light btn-lg btn-block" do %>
+        <i class="fa-solid fa-magnifying-glass"></i>　検索する
+        <% end %>
       </div>
     </div>
   <% end %>
@@ -100,7 +102,9 @@
             メールアドレス<%= user.email %>
         </td>
         <td class="align-middle text-center">
-          <%= link_to "詳細を見る", admin_user_path(user), class: "btn btn-primary text-light btn-block"  %>
+          <%= link_to admin_user_path(user), class: "btn btn-primary text-light btn-block" do %>
+          <i class="fa-solid fa-address-card"></i> 詳細を見る
+          <% end %>
         </td>
       </tr>
       <% end %>

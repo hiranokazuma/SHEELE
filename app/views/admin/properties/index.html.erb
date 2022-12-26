@@ -5,7 +5,9 @@
 <br>
 <br>
   <div class="d-grid gap-2 col-4 mx-auto text-center">
-    <button type="button" class="btn btn-info btn-lg btn-block" data-toggle="collapse" data-target="#search">物件を検索する</button>
+    <button type="button" class="btn btn-info btn-lg btn-block" data-toggle="collapse" data-target="#search">
+      <i class="fa-solid fa-magnifying-glass"></i>　物件を検索する
+    </button>
   </div>
     <div id="search" class="collapse">
   <br>
@@ -153,7 +155,9 @@
   <br>
     <div class="row justify-content-center">
       <div class="col-sm-3">
-        <%= f.submit "検索する", class: "btn btn-success text-light btn-lg btn-block" %>
+        <%= button_tag type: "submit", class: "btn btn-success text-light btn-lg btn-block" do %>
+        <i class="fa-solid fa-magnifying-glass"></i>　検索する
+        <% end %>
       </div>
     </div>
   <% end %>
@@ -202,7 +206,9 @@
             容積率<%= property.floor_area_ratio %>％
         </td>
         <td class="align-middle text-center">
-          <%= link_to "詳細を見る", admin_property_path(property), class: "btn btn-primary text-light btn-block"  %>
+          <%= link_to admin_property_path(property), class: "btn btn-primary text-light btn-block" do %>
+          <i class="fa-solid fa-magnifying-glass-plus fa-lg"></i>　詳細を見る
+          <% end %>
         </td>
       </tr>
       <% end %>

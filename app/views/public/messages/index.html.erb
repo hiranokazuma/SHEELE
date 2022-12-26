@@ -91,7 +91,9 @@
       <% end %>
     </div>
     <div class="col-sm-3 d-grid gap-2 mx-auto">
-      <%= link_to "　お問い合わせ　", new_message_path, class: "btn btn-success text-light btn-lg"%>
+      <%= link_to  new_message_path, class: "btn btn-success text-light btn-lg" do%>
+      <i class="fa-solid fa-paper-plane fa-lg"></i>　お問い合わせ
+      <% end %>
     </div>
 
   </div>

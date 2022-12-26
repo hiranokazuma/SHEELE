@@ -253,10 +253,13 @@
     <!--<#%= f.hidden_field :image %>-->
   <div class="form-group row h5">
     <div class="actions col-3 mx-auto">
-      <%= f.submit "戻る", name: :back, class: "btn btn-secondary btn-lg btn-block"%>
+      <%= button_tag type: "submit", name: :back, class: "btn btn-secondary btn-lg btn-block" do %>
+      <i class="fa-solid fa-backward-step fa-lg"></i>　戻る
+      <% end %>
     </div>
     <div class="actions col-3 mx-auto">
-      <%= f.submit "登録を完了する", class: "btn btn-success btn-lg btn-block"%>
+      <%= button_tag type: "submit", class: "btn btn-success btn-lg btn-block"%>
+      <i class="fa-solid fa-file-arrow-up fa-lg"></i>　登録を完了する
     </div>
   </div>
   <% end %>

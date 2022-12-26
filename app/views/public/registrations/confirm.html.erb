@@ -123,10 +123,14 @@
     <%= f.hidden_field :password_confirmation %>
   <div class="form-group row h5">
     <div class="actions col-3 mx-auto">
-    <%= f.submit "戻る", name: :back, class: "btn btn-secondary btn-lg btn-block"%>
+      <%= button_tag type: "submit", name: :back, class: "btn btn-secondary btn-lg btn-block" do %>
+      <i class="fa-solid fa-backward-step fa-lg"></i>　戻る
+      <% end %>
     </div>
     <div class="actions col-3 mx-auto">
-    <%= f.submit "新規登録", class: "btn btn-success btn-lg btn-block"%>
+      <%= button_tag type: "submit", class: "btn btn-success btn-lg btn-block" do %>
+      <i class="fa-solid fa-user-plus fa-lg"></i>　新規登録
+      <% end %>
     </div>
   </div>
 <% end %>

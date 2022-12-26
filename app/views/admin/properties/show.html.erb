@@ -225,10 +225,14 @@
     <div class="col-sm-4 mx-auto">
     </div>
     <div class="col-sm-4 mx-auto">
-      <%= link_to "　一覧へ戻る　", admin_properties_path, class: "btn btn-success text-light btn-lg"%>
+      <%= link_to admin_properties_path, class: "btn btn-success text-light btn-lg" do %>
+      <i class="fa-solid fa-backward-step fa-lg"></i>　一覧へ戻る
+      <% end %>
     </div>
     <div class="col-sm-4 mx-auto">
-      <%= link_to "　編集する　", edit_admin_property_path(@property), class: "btn btn-primary btn-lg"%>
+      <%= link_to edit_admin_property_path(@property), class: "btn btn-primary btn-lg" do %>
+      <i class="fa-solid fa-file-pen fa-lg"></i>　編集する
+      <% end %>
     </div>
   </div>
 <br>

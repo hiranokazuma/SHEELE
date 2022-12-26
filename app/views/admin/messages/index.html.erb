@@ -70,10 +70,14 @@
     <div class="col-sm-3 ">
     </div>
     <div class="col-sm-3 d-grid gap-2 mx-auto">
-      <%= link_to "管理トップへ戻る", admin_homes_top_path, class: "btn btn-secondary text-light btn-lg"%>
+      <%= link_to admin_homes_top_path, class: "btn btn-secondary text-light btn-lg" do %>
+      <i class="fa-solid fa-backward-step fa-lg"></i>　管理トップへ戻る
+      <% end %>
     </div>
     <div class="col-sm-3 d-grid gap-2 mx-auto">
-      <%= link_to "　運営からのお知らせ　\n　作成　", new_admin_management_notice_path, class: "btn btn-success text-light btn-lg"%>
+      <%= link_to  new_admin_management_notice_path, class: "btn btn-success text-light btn-lg" do %>
+      <i class="fa-solid fa-envelope fa-lg"></i>　運営からのお知らせ<br>　作成
+      <% end %>
     </div>
   </div>
 

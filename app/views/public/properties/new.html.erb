@@ -223,18 +223,12 @@
       <%= f.text_area :comment,  size: "60x5" %>
     </div>
   </div>
-  <!--<div class="form-group row h5">-->
-  <!--  <div class="col-sm-3">-->
-  <!--  <label for="property_image">物件画像</label>-->
-  <!--  </div>-->
-  <!--  <div class="col-sm-4">-->
-    <!--<#%= f.file_field :image, class: "form-control-file image", placeholder: "商品画像", accept: "image/*" %>-->
-  <!--  </div>-->
-  <!--</div>-->
 <br>
   <div class="form-group row h5">
     <div class="actions col-5 mx-auto">
-    <%= f.submit "登録確認画面へ進む", class: "btn btn-success btn-lg btn-block"%>
+      <%= button_tag type: "submit", class: "btn btn-success btn-lg btn-block" do %>
+      <i class="fa-solid fa-building-circle-check fa-lg"></i>　登録確認画面へ進む
+      <% end %>
     </div>
   </div>
 <% end %>

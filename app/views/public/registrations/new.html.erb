@@ -121,7 +121,9 @@
 <br>
   <div class="form-group row h5">
     <div class="actions col-5 mx-auto">
-    <%= f.submit "登録確認画面へ進む", class: "btn btn-success btn-lg btn-block"%>
+      <%= button_tag type: "submit", "登録確認画面へ進む", class: "btn btn-success btn-lg btn-block" do %>
+      <i class="fa-solid fa-user-check fa-lg"></i></i>　登録確認画面へ進む
+      <% end %>
     </div>
   </div>
 <% end %>
@@ -132,7 +134,9 @@
   <div class="form-group row h4 font-weight-bold">
 
     <div class="col-sm-5 mx-auto">
-      <%= link_to "会員ログイン", new_user_session_path, class: "btn btn-primary btn-lg btn-block" %>
+      <%= link_to new_user_session_path, class: "btn btn-primary btn-lg btn-block" do %>
+      <i class="fa-solid fa-right-to-bracket fa-lg"></i>　会員ログイン
+      <% end %>
     </div>
   </div>
 </div>

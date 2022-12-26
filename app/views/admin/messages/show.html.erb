@@ -42,26 +42,31 @@
 <br>
 
   <% if @message.id == @reply.id %>
-  <div class="row">
+  <div class="row justify-content-center">
     <div class="col-sm-2">
     </div>
     <div class="col-sm-3 d-grid gap-2 mx-auto">
       <button type="button" class="btn btn-secondary btn-lg" disabled data-bs-toggle="button" autocomplete="off">　返信済み　</button>
     </div>
     <div class="col-sm-3 d-grid gap-2 mx-auto">
-      <%= link_to "お知らせ一覧へ戻る", admin_messages_path, class: "btn btn-secondary text-light btn-lg"%>
+      <%= link_to admin_messages_path, class: "btn btn-secondary text-light btn-lg" do %>
+      <i class="fa-solid fa-backward-step fa-lg"></i>　お知らせ一覧へ戻る
+      <% end %>
     </div>
   </div>
   <% else %>
-  <div class="row">
+  <div class="row justify-content-center">
     <div class="col-sm-2">
     </div>
     <div class="col-sm-3 d-grid gap-2 mx-auto">
-      <%= link_to "　返信する　", new_admin_reply_path(message_id: @message.id), class: "btn btn-success text-light btn-lg"%>
+      <%= link_to new_admin_reply_path(message_id: @message.id), class: "btn btn-success text-light btn-lg" do %>
+      <i class="fa-solid fa-reply fa-lg"></i>　返信する
+      <% end %>
     </div>
-
     <div class="col-sm-3 d-grid gap-2 mx-auto">
-      <%= link_to "お知らせ一覧へ戻る", admin_messages_path, class: "btn btn-secondary text-light btn-lg"%>
+      <%= link_to admin_messages_path, class: "btn btn-secondary text-light btn-lg" do %>
+      <i class="fa-solid fa-backward-step fa-lg"></i>　お知らせ一覧へ戻る
+      <% end %>
     </div>
   </div>
   <% end %>

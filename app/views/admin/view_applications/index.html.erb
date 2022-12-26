@@ -54,7 +54,9 @@
         <td class="align-middle text-center">
           <% if view_application.apply_status %>
             <b class="text-success">申請中</b>
-          <%= link_to "編集する", edit_admin_view_application_path(view_application), class: "btn btn-primary text-light btn-block"  %>
+            <%= link_to edit_admin_view_application_path(view_application), class: "btn btn-primary text-light btn-block" do %>
+            <i class="fa-solid fa-file-pen"></i> 編集する
+            <% end %>
           <% else %>
             <b class="text-warning">許可</b>
           <% end %>

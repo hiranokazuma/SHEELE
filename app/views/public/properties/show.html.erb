@@ -223,10 +223,14 @@
 <br>
   <div class="row">
     <div class="col-sm-4 mx-auto">
-      <%= link_to "取扱物件一覧へ戻る", properties_myproperties_path, class: "btn btn-success text-light btn-lg"%>
+      <%= link_to properties_myproperties_path, class: "btn btn-success text-light btn-lg" do %>
+      <i class="fa-solid fa-backward-step fa-lg"></i>　取扱物件一覧へ戻る
+      <% end %>
     </div>
     <div class="col-sm-4 mx-auto">
-      <%= link_to "　編集する　", edit_property_path(@property), class: "btn btn-primary btn-lg"%>
+      <%= link_to edit_property_path(@property), class: "btn btn-primary btn-lg" do %>
+      <i class="fa-solid fa-file-pen fa-lg"></i>　編集する
+      <% end %>
     </div>
   </div>
 <br>

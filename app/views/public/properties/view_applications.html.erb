@@ -73,7 +73,10 @@
     <tbody>
       <% @view_applications.each do |view_application|%>
         <tr class="h5 text-center">
-          <td class="align-middle text-center"><%= simple_format(view_application.created_at.to_s(:datetime_jp)) %></td>
+          <td class="align-middle text-center">
+            <%= view_application.created_at.to_s(:date_jp) %><br>
+            <%= view_application.created_at.to_s(:time_jp) %>
+          </td>
           <td class="align-middle text-center"><%= view_application.id %></td>
           <td class="align-middle text-center"><%= view_application.user.id %></td>
           <td class="align-middle text-center">
@@ -93,26 +96,26 @@
               <%= f.hidden_field :user_id, :value => view_application.user.id %>
               <%= f.hidden_field :property_id, :value => @property.id %>
             <% if view_application.apply_status == "申請中" %>
-              <div class="col-sm btn-block" data-toggle="buttons">
+              <div class="col btn-block" data-toggle="buttons">
                 <label class="btn btn-outline-primary">
                   <h5><%= f.radio_button :apply_status, 2, checked: true %> 許 可 </h5>
                 </label>
               </div>
-              <div class="col-sm btn-block" data-toggle="buttons">
+              <div class="col btn-block" data-toggle="buttons">
                 <label class="btn btn-outline-danger">
                   <h5><%= f.radio_button :apply_status, 3, {} %> 否 認 </h5>
                 </label>
               </div>
             <% elsif view_application.apply_status == "許可" %>
               <b class="text-warning">許可済</b>
-              <div class="col-sm btn-block" data-toggle="buttons">
+              <div class="col btn-block" data-toggle="buttons">
                 <label class="btn btn-outline-danger">
                   <h5><%= f.radio_button :apply_status, 3, {} %> 否 認 </h5>
                 </label>
               </div>
             <% elsif view_application.apply_status == "否認" %>
               <b class="text-danger">否認</b>
-              <div class="col-sm btn-block" data-toggle="buttons">
+              <div class="col btn-block" data-toggle="buttons">
                 <label class="btn btn-outline-primary">
                   <h5><%= f.radio_button :apply_status, 2, checked: true %> 許 可 </h5>
                 </label>
@@ -120,7 +123,9 @@
             <% end %>
           </td>
           <td class="align-middle text-center">
-              <%= f.submit "登録する",  data: { confirm: "登録してもよろしいですか？" }, class: "btn btn-lg btn-warning text-light btn-block"  %>
+            <%= button_tag type: "submit", data: { confirm: "登録してもよろしいですか？" }, class: "btn btn-lg btn-warning text-light btn-block" do %>
+            <i class="fa-solid fa-file-arrow-up"></i> 登録する
+            <% end %>
           </td>
         <% end %>
         </tr>
@@ -132,7 +137,9 @@
 <br>
     <div class="row justify-content-center">
       <div class="col-sm-3 justify-content-center">
-        <%= link_to "　取扱物件一覧へ戻る　", properties_myproperties_path, class: "btn btn-secondary text-light btn-lg"%>
+        <%= link_to properties_myproperties_path, class: "btn btn-secondary text-light btn-lg" do %>
+        <i class="fa-solid fa-backward-step fa-lg"></i>　取扱物件一覧へ戻る
+        <% end %>
       </div>
     </div>
 <br>
