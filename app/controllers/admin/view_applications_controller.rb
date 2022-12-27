@@ -7,8 +7,8 @@ class Admin::ViewApplicationsController < ApplicationController
   end
 
   def edit
-    @properties = Property.all
     @view_application = ViewApplication.find(params[:id])
+    @property = Property.find_by(id: params[:property_id])
   end
 
   def update

@@ -1,20 +1,23 @@
 <div class="container">
 <br>
-  <div class="d-grid gap-2 col-5 mx-auto text-center">
+  <div class="row d-grid gap-2 col-5 mx-auto text-center justify-content-center">
     <h2>お問い合わせ返信完了</h2>
   </div>
 <br>
 <br>
 <br>
 <br>
-    <h4 class="text-center"><b>お問い合わせの返信が完了しました。</b></h4><br><br>
+  <div class="row d-grid gap-2 col-5 mx-auto text-center justify-content-center">
+    <h4><b>お問い合わせの返信が完了しました。</b></h4>
+  </div>
 <br>
 <br>
-  <div class="row justify-content-center">
-
-    <div class="col-sm-3">
-      <%= link_to "お知らせ一覧へ戻る", admin_messages_path, class: "btn btn-secondary text-light btn-lg"%>
-    </div>
+<br>
+<br>
+  <div class="row d-grid gap-2 col-5 mx-auto text-center justify-content-center">
+      <%= link_to  admin_messages_path, class: "btn btn-secondary text-light btn-lg" do %>
+      <i class="fa-solid fa-backward-step fa-lg"></i>　お知らせ一覧へ戻る
+      <% end %>
   </div>
 <br>
 <br>

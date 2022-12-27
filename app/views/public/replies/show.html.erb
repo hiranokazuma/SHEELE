@@ -34,7 +34,9 @@
 <br>
   <div class="row justify-content-center">
     <div class="col-sm-3 d-grid gap-2 mx-auto">
-      <%= link_to "メッセージ一覧へ戻る", messages_path, class: "btn btn-secondary text-light btn-lg"%>
+      <%= link_to messages_path, class: "btn btn-secondary text-light btn-lg" do %>
+      <i class="fa-solid fa-backward-step fa-lg"></i>　メッセージ一覧へ<br>戻る
+      <% end %>
     </div>
   </div>
 <br>

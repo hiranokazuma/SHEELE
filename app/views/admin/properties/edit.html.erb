@@ -245,7 +245,7 @@
       <% end %>
     </div>
     <div class="col-sm-4 mx-auto">
-      <%= link_to "　削除する　", admin_property_path(@property), class: "btn btn-danger text-white btn-lg", method: :delete, "data-confirm" => "本当に削除しますか？" do %>
+      <%= link_to admin_property_path(@property), class: "btn btn-danger text-white btn-lg", method: :delete, "data-confirm" => "本当に削除しますか？" do %>
       <i class="fa-solid fa-trash-can fa-lg"></i>　削除する
       <% end %>
     </div>

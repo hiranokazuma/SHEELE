@@ -7,12 +7,12 @@
   <table class="table table-bordered">
     <thead class="h5 table-secondary text-center">
       <tr>
-        <th style="width: 7%">申請ID</th>
-        <th style="width: 7%">物件ID</th>
-        <th style="width: 7%">会員ID</th>
+        <th style="width: 6%">申請ID</th>
+        <th style="width: 6%">物件ID</th>
+        <th style="width: 6%">会員ID</th>
         <th style="width: 14%" class="h5 align-middle font-weight-bold">物件画像</th>
         <th style="width: 53%" class="h5 align-middle font-weight-bold">概要</th>
-        <th style="width: 12%" class="h5 align-middle font-weight-bold">状況</th>
+        <th style="width: 15%" class="h5 align-middle font-weight-bold">状況</th>
       </tr>
     </thead>
     <tbody>
@@ -20,8 +20,8 @@
       <% @properties.each do |property| %>
       <tr class="h5 text-center">
         <td class="align-middle text-center"><%= view_application.id %></td>
-        <td class="align-middle text-center"><%= property.user.id %></td>
         <td class="align-middle text-center"><%= property.id %></td>
+        <td class="align-middle text-center"><%= property.user.id %></td>
         <td class="align-middle text-center">
           <% if property.image.attached? %>
             <%= image_tag property.image, size: "100x100" %>

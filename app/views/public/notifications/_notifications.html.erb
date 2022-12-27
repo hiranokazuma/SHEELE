@@ -45,9 +45,19 @@
             </th>
           </tr>
         <% end %>
+
+      <%# elsif notification.notice_type == Notification.notice_types[:management_notice] %>
+        <%if notification.notice_type == Notification.notice_types[:reply] %>
+            <% if notifications.where(read: false).count > 0 %>
+              <div class="col-sm-5">
+                <p class="h5 bg-warning text-danger font-weight-bold text-left d-flex align-items-center">
+                  <span class="badge badge-danger mr-5">New!!</span>
+                  お問い合わせに対する返信があります。
+                </p>
+              </div>
+            <% end %>
+        <% end %>
       <% end %>
-      <%# elsif notification.notice_type == Notification.notice_types[:message] %>
-      <%# elsif notification.notice_type == Notification.notice_types[:reply] %>
       <%# end %>
     </tbody>
   </table>

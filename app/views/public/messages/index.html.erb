@@ -8,7 +8,9 @@
         <%= render 'public/notifications/notifications', notifications: @notifications %>
       </div>
     <% else %>
+<br>
       <p class="h5 align-middle text-center">通知はありません</p>
+<br>
   <% end %>
   <div class="d-grid gap-2 col-5 mx-auto text-center">
     <h2>運営からの<br>お知らせ一覧</h2>
@@ -54,7 +56,7 @@
       </tr>
     </thead>
     <tbody>
-    <% if current_user.reply_ids.nil? %>
+    <% if current_user.reply_ids.count <= 0 %>
       <tr class="h5 text-center">
         <td class="align-middle text-center"></td>
         <td class="align-middle text-center">返信はまだありません</td>
@@ -71,7 +73,9 @@
           </td>
           <td class="align-middle text-center">
             <% if current_user.id == reply.user.id %>
-              <%= link_to "削除", message_path(current_user), method: :delete, data: { confirm: "削除してもよろしいですか？" }, class: 'btn btn-danger text-light' %>
+              <%= link_to message_path(current_user), method: :delete, data: { confirm: "削除してもよろしいですか？" }, class: 'btn btn-danger text-light' do %>
+            <i class="fa-solid fa-trash-can fa-lg"></i>
+            <% end %>
             <% end %>
           </td>
         </tr>

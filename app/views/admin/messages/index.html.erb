@@ -17,7 +17,10 @@
     <tbody>
     <% @messages.each do |message| %>
       <tr class="h5 text-center">
-        <td class="align-middle text-center"><%= simple_format(message.created_at.to_s(:datetime_jp)) %></td>
+        <td class="align-middle text-center">
+          <%= message.created_at.to_s(:date_jp) %><br>
+          <%= message.created_at.to_s(:time_jp) %>
+        </td>
         <td class="align-middle text-center"><%= message.id %></td>
         <td class="align-middle text-center"><%= message.user.company_name %></td>
         <td class="align-middle text-left">
@@ -26,7 +29,9 @@
           <% end %>
         </td>
         <td class="align-middle text-center">
-            <%= link_to "削除", admin_message_path(message), method: :delete, data: { confirm: "削除してもよろしいですか？" }, class: 'btn btn-danger text-light' %>
+            <%= link_to admin_message_path(message), method: :delete, data: { confirm: "削除してもよろしいですか？" }, class: 'btn btn-danger text-light' do %>
+            <i class="fa-solid fa-trash-can fa-lg"></i>
+            <% end %>
         </td>
       </tr>
       <% end %>
@@ -49,7 +54,10 @@
 <br>
     <% @management_notices.each do |management_notice| %>
       <tr class="h5 text-center">
-        <td class="align-middle text-center"><%= simple_format(management_notice.created_at.to_s(:datetime_jp)) %></td>
+        <td class="align-middle text-center">
+          <%= management_notice.created_at.to_s(:date_jp) %><br>
+          <%= management_notice.created_at.to_s(:time_jp) %>
+        </td>
         <td class="align-middle text-center"><%= management_notice.id %></td>
         <td class="align-middle text-left">
           <%= link_to admin_management_notice_path(management_notice) do %>
@@ -57,7 +65,9 @@
           <% end %>
         </td>
         <td class="align-middle text-center">
-            <%= link_to "削除", admin_management_notice_path(management_notice), method: :delete, data: { confirm: "削除してもよろしいですか？" }, class: 'btn btn-danger text-light' %>
+            <%= link_to admin_management_notice_path(management_notice), method: :delete, data: { confirm: "削除してもよろしいですか？" }, class: 'btn btn-danger text-light' do %>
+            <i class="fa-solid fa-trash-can fa-lg"></i>
+            <% end %>
         </td>
       </tr>
       <% end %>
@@ -74,9 +84,9 @@
       <i class="fa-solid fa-backward-step fa-lg"></i>　管理トップへ戻る
       <% end %>
     </div>
-    <div class="col-sm-3 d-grid gap-2 mx-auto">
+    <div class="col-sm-4 d-grid gap-2 mx-auto">
       <%= link_to  new_admin_management_notice_path, class: "btn btn-success text-light btn-lg" do %>
-      <i class="fa-solid fa-envelope fa-lg"></i>　運営からのお知らせ<br>　作成
+      <i class="fa-solid fa-envelope fa-lg"></i>　運営からのお知らせ<br>作成
       <% end %>
     </div>
   </div>

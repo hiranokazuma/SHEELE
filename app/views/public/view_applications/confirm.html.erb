@@ -31,11 +31,11 @@
           <%= @property.station %>駅&emsp;
           徒歩<%= @property.walking_minute %>分<br>
           <%= @property.price %>万円&emsp;
-          <% if @property.kind == 0 %>
-            <%= @property.land_area %>㎡&emsp;
+          <% if @property.kind == "土地" %>
+            土地面積：<%= @property.land_area %>㎡&emsp;
           <% else %>
-            <%= @property.land_area %>㎡&emsp;
-            <%= @property.building_area %>㎡&emsp;
+            土地面積：<%= @property.land_area %>㎡&emsp;
+            建物面積：<%= @property.building_area %>㎡&emsp;
           <% end %>
           <%= @property.right %>&emsp;
           <%= @property.use_area %><br>
@@ -54,12 +54,16 @@
 <br>
   <div class="row justify-content-center">
     <div class="col-sm-3 mx-auto">
-      <%= link_to "　一覧へ戻る　", properties_path, class: "btn btn-secondary text-light btn-lg"%>
+      <%= link_to properties_path, class: "btn btn-secondary text-light btn-lg" do %>
+      <i class="fa-solid fa-backward-step fa-lg"></i>　一覧へ戻る
+      <% end %>
     </div>
-    <div class="col-sm-4 mx-auto">
+    <div class="col-sm-3 mx-auto">
       <%= form_with url: view_applications_path, method: :post do |f| %>
         <%= f.hidden_field :property_id, :value => @property.id %>
-      <%= f.submit "　申請する　", class: "btn btn-primary text-light btn-lg btn-block"  %>
+      <%= button_tag type: "submit", class: "btn btn-primary text-light btn-lg btn-block" do %>
+      <i class="fa-solid fa-file-arrow-up fa-lg"></i>　申請する
+      <% end %>
       <% end %>
 
     </div>
