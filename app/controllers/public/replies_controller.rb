@@ -13,10 +13,14 @@ class Public::RepliesController < ApplicationController
 
   def show
     @reply = Reply.find(params[:id])
+    # @notification = Notification.reply.find_by(id: params[:reply_id])
+    # Notification.reply.update(read: true)
   end
 
   def destroy
     @reply = Reply.find(params[:id])
+    @reply.destroy
+    redirect_to messages_path, notice: "返信を削除しました。"
   end
 
   private

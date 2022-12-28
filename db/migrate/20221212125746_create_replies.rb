@@ -5,6 +5,7 @@ class CreateReplies < ActiveRecord::Migration[6.1]
       t.integer :admin_id
       t.integer :message_id
       t.text :content,                  null: false
+
       t.timestamps
     end
   end

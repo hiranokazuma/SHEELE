@@ -63,8 +63,6 @@ class Public::PropertiesController < ApplicationController
   end
 
   def create
-    # binding.pry
-
     @property = Property.new(property_params)
     if params[:back] || !@property.save
       render :new

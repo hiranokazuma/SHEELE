@@ -39,11 +39,11 @@
           <%= property.station %>駅&emsp;
           徒歩<%= property.walking_minute %>分<br>
           <%= property.price %>万円&emsp;
-          <% if property.kind = 0 %>
-            <%= property.land_area %>㎡&emsp;
+          <% if property.kind == "土地" %>
+            土地面積：<%= property.land_area %>㎡&emsp;
           <% else %>
-            <%= property.land_area %>㎡&emsp;
-            <%= property.building_area %>㎡&emsp;
+            土地面積：<%= property.land_area %>㎡&emsp;
+            建物面積：<%= property.building_area %>㎡&emsp;
           <% end %>
           <%= property.right %>&emsp;
           <%= property.use_area %><br>

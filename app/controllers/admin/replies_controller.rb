@@ -11,6 +11,7 @@ class Admin::RepliesController < ApplicationController
     if params[:back] || !@reply.save
       render :new
     else
+    @reply.create_notification_admin(current_admin, @reply.user_id)
       redirect_to admin_replies_complete_path
     end
   end
