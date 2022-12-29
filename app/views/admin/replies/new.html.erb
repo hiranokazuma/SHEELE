@@ -4,17 +4,18 @@
   </div>
 <br>
 <br>
-  <% if @reply.errors.any? %>
-    <div id="error_explanation">
-      <h3><%= @reply.errors.count %>件のエラーがあります:</h3>
-      <ul>
-        <% @reply.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <!--<#% if @reply.errors.any? %>-->
+  <!--  <div id="error_explanation">-->
+  <!--    <h3><#%= @reply.errors.count %>件のエラーがあります:</h3>-->
+  <!--    <ul>-->
+  <!--      <#% @reply.errors.full_messages.each do |message| %>-->
+  <!--        <li><#%= message %></li>-->
+  <!--      <#% end %>-->
+  <!--    </ul>-->
+  <!--  </div>-->
+  <!--<#% end %>-->
 <%= form_with model: @reply, url: admin_replies_confirm_path, local: true do |f| %>
+  <%= render 'layouts/error_messages', model: f.object %>
   <div class="form-group row h5 justify-content-center">
     <div class="col-sm-2">
       <label for="user">宛先</label>

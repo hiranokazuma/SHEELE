@@ -23,10 +23,13 @@ class Public::MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
     @message.user_id = current_user.id
-    if @message.create_notification_user(current_user, @message.admin_id)
+    if @message.save
+      @message.create_notification_user(current_user, @message.admin_id)
+      flash[:success] = 'メッセージを送信しました。'
+      redirect_to messages_path
     else
-    flash[:danger] = 'メッセージを送信できませんでした。'
-    render :new
+      flash[:danger] = 'メッセージを送信できませんでした。'
+      render :new
     end
   end
 
@@ -43,10 +46,7 @@ class Public::MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit(:title, :content)
+    params.require(:message).permit(:title, :content, :admin_id)
   end
 
-  def get_users
-    render partial: 'select_users', locals: {user_id: params[:user_id]}
-  end
 end

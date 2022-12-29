@@ -9,38 +9,14 @@
   </thead>
   <tbody>
     <% notifications.each do |notification| %>
-      <% if notification.notice_type == 'apply' %>
+      <% if notification.notice_type == 'message' %>
         <tr>
           <div class="col-sm-5">
             <p class="h5 bg-warning text-danger font-weight-bold text-left d-flex align-items-center">
               <span class="badge badge-danger mr-3">New!!</span>
-              新しい閲覧申請があります。
+              新しいお問合せがあります。
             </p>
           </div>
-        </tr>
-        <tr class="h5 text-center">
-          <th class="align-middle text-center">
-            <% if notification.read %>
-              既読
-            <% else %>
-              <%= link_to '既読にする', message_path(notification.id), method: :patch, remote: true %>
-            <% end %>
-          </th>
-          <th class="align-middle text-center">
-            <%= notification.created_at.to_s(:date_jp) %><br>
-            <%= notification.created_at.to_s(:time_jp) %>
-          </th>
-          <th class="align-middle text-center">
-            <%= notification.property.sell_category %>&emsp;
-            <%= notification.property.kind %>&emsp;
-            <%= notification.property.prefecture %>
-            <%= notification.property.municipality %>
-            <%= notification.property.city_block %>
-            <%= notification.property.price %>万円
-          </th>
-          <th class="align-middle text-center">
-            <%= time_ago_in_words(notification.created_at).upcase %>前
-          </th>
         </tr>
       <% end %>
       <tr>

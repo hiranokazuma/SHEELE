@@ -1,9 +1,18 @@
 <div class="container">
+<%= @notifications.inspect %><br>
+<%= @messages.inspect %><br>
+
+
   <div class="d-grid gap-2 col-5 mx-auto text-center">
     <h2>お問い合わせ一覧</h2>
   </div>
 <br>
 <br>
+  <% if @notifications.exists? %>
+    <div id="notifications">
+      <%= render 'admin/notifications/notifications', notifications: @notifications %>
+    </div>
+  <% else %>
  <table class="table table-bordered">
     <thead class="h5 table-secondary text-center">
       <tr>
@@ -12,6 +21,28 @@
         <th style="width: 20%">送信者</th>
         <th style="width: 40%">メッセージ</th>
         <th style="width: 10%"> </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="h5 text-center">
+        <td class="align-middle text-center"></td>
+        <td class="align-middle text-center"></td>
+        <td class="align-middle text-center"></td>
+        <td class="align-middle text-center">お問合せはまだありません</td>
+        <td class="align-middle text-center"></td>
+      </tr>
+      </tbody>
+    </table>
+<br>
+  <% end %>
+ <table class="table table-bordered">
+    <thead class="h5 table-secondary text-center">
+      <tr>
+        <th style="width: 20%">送信日時</th>
+        <th style="width: 7%">問合ID</th>
+        <th style="width: 15%">送信者</th>
+        <th style="width: 40%">メッセージ</th>
+        <th style="width: 18%"> </th>
       </tr>
     </thead>
     <tbody>

@@ -59,13 +59,13 @@
     <div class="col-sm-2">
     </div>
     <div class="col-sm-3 d-grid gap-2 mx-auto">
-      <%= link_to new_admin_reply_path(message_id: @message.id), class: "btn btn-success text-light btn-lg" do %>
-      <i class="fa-solid fa-reply fa-lg"></i>　返信する
+      <%= link_to admin_messages_path, class: "btn btn-secondary text-light btn-lg" do %>
+      <i class="fa-solid fa-backward-step fa-lg"></i>　お知らせ一覧へ戻る
       <% end %>
     </div>
     <div class="col-sm-3 d-grid gap-2 mx-auto">
-      <%= link_to admin_messages_path, class: "btn btn-secondary text-light btn-lg" do %>
-      <i class="fa-solid fa-backward-step fa-lg"></i>　お知らせ一覧へ戻る
+      <%= link_to new_admin_reply_path(message_id: @message.id), class: "btn btn-success text-light btn-lg" do %>
+      <i class="fa-solid fa-reply fa-lg"></i>　返信する
       <% end %>
     </div>
   </div>

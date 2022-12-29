@@ -1,9 +1,8 @@
 class Admin::MessagesController < ApplicationController
   def index
-    @q = User.ransack(params[:q])
-    @users = @q.result(distinct: true).page(params[:page]).per(15)
-    @replies = Reply.all
     @management_notices = ManagementNotice.all
+    ids = Notification.where(visitor_id: @messages).pluck(:id)
+    @notifications = Notification.where(read: :false).where(id: (current_admin.passive_notifications.pluck(:id) - ids)).page(params[:page]).per(20)
     @q = Message.ransack(params[:q])
     @messages = @q.result(distinct: true).page(params[:page]).per(15)
   end

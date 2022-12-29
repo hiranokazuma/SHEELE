@@ -1,15 +1,4 @@
 class Public::RepliesController < ApplicationController
-  def new
-  end
-
-  def create
-  end
-
-  def confirm
-  end
-
-  def complete
-  end
 
   def show
     @reply = Reply.find(params[:id])

@@ -41,9 +41,7 @@ Rails.application.routes.draw do
     get 'users/unsubscribe' => 'users#unsubscribe'
     patch 'users/withdraw' => 'users#withdraw'
 
-    post 'replies/confirm' => 'replies#confirm'
-    get 'replies/complete' => 'replies#complete'
-  resources :replies, except: [:index, :edit, :update]
+  resources :replies, only: [:show, :destroy]
 
   resources :management_notices, only: [:show]
 

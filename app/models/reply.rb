@@ -1,5 +1,8 @@
 class Reply < ApplicationRecord
 
+  validates :title, presence: true
+  validates :content, presence: true
+
   belongs_to :message
   belongs_to :user
   belongs_to :admin
@@ -25,5 +28,5 @@ class Reply < ApplicationRecord
       notification.save! #if notification.valid?
     end
   end
-  
+
 end
