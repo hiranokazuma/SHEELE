@@ -4,20 +4,8 @@
   </div>
 <br>
 <br>
-  <% if @management_notice.errors.any? %>
-    <div id="error_explanation">
-      <h3><%= @management_notice.errors.count %>件のエラーがあります:</h3>
-      <ul>
-        <% @management_notice.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
 <%= form_with model: @management_notice, url: admin_management_notices_confirm_path, local: true do |f| %>
-<!--<#%= form_for message, :url => {:action => :create} do |f| %>-->
-  <%#= f.hidden_field :user_id, :value => current_user.id %>
-
+  <%= render 'layouts/error_messages', model: f.object %>
   <div class="form-group row h5 justify-content-center">
     <div class="col-sm-2">
       <label for="title">タイトル</label>
@@ -40,14 +28,15 @@
     <div class="col-sm-2">
     </div>
     <div class="col-sm-3 d-grid gap-2 mr-auto">
-      <%= link_to "メッセージ一覧へ戻る", admin_messages_path, class: "btn btn-secondary text-light btn-lg"%>
+      <%= link_to admin_messages_path, class: "btn btn-secondary text-light btn-lg" do %>
+      <i class="fa-solid fa-backward-step fa-lg"></i>メッセージ一覧へ戻る
+      <% end %>
     </div>
     <div class="col-sm-3 d-grid gap-2 ml-auto">
     <%= f.hidden_field :admin_id %>
-      <%= f.submit '　送信する　', class: "btn btn-success btn-lg" %>
-    </div>
-    <div class="col-sm-3 d-grid gap-2">
-      <%= link_to "管理トップへ戻る", admin_homes_top_path, class: "btn btn-secondary text-light btn-lg"%>
+      <%= button_tag type: "submit", class: "btn btn-success btn-lg" do %>
+      <i class="fa-solid fa-reply fa-lg"></i>　送信する
+      <% end %>
     </div>
   </div>
 <% end %>

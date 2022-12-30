@@ -5,19 +5,8 @@
   </div>
 <br>
 <br>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h3><%= @user.errors.count %>件のエラーがあります:</h3>
-      <ul>
-        <% @user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
 <%= form_with model: @user, url: users_sign_up_confirm_path(@user), local: true do |f| %>
-<!--<#%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>-->
-  <!--<#%= render "public/shared/error_messages", resource: resource %>-->
+  <%= render 'layouts/error_messages', model: f.object %>
   <div class="form-group row h5">
     <div class="col-sm-3">
       <label for="company_name">会社名</label>

@@ -11,6 +11,7 @@ class Admin::ManagementNoticesController < ApplicationController
     if params[:back] || !@management_notice.save
       render :new
     else
+      @management_notice.create_notification_admin(current_admin)
       redirect_to admin_management_notices_complete_path
     end
   end

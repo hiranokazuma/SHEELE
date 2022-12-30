@@ -8,6 +8,8 @@ default_scope -> { order(created_at: :desc) }
   belongs_to :property, optional: true
   belongs_to :message, optional: true
   belongs_to :reply, optional: true
+  belongs_to :management_notice, optional: :true
+
   # belongs_to :visitor, class_name: 'User', foreign_key: 'visitor_id', optional: true
   # belongs_to :visited, class_name: 'User', foreign_key: 'visited_id', optional: true
   # belongs_to :admin_send_id, class_name: 'Admin', foreign_key: 'admin_send_id', optional: true

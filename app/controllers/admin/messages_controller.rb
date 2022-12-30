@@ -28,6 +28,7 @@ class Admin::MessagesController < ApplicationController
   def show
     @message = Message.find(params[:id])
     @reply = Reply.all
+    @notification = Notification.message.update(read: true)
   end
 
   def edit

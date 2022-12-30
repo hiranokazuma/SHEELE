@@ -4,18 +4,8 @@
   </div>
 <br>
 <br>
-  <% if @message.errors.any? %>
-    <div id="error_explanation">
-      <h3><%= @message.errors.count %>件のエラーがあります:</h3>
-      <ul>
-        <% @message.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
 <%= form_with model: @message, url: admin_messages_path, local: true do |f| %>
-<!--<#%= form_for message, :url => {:action => :create} do |f| %>-->
+  <%= render 'layouts/error_messages', model: f.object %>
   <%= f.hidden_field :user_id, :value => @id %>
   <%= f.hidden_field :admin_id, :value => @id %>
   <div class="form-group row h5 justify-content-center">
@@ -26,10 +16,6 @@
     <%= f.select :kind, [['全体へのお知らせ', 0], ['管理者メッセージ', 1]],  {class: 'form-select'} %>
     </div>
   </div>
-    <!--<%#= render 'select_users', {user: @user} %>-->
-
-
-
   <div class="form-group row h5 justify-content-center">
     <div class="col-sm-2">
       <label for="title">タイトル</label>

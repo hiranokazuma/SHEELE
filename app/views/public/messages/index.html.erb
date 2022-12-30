@@ -4,7 +4,6 @@
   </div>
   <!--<#% @notifications = @notifications.where.not(visitor_id: current_user.id) %>-->
 <br>
-<%= @messages.inspect %>
   <% if @notifications.exists? %>
     <div id="notifications">
       <%= render 'public/notifications/notifications', notifications: @notifications %>
