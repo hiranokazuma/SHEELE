@@ -18,8 +18,8 @@
     <tbody>
       <tr class="h5 text-center">
         <td class="align-middle text-center"><%= @view_application.id %></td>
-        <td class="align-middle text-center"><%= @view_application.property.user_id %></td>
         <td class="align-middle text-center"><%= @view_application.property.id %></td>
+        <td class="align-middle text-center"><%= @view_application.property.user_id %></td>
         <td class="align-middle text-center">
           <% if @view_application.property.image.attached? %>
             <%= image_tag @view_application.property.image, size: "100x100" %>

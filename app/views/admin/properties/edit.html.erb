@@ -227,7 +227,7 @@
     <div class="col-sm-3">
     <label for="property_image">物件画像</label>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-5">
     <%= f.file_field :image, class: "form-control-file image", placeholder: "商品画像", accept: "image/*" %>
     </div>
   </div>
@@ -240,7 +240,7 @@
       <% end %>
     </div>
     <div class="col-sm-4 mx-auto">
-      <%= button_tag type: "submit", '　変更を保存　', class: "btn btn-success btn-lg" do %>
+      <%= button_tag type: "submit", class: "btn btn-success btn-lg" do %>
       <i class="fa-solid fa-file-arrow-up fa-lg"></i>　変更を保存
       <% end %>
     </div>

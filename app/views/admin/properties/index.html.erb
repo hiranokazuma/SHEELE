@@ -56,6 +56,16 @@
       <div class="col-sm-3">
       </div>
       <div class="col-sm-2">
+          <label for="sell_category">売却カテゴリ</label>
+      </div>
+      <div class="col-sm-4">
+        <%= f.select :sell_category, Property.sell_categories.keys.map.with_index, {include_blank: '選択'},  {class: 'form-select'} %>
+      </div>
+    </div>
+    <div class="form-group row h5">
+      <div class="col-sm-3">
+      </div>
+      <div class="col-sm-2">
         <%= f.label :right, "権利種別" %>
       </div>
       <div class="col-sm-4">
@@ -169,8 +179,8 @@
       <tr>
         <th style="width: 8%">物件ID</th>
         <th style="width: 14%">物件画像</th>
-        <th style="width: 64%">概要</th>
-        <th style="width: 24%"> </th>
+        <th style="width: 62%">概要</th>
+        <th style="width: 26%"> </th>
       </tr>
     </thead>
     <tbody>
@@ -194,12 +204,12 @@
             <%= property.station %>駅&emsp;
             徒歩<%= property.walking_minute %>分<br>
             <%= property.price %>万円&emsp;
-            <% if @property.kind = 0 %>
-              <%= property.land_area %>㎡&emsp;
+            <% if @property.kind == "土地" %>
+              土地面積：<%= property.land_area %>㎡&emsp;
             <% else %>
-              <%= property.land_area %>㎡&emsp;
-              <%= property.building_area %>㎡&emsp;
-            <% end %>
+              土地面積：<%= property.land_area %>㎡&emsp;
+              建物面積：<%= property.building_area %>㎡&emsp;
+            <% end %><br>
             <%= property.right %>&emsp;
             <%= property.use_area %><br>
             建ぺい率<%= property.building_coverage_ratio %>％&emsp;
@@ -207,7 +217,7 @@
         </td>
         <td class="align-middle text-center">
           <%= link_to admin_property_path(property), class: "btn btn-primary text-light btn-block" do %>
-          <i class="fa-solid fa-magnifying-glass-plus fa-lg"></i>　詳細を見る
+          <i class="fa-solid fa-magnifying-glass-plus fa-lg"></i> 詳細を見る
           <% end %>
         </td>
       </tr>

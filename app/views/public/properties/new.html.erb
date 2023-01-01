@@ -108,7 +108,7 @@
         <label for="sell_category">売却カテゴリ</label>
     </div>
     <div class="col-sm-4">
-      <%= f.select :sell_category, Property.sell_categories.keys, {},  {class: 'form-select size:20'} %>
+      <%= f.select :sell_category, Property.sell_categories.keys, {},  {class: 'form-select'} %>
     </div>
   </div>
   <div class="form-group row h5">
@@ -222,3 +222,5 @@
   </div>
 <% end %>
 </div>
+<br>
+<br>

@@ -1,8 +1,8 @@
 class Admin::PropertiesController < ApplicationController
   def index
+    @property = Property.new
     @q = Property.ransack(params[:q])
     @properties = @q.result(distinct: true).page(params[:page]).per(15)
-    @property = Property.new
   end
 
   def show

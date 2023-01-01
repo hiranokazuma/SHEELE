@@ -194,14 +194,14 @@
               <%= property.station %>駅&emsp;
               徒歩<%= property.walking_minute %>分&emsp;
               <%= property.price %>万円&emsp;<br>
-              <% if property.kind == 0 %>
-                土地<%= property.land_area %>㎡&emsp;
+              <% if property.kind == "土地" %>
+                土地面積：<%= property.land_area %>㎡&emsp;
               <% else %>
-                土地<%= property.land_area %>㎡&emsp;
-                建物<%= property.building_area %>㎡&emsp;
+                土地面積：<%= property.land_area %>㎡&emsp;
+                建物面積：<%= property.building_area %>㎡&emsp;
               <% end %>
-              <%= property.right %>&emsp;
-              <%= property.use_area %><br>
+              <%= property.right %>&emsp;<br>
+              <%= property.use_area %>&emsp;
               建ぺい率<%= property.building_coverage_ratio %>％&emsp;
               容積率<%= property.floor_area_ratio %>％
           </td>
@@ -210,7 +210,7 @@
               <button type="button" class="btn btn-outline-dark text-danger font-weight-bold" disabled data-bs-toggle="button" autocomplete="off">登録物件</button>
             <% else %>
               <%= link_to view_applications_confirm_path(property_id: property.id), class: "btn btn-primary text-light btn-block" do %>
-              <i class="fa-solid fa-magnifying-glass-location"></i> 閲覧申請する
+              <i class="fa-solid fa-magnifying-glass-location"></i> 閲覧申請
               <% end %>
             <% end %>
           </td>
