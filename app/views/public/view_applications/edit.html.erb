@@ -242,41 +242,42 @@
       </tr>
     </thead>
     <tbody>
-      <% @users.each do |user| %>
+
+      <% @view_applications.each do |view_application| %>
         <tr class="h5 text-center">
-          <td class="align-middle text-center"><%= @view_application.id %></td>
-          <td class="align-middle text-center"><%= user.id %></td>
+          <td class="align-middle text-center"><%= view_application.id %></td>
+          <td class="align-middle text-center"><%= view_application.user.id %></td>
           <td class="align-middle text-center">
-              <%= user.company_name %>
-              <%= user.licensing_region %>
-              <%= user.licensing_entity %>
-              (<%= user.update_number %>)
-              第<%= user.license_number %>号
-              <%= user.location %><br>
-              代表者名：<%= user.representatives_name %><br>
-              担当者名：<%= user.manager_name %><br>
-              電話番号：<%= user.telephone_number %><br>
-              メールアドレス：<%= user.email %>
+              <%= view_application.user.company_name %>
+              <%= view_application.user.licensing_region %>
+              <%= view_application.user.licensing_entity %>
+              (<%= view_application.user.update_number %>)
+              第<%= view_application.user.license_number %>号
+              <%= view_application.user.location %><br>
+              代表者名：<%= view_application.user.representatives_name %><br>
+              担当者名：<%= view_application.user.manager_name %><br>
+              電話番号：<%= view_application.user.telephone_number %><br>
+              メールアドレス：<%= view_application.user.email %>
           </td>
           <td class="align-middle text-center">
             <%= form_with model: @view_application, url: view_application_path(@view_application), local: true do |f| %>
-            <% if @view_application.apply_status == 1 %>
-              <div class="col-sm-2 btn-group" data-toggle="buttons">
-                <label class="btn btn-outline-primary" style="width:50%">
+            <% if @view_application.apply_status == "申請中" %>
+              <div class="btn-group" data-toggle="buttons">
+                <label class="btn btn-outline-primary">
                   <h5><%= f.radio_button :apply_status, 2, checked: true %>許可</h5>
                 </label>
-                <label class="btn btn-outline-danger" style="width:50%">
+                <label class="btn btn-outline-danger">
                   <h5><%= f.radio_button :apply_status, 3, {} %>否認</h5>
                 </label>
               </div>
-            <% elsif @view_application.apply_status == 2 %>
+            <% elsif @view_application.apply_status == "許可" %>
               <b class="text-warning">許可済</b>
-            <% else %>
+            <% elsif @view_application.apply_status == "否認" %>
               <b class="text-danger">否認</b>
             <% end %>
           </td>
           <td class="align-middle text-center">
-            <% if @view_application.apply_status == 1 %>
+            <% if @view_application.apply_status == "申請中" %>
               <%= f.submit "登録する",  data: { confirm: "登録してもよろしいですか？" }, class: "btn btn-warning text-light btn-block"  %>
             <% else %>
             <% end %>

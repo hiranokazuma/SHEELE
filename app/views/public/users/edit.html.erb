@@ -97,25 +97,25 @@
       <%= f.email_field :email, autofocus: true, placeholder: "example@example", autocomplete: "email",  size: "40" %>
     </div>
   </div>
-  <div class="form-group row h5">
-    <div class="col-sm-3">
-      <label for="password">パスワード</label>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> 文字以上)</em>
-    <% end %>
-    </div>
-    <div class="col-sm-4">
-    <%= f.password_field :password, autofocus: true, autocomplete: "password" %>
-    </div>
-  </div>
-  <div class="form-group row h5">
-    <div class="col-sm-3">
-      <label for="password">パスワード(確認用)</label>
-    </div>
-    <div class="col-sm-4">
-    <%= f.password_field :password_confirmation, autofocus: true, autocomplete: "password" %>
-    </div>
-  </div>
+  <!--<div class="form-group row h5">-->
+  <!--  <div class="col-sm-3">-->
+  <!--    <label for="password">パスワード</label>-->
+  <!--  <#% if @minimum_password_length %>-->
+  <!--  <em>(<#%= @minimum_password_length %> 文字以上)</em>-->
+  <!--  <#% end %>-->
+  <!--  </div>-->
+  <!--  <div class="col-sm-4">-->
+  <!--  <#%= f.password_field :password, autofocus: true, autocomplete: "password" %>-->
+  <!--  </div>-->
+  <!--</div>-->
+  <!--<div class="form-group row h5">-->
+  <!--  <div class="col-sm-3">-->
+  <!--    <label for="password">パスワード(確認用)</label>-->
+  <!--  </div>-->
+  <!--  <div class="col-sm-4">-->
+  <!--  <#%= f.password_field :password_confirmation, autofocus: true, autocomplete: "password" %>-->
+  <!--  </div>-->
+  <!--</div>-->
   <div class="form-group row h5">
     <div class="col-sm-3">
       <label for="release_status">会員ステータス</label>

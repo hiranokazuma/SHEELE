@@ -9,24 +9,7 @@
       <%= render 'public/notifications/notifications', notifications: @notifications %>
     </div>
   <% else %>
-    <table class="table table-bordered">
-      <thead class="h5 table-secondary text-center">
-        <tr>
-          <th style="width: 15%">既読・未読</th>
-          <th style="width: 20%">受領日時</th>
-          <th style="width: 55%">申請された物件</th>
-          <th style="width: 10%">経過</th>
-        </tr>
-      </thead>
-      <tbody>
-      <tr class="h5 text-center">
-        <td class="align-middle text-center"></td>
-        <td class="align-middle text-center"></td>
-        <td class="align-middle text-center">返信はまだありません</td>
-        <td class="align-middle text-center"></td>
-      </tr>
-      </tbody>
-    </table>
+    <p class="d-grid gap-2 col-6 mx-auto text-center h4">新しい通知はありません</p>
 <br>
   <% end %>
   <div class="d-grid gap-2 col-5 mx-auto text-center">
@@ -44,19 +27,28 @@
     <tbody>
 <br>
 <br>
-    <% @management_notices.each do |management_notice| %>
+    <% if current_user.management_notice_ids.count <= 0 %>
       <tr class="h5 text-center">
-        <td class="align-middle text-center">
-          <%= management_notice.created_at.to_s(:date_jp) %><br>
-          <%= management_notice.created_at.to_s(:time_jp) %>
-        </td>
-        <td class="align-middle text-center"><%= management_notice.id %></td>
-        <td class="align-middle text-left">
-          <%= link_to management_notice_path(management_notice) do %>
-            タイトル：<%= management_notice.title %><br>本文：<%= management_notice.content.truncate(30) %>
-          <% end %>
-        </td>
+        <td class="align-middle text-center"></td>
+        <td class="align-middle text-center"></td>
+        <td class="align-middle text-center">お知らせはありません</td>
+        <td class="align-middle text-center"></td>
       </tr>
+    <% else %>
+      <% @management_notices.each do |management_notice| %>
+        <tr class="h5 text-center">
+          <td class="align-middle text-center">
+            <%= management_notice.created_at.to_s(:date_jp) %><br>
+            <%= management_notice.created_at.to_s(:time_jp) %>
+          </td>
+          <td class="align-middle text-center"><%= management_notice.id %></td>
+          <td class="align-middle text-left">
+            <%= link_to management_notice_path(management_notice) do %>
+              タイトル：<%= management_notice.title %><br>本文：<%= management_notice.content.truncate(30) %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
     <% end %>
     </tbody>
   </table>
@@ -78,7 +70,7 @@
     <% if current_user.reply_ids.count <= 0 %>
       <tr class="h5 text-center">
         <td class="align-middle text-center"></td>
-        <td class="align-middle text-center">返信はまだありません</td>
+        <td class="align-middle text-center">返信はありません</td>
         <td class="align-middle text-center"></td>
       </tr>
     <% else %>
@@ -96,8 +88,8 @@
           <td class="align-middle text-center">
             <% if current_user.id == reply.user.id %>
               <%= link_to reply_path(reply), method: :delete, data: { confirm: "削除してもよろしいですか？" }, class: 'btn btn-danger text-light' do %>
-            <i class="fa-solid fa-trash-can fa-lg"></i>
-            <% end %>
+              <i class="fa-solid fa-trash-can fa-lg"></i>
+              <% end %>
             <% end %>
           </td>
         </tr>

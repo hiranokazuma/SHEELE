@@ -17,17 +17,20 @@
       </tr>
     </thead>
     <tbody>
-      <% if @view_applications.count <= 0 %>
+      <% if @property.user_id == current_user.id || @view_applications.count <= 0 %>
         <tr>
           <td></td>
           <td></td>
-          <td class="h5 align-middle text-center">申請された物件はまだありません。</td>
+          <td class="h5 align-middle text-center">申請された物件はありません。</td>
           <td></td>
         </tr>
       <% else %>
         <% @view_applications.each do |view_application| %>
           <tr class="h5 text-center">
-            <td class="align-middle text-center"><%= simple_format(view_application.created_at.to_s(:datetime_jp)) %></td>
+            <td class="align-middle text-center">
+              <%= view_application.created_at.to_s(:date_jp) %><br>
+              <%= view_application.created_at.to_s(:time_jp) %>
+              </td>
             <td class="align-middle text-center"><%= view_application.id %></td>
             <td class="align-middle text-center">
               <%= view_application.property.sell_category %>&emsp;
@@ -45,13 +48,13 @@
                 土地面積：<%= view_application.property.land_area %>㎡&emsp;
                 建物面積：<%= view_application.property.building_area %>㎡&emsp;
               <% end %>
-              <%= view_application.property.right %>&emsp;
-              <%= view_application.property.use_area %><br>
+              <%= view_application.property.right %>&emsp;<br>
+              <%= view_application.property.use_area %>&emsp;
               建ぺい率<%= view_application.property.building_coverage_ratio %>％&emsp;
               容積率<%= view_application.property.floor_area_ratio %>％
             </td>
             <td class="align-middle text-center">
-                <%= link_to "詳細", view_application_path(view_application), class: 'btn btn-primary text-light' %>
+                <%= link_to "詳細", edit_view_application_path(view_application), class: 'btn btn-primary text-light' %>
             </td>
           </tr>
         <% end %>
@@ -122,7 +125,7 @@
         <tr>
           <td></td>
           <td></td>
-          <td class="h5 align-middle text-center">申請した物件はまだありません。</td>
+          <td class="h5 align-middle text-center">申請した物件はありません。</td>
           <td></td>
         </tr>
       <% end %>

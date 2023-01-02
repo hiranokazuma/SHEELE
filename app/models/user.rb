@@ -21,13 +21,14 @@ class User < ApplicationRecord
   has_many :view_application_properties, through: :view_applications, source: :property
   has_many :messages, dependent: :destroy
   has_many :replies, dependent: :destroy
+  has_many :management_notices, dependent: :destroy
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
-  
+
   def create_view_application(property)
     view_application = self.view_applications.find_or_create_by(property_id: property.id)
   end
-  
+
   def destroy_view_application(property)
     view_application = self.view_applications.find_by(property_id: property.id)
     if view_application && view_application.apply_status != "申請中"

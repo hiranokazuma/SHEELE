@@ -53,7 +53,8 @@ ActiveRecord::Schema.define(version: 2022_12_14_095036) do
   end
 
   create_table "management_notices", force: :cascade do |t|
-    t.integer "admin_id", default: 0, null: false
+    t.integer "admin_id", null: false
+    t.integer "user_id", null: false
     t.string "title", null: false
     t.text "content", null: false
     t.datetime "created_at", precision: 6, null: false

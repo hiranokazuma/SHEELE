@@ -2,6 +2,7 @@ class ManagementNotice < ApplicationRecord
 
 
   belongs_to :admin
+  belongs_to :user
   has_many :notifications
 
   def create_notification_admin(current_admin)

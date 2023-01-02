@@ -3,12 +3,15 @@ class Public::ViewApplicationsController < ApplicationController
 
   def index
     @view_applications = ViewApplication.where.not(user_id: current_user.id)
-    @view_application = ViewApplication.new
+    # @view_applications = ViewApplication.where.not(user_id: current_user.id)
+    @property = Property.find_by(user_id: current_user.id)
+    # @view_application = ViewApplication.new
     @properties = current_user.view_application_properties.select_status("申請中", "許可")
     @user = current_user.id
   end
 
   def edit
+    @view_applications = ViewApplication.where.not(user_id: current_user.id)
     @view_application = ViewApplication.find(params[:id])
     @property = @view_application.property
     @users = User.all
