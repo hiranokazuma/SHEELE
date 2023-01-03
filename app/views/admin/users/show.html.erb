@@ -5,7 +5,7 @@
   </div>
 <br>
 <br>
-  <div class="form-group row h5">
+  <div class="form-group row h5 justify-content-center">
     <div class="col-sm-3">
       <label for="company_name">会社名</label>
     </div>
@@ -13,7 +13,7 @@
       <%= @user.company_name %>
     </div>
   </div>
-  <div class="form-group row h5">
+  <div class="form-group row h5 justify-content-center">
     <div class="col-sm-3">
       <label for="location">所在地</label>
     </div>
@@ -21,7 +21,7 @@
       <%= @user.location %>
     </div>
   </div>
-  <div class="form-group row h5">
+  <div class="form-group row h5 justify-content-center">
     <div class="col-sm-3">
       <label for="licensing_entity">免許主体</label>
     </div>
@@ -29,7 +29,7 @@
       <%= @user.licensing_entity %>
     </div>
   </div>
-  <div class="form-group row h5">
+  <div class="form-group row h5 justify-content-center">
     <div class="col-sm-3">
       <label for="licensing_region">免許地</label>
     </div>
@@ -37,7 +37,7 @@
       <%= @user.licensing_region %>
     </div>
   </div>
-  <div class="form-group row h5">
+  <div class="form-group row h5 justify-content-center">
     <div class="col-sm-3">
       <label for="update_number">免許更新数</label>
     </div>
@@ -45,7 +45,7 @@
       (<%= @user.update_number %>)
     </div>
   </div>
-  <div class="form-group row h5">
+  <div class="form-group row h5 justify-content-center">
     <div class="col-sm-3">
       <label for="license_number">免許番号</label>
     </div>
@@ -53,7 +53,7 @@
       第<%= @user.license_number %>号
     </div>
   </div>
-  <div class="form-group row h5">
+  <div class="form-group row h5 justify-content-center">
     <div class="col-sm-3">
       <label for="representatives_name">代表者名</label>
     </div>
@@ -61,7 +61,7 @@
       <%= @user.representatives_name %>
     </div>
   </div>
-  <div class="form-group row h5">
+  <div class="form-group row h5 justify-content-center">
     <div class="col-sm-3">
       <label for="manager_name">担当者名</label>
     </div>
@@ -69,7 +69,7 @@
       <%= @user.manager_name %>
     </div>
   </div>
-  <div class="form-group row h5">
+  <div class="form-group row h5 justify-content-center">
     <div class="col-sm-3">
       <label for="telephone_number">電話番号(ハイフンなし)</label>
     </div>
@@ -77,7 +77,7 @@
       <%= @user.telephone_number %>
     </div>
   </div>
-  <div class="form-group row h5">
+  <div class="form-group row h5 justify-content-center">
     <div class="col-sm-3">
       <label for="email">メールアドレス</label>
     </div>
@@ -85,19 +85,19 @@
       <%= @user.email %>
     </div>
   </div>
-  <div class="form-group row h5">
-    <div class="col-sm-3">
-      <label for="password">パスワード</label>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> 文字以上)</em>
-    <% end %>
-    </div>
-    <div class="col-sm-4">
-      <%= @user.password %>
+  <!--<div class="form-group row h5 justify-content-center">-->
+  <!--  <div class="col-sm-3">-->
+  <!--    <label for="password">パスワード</label>-->
+  <!--  <#% if @minimum_password_length %>-->
+  <!--  <em>(<#%= @minimum_password_length %> 文字以上)</em>-->
+  <!--  <#% end %>-->
+  <!--  </div>-->
+  <!--  <div class="col-sm-4">-->
+  <!--    <#%= @user.password %>-->
     <!--<%#= f.password_field :password, value: @user.password, readonly: true %>-->
-    </div>
-  </div>
-  <div class="form-group row h5">
+  <!--  </div>-->
+  <!--</div>-->
+  <div class="form-group row h5 justify-content-center">
     <div class="col-sm-3">
       <label for="release_status">会員ステータス</label>
     </div>
@@ -113,9 +113,7 @@
 <br>
   <div class="row justify-content-center">
     <div class="col-sm-3">
-    </div>
-    <div class="col-sm-3">
-      <%= link_to admin_users_path, class: "btn btn-success text-light btn-lg" do %>
+      <%= link_to admin_users_path, class: "btn btn-secondary text-light btn-lg" do %>
       <i class="fa-solid fa-backward-step fa-lg"></i>　一覧へ戻る
       <% end %>
     </div>

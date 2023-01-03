@@ -12,8 +12,6 @@ class User < ApplicationRecord
   validates :representatives_name, presence: true
   validates :telephone_number, presence: true
   validates :email, presence: true
-  validates :password, presence: true
-  validates :password_confirmation, presence: true
 
   has_many :notifications, dependent: :destroy
   has_many :properties, dependent: :destroy
@@ -21,7 +19,6 @@ class User < ApplicationRecord
   has_many :view_application_properties, through: :view_applications, source: :property
   has_many :messages, dependent: :destroy
   has_many :replies, dependent: :destroy
-  has_many :management_notices, dependent: :destroy
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
 

@@ -13,7 +13,9 @@
   <div class="row justify-content-center">
 
     <div class="col-sm-3">
-      <%= link_to "お知らせ一覧へ戻る", admin_messages_path, class: "btn btn-secondary text-light btn-lg btn-block"%>
+      <%= link_to admin_messages_path, class: "btn btn-secondary text-light btn-lg btn-block" do %>
+      <i class="fa-solid fa-backward-step fa-lg"></i>　お知らせ一覧へ戻る
+      <% end %>
     </div>
   </div>
 <br>

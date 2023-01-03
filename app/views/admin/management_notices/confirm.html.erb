@@ -33,10 +33,14 @@
     <%= f.hidden_field :content %>
   <div class="form-group row h5">
     <div class="actions col-3 mx-auto">
-      <%= f.submit "　戻る　", name: :back, class: "btn btn-secondary btn-lg btn-block"%>
+      <%= button_tag type: "submit", name: :back, class: "btn btn-secondary btn-lg btn-block" do %>
+      <i class="fa-solid fa-backward-step fa-lg"></i>　入力へ戻る
+      <% end %>
     </div>
     <div class="actions col-3 mx-auto">
-      <%= f.submit " 送信する ", class: "btn btn-success btn-lg btn-block"%>
+      <%= button_tag type: "submit", class: "btn btn-success btn-lg btn-block" do %>
+      <i class="fa-solid fa-reply fa-lg"></i>　送信する
+      <% end %>
     </div>
   </div>
   <% end %>

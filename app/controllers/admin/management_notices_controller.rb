@@ -6,7 +6,6 @@ class Admin::ManagementNoticesController < ApplicationController
 
   def create
     @management_notice = ManagementNotice.new(management_notice_params)
-    @management_notice.user_ids = User.all
     @management_notice.admin_id = current_admin.id
     if params[:back] || !@management_notice.save
       render :new

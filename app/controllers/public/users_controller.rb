@@ -39,6 +39,6 @@ class Public::UsersController < ApplicationController
     params.require(:user).permit(:company_name, :location, :licensing_entity,
                                 :licensing_region, :update_number, :license_number,
                                 :representatives_name, :telephone_number, :manager_name,
-                                :is_deleted, :email, :password, :password_confirmation)
+                                :is_deleted, :email)
   end
 end
