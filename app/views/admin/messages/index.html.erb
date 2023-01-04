@@ -4,7 +4,7 @@
   </div>
 <br>
 <br>
-  <% if @notifications.exists? %>
+  <% if @notifications.present? %>
     <div id="notifications">
       <%= render 'admin/notifications/notifications', notifications: @notifications %>
     </div>
@@ -56,9 +56,9 @@
           <% end %>
         </td>
         <td class="align-middle text-center">
-            <%= link_to admin_message_path(message), method: :delete, data: { confirm: "削除してもよろしいですか？" }, class: 'btn btn-danger text-light' do %>
-            <i class="fa-solid fa-trash-can fa-lg"></i>
-            <% end %>
+          <%= link_to admin_message_path(message), method: :delete, data: { confirm: "削除してもよろしいですか？" }, class: 'btn btn-danger text-light' do %>
+          <i class="fa-solid fa-trash-can fa-lg"></i>
+          <% end %>
         </td>
       </tr>
       <% end %>

@@ -2,7 +2,6 @@ class Public::PropertiesController < ApplicationController
   def index
     @q = Property.ransack(params[:q])
     @properties = @q.result(distinct: true).page(params[:page]).per(15)
-    #byebug
     @property = Property.new
     @view_applications = ViewApplication.all
   end

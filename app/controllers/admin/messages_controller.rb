@@ -2,7 +2,9 @@ class Admin::MessagesController < ApplicationController
   def index
     @management_notices = ManagementNotice.all
     ids = Notification.where(visitor_id: @messages).pluck(:id)
-    @notifications = Notification.where(read: :false).where(id: (current_admin.passive_notifications.pluck(:id) - ids)).page(params[:page]).per(20)
+    # @notifications = Notification.where(read: :false).where(id: (current_admin.passive_notifications.pluck(:id) - ids)).page(params[:page]).per(20)
+    message_notification = Notification.where(read: :false).where(id: (current_admin.passive_notifications.pluck(:id) - ids)).where(notice_type: :message).first
+    @notifications = [message_notification].compact
     @q = Message.ransack(params[:q])
     @messages = @q.result(distinct: true).page(params[:page]).per(15)
   end

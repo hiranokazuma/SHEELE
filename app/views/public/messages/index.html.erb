@@ -4,7 +4,7 @@
   </div>
   <!--<#% @notifications = @notifications.where.not(visitor_id: current_user.id) %>-->
 <br>
-  <% if @notifications.exists? %>
+  <% if @notifications.present? %>
     <div id="notifications">
       <%= render 'public/notifications/notifications', notifications: @notifications %>
     </div>
@@ -27,7 +27,7 @@
     <tbody>
 <br>
 <br>
-    <% if current_user.management_notice_ids.count <= 0 %>
+    <% if @management_notices.count <= 0 %>
       <tr class="h5 text-center">
         <td class="align-middle text-center"></td>
         <td class="align-middle text-center"></td>

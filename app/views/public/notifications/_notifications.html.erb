@@ -43,30 +43,29 @@
           </th>
         </tr>
       <% end %>
-      <tr>
-        <%if notification.notice_type == 'management_notice' %>
+      <%if notification.notice_type == 'management_notice' %>
+        <tr>
           <div class="col-sm-5">
             <p class="h5 bg-warning text-danger font-weight-bold text-left d-flex align-items-center">
               <span class="badge badge-danger mr-3">New!!</span>
               運営からのお知らせがあります。
             </p>
           </div>
-        <% end %>
-      </tr>
-      <tr>
-        <%if notification.notice_type == 'reply' %>
+        </tr>
+      <% end %>
+      <%if notification.notice_type == 'reply' %>
+        <tr>
           <div class="col-sm-5">
             <p class="h5 bg-warning text-danger font-weight-bold text-left d-flex align-items-center">
               <span class="badge badge-danger mr-3">New!!</span>
               お問い合わせに対する返信があります。
             </p>
           </div>
-        <% end %>
-      </tr>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
 <br>
 <br>
 <br>
-<%= paginate notifications %>

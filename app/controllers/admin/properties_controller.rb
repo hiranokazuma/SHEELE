@@ -1,6 +1,7 @@
 class Admin::PropertiesController < ApplicationController
   def index
     @property = Property.new
+    # @properties = Property.where(sell_category: params[:q][:sell_category]).page(params[:page]).per(15)
     @q = Property.ransack(params[:q])
     @properties = @q.result(distinct: true).page(params[:page]).per(15)
   end

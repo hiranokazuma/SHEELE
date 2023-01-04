@@ -6,7 +6,7 @@
 <br>
   <div class="d-grid gap-2 col-4 mx-auto text-center">
     <button type="button" class="btn btn-info btn-lg btn-block" data-toggle="collapse" data-target="#search">
-      <i class="fa-solid fa-magnifying-glass"></i>　物件を検索する
+      <i class="fa-solid fa-magnifying-glass"></i>　検索条件を表示
     </button>
   </div>
     <div id="search" class="collapse">
@@ -16,7 +16,7 @@
       <div class="col-sm-3">
       </div>
       <div class="col-sm-2">
-        <%= f.label :id, "物件ID" %>
+        <%= f.label :id_eq, "物件ID" %>
       </div>
       <div class="col-sm-4">
         <%= f.search_field :id_eq , class: "form-control", style: "width:60%" %>
@@ -26,17 +26,17 @@
       <div class="col-sm-3">
       </div>
       <div class="col-sm-2">
-        <%= f.label :prefecture, "都道府県" %>
+        <%= f.label :prefecture_eq, "都道府県" %>
       </div>
       <div class="col-sm-4">
-        <%= f.collection_select(:prefecture, Property.all, :id, :prefecture , include_blank: '選択') %>
+        <%= f.select :prefecture_eq, Property.prefectures, {include_blank: '選択'},  {class: 'form-select'} %>
       </div>
     </div>
     <div class="form-group row h5">
       <div class="col-sm-3">
       </div>
       <div class="col-sm-2">
-        <%= f.label :municipality, "市区町村" %>
+        <%= f.label :municipality_cont, "市区町村" %>
       </div>
       <div class="col-sm-4">
         <%= f.search_field :municipality_cont, class: "form-control", style: "width:60%" %>
@@ -46,37 +46,37 @@
       <div class="col-sm-3">
       </div>
       <div class="col-sm-2">
-        <%= f.label :kind, "物件種別" %>
+        <%= f.label :kind_eq, "物件種別" %>
       </div>
       <div class="col-sm-4">
-        <%= f.collection_select(:kind, Property.all, :id, :kind, include_blank: '選択')  %>
+        <%= f.select :kind_eq, Property.kinds, {include_blank: '選択'},  {class: 'form-select'} %>
       </div>
     </div>
     <div class="form-group row h5">
       <div class="col-sm-3">
       </div>
       <div class="col-sm-2">
-          <label for="sell_category">売却カテゴリ</label>
+        <%= f.label :sell_category_eq, "売却カテゴリ" %>
       </div>
       <div class="col-sm-4">
-        <%= f.select :sell_category, Property.sell_categories.keys.map.with_index, {include_blank: '選択'},  {class: 'form-select'} %>
+        <%= f.select :sell_category_eq, Property.sell_categories, {include_blank: '選択'},  {class: 'form-select'} %>
       </div>
     </div>
     <div class="form-group row h5">
       <div class="col-sm-3">
       </div>
       <div class="col-sm-2">
-        <%= f.label :right, "権利種別" %>
+        <%= f.label :right_eq, "権利種別" %>
       </div>
       <div class="col-sm-4">
-        <%= f.collection_select(:right, Property.all, :id, :right, include_blank: '選択')  %>
+        <%= f.select :right_eq, Property.rights, {include_blank: '選択'},  {class: 'form-select'} %>
       </div>
     </div>
     <div class="form-group row h5">
       <div class="col-sm-3">
       </div>
       <div class="col-sm-2">
-        <%= f.label :line, "路線" %>
+        <%= f.label :line_cont, "路線" %>
       </div>
       <div class="col-sm-4">
         <%= f.search_field :line_cont, class: "form-control" , style: "width:60%" %>
@@ -86,7 +86,7 @@
       <div class="col-sm-3">
       </div>
       <div class="col-sm-2">
-        <%= f.label :station, "駅名" %>
+        <%= f.label :station_cont, "駅名" %>
       </div>
       <div class="col-sm-4">
         <%= f.search_field :station_cont, class: "form-control", style: "width:60%" %>
@@ -103,8 +103,8 @@
         <p class="align-middle">分〜</p>
       </div>
       <div class="col-sm-2">
-        <%= f.number_field :walking_minute_lt, class: "form-control", style: "width:60%" ,min:1 %>
-        <p class="align-middle">分未満</p>
+        <%= f.number_field :walking_minute_lteq, class: "form-control", style: "width:60%" ,min:1 %>
+        <p class="align-middle">分以内</p>
       </div>
     </div>
     <div class="form-group row h5">
@@ -118,8 +118,8 @@
         <p class="align-middle">万円〜</p>
       </div>
       <div class="col-sm-3">
-        <%= f.number_field :price_lt, class: "form-control", style: "width:60%" ,min:0 %>
-        <p class="align-middle">万円未満</p>
+        <%= f.number_field :price_lteq, class: "form-control", style: "width:60%" ,min:0 %>
+        <p class="align-middle">万円以下</p>
       </div>
     </div>
     <div class="form-group row h5">
@@ -133,8 +133,8 @@
         <p class="align-middle">％〜</p>
       </div>
       <div class="col-sm-3">
-        <%= f.number_field :building_coverage_ratio_lt, class: "form-control", style: "width:50%" ,min:0 %>
-        <p class="align-middle">％未満</p>
+        <%= f.number_field :building_coverage_ratio_lteq, class: "form-control", style: "width:50%" ,min:0 %>
+        <p class="align-middle">％以下</p>
       </div>
     </div>
     <div class="form-group row h5">
@@ -148,15 +148,15 @@
         <p class="align-middle">％〜</p>
       </div>
       <div class="col-sm-3">
-        <%= f.number_field :floor_area_ratio_lt, class: "form-control", style: "width:50%" ,min:0 %>
-        <p class="align-middle">％未満</p>
+        <%= f.number_field :floor_area_ratio_lteq, class: "form-control", style: "width:50%" ,min:0 %>
+        <p class="align-middle">％以下</p>
       </div>
     </div>
     <div class="form-group row h5">
       <div class="col-sm-3">
       </div>
       <div class="col-sm-2">
-        <%= f.label :use_area, "用途地域" %>
+        <%= f.label :use_area_cont, "用途地域" %>
       </div>
       <div class="col-sm-4">
         <%= f.search_field :use_area_cont, class: "form-control" %>

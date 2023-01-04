@@ -6,7 +6,7 @@
 <br>
   <div class="d-grid gap-2 col-4 mx-auto text-center">
     <button type="button" class="btn btn-info btn-lg btn-block" data-toggle="collapse" data-target="#search">
-      <i class="fa-solid fa-magnifying-glass"></i> 会員を検索する
+      <i class="fa-solid fa-magnifying-glass"></i> 検索条件を表示
     </button>
   </div>
     <div id="search" class="collapse">
@@ -16,7 +16,7 @@
       <div class="col-sm-3">
       </div>
       <div class="col-sm-3">
-        <%= f.label :id, "会員ID" %>
+        <%= f.label :id_eq, "会員ID" %>
       </div>
       <div class="col-sm-4">
         <%= f.search_field :id_eq ,class: "form-control", style: "width:80%"%>
@@ -26,7 +26,7 @@
       <div class="col-sm-3">
       </div>
       <div class="col-sm-3">
-        <%= f.label :company_name, "会社名" %>
+        <%= f.label :company_name_cont, "会社名" %>
       </div>
       <div class="col-sm-4">
         <%= f.search_field :company_name_cont ,class: "form-control", style: "width:80%" %>
@@ -36,7 +36,7 @@
       <div class="col-sm-3">
       </div>
       <div class="col-sm-3">
-        <%= f.label :location, "所在地" %>
+        <%= f.label :location_cont, "所在地" %>
       </div>
       <div class="col-sm-4">
         <%= f.search_field :location_cont ,class: "form-control", style: "width:80%"%>
@@ -46,7 +46,7 @@
       <div class="col-sm-3">
       </div>
       <div class="col-sm-3">
-        <%= f.label :telephone_number, "電話番号(ハイフンなし)" %>
+        <%= f.label :telephone_number_eq, "電話番号(ハイフンなし)" %>
       </div>
       <div class="col-sm-4">
         <%= f.search_field :telephone_number_eq ,class: "form-control", style: "width:80%"%>
@@ -56,7 +56,7 @@
       <div class="col-sm-3">
       </div>
       <div class="col-sm-3">
-        <%= f.label :email, "メールアドレス" %>
+        <%= f.label :email_cont, "メールアドレス" %>
       </div>
       <div class="col-sm-4">
         <%= f.search_field :email_cont ,class: "form-control", style: "width:80%"%>

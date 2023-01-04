@@ -2,8 +2,7 @@ class Public::RepliesController < ApplicationController
 
   def show
     @reply = Reply.find(params[:id])
-    # @notification = Notification.reply.find_by(id: params[:reply_id])
-    # Notification.reply.update(read: true)
+    @reply.notifications.update(read: true)
   end
 
   def destroy
