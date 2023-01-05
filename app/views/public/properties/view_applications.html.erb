@@ -98,26 +98,26 @@
             <% if view_application.apply_status == "申請中" %>
               <div class="col btn-block" data-toggle="buttons">
                 <label class="btn btn-outline-primary">
-                  <h5><%= f.radio_button :apply_status, 2, checked: true %> 許 可 </h5>
+                  <h5><%= f.radio_button :apply_status, view_application.id, checked: true %> 許 可 </h5>
                 </label>
               </div>
               <div class="col btn-block" data-toggle="buttons">
                 <label class="btn btn-outline-danger">
-                  <h5><%= f.radio_button :apply_status, 3, {} %> 否 認 </h5>
+                  <h5><%= f.radio_button :apply_status, view_application.id, {} %> 否 認 </h5>
                 </label>
               </div>
             <% elsif view_application.apply_status == "許可" %>
               <b class="text-warning">許可済</b>
               <div class="col btn-block" data-toggle="buttons">
                 <label class="btn btn-outline-danger">
-                  <h5><%= f.radio_button :apply_status, 3, {} %> 否 認 </h5>
+                  <h5><%= f.radio_button :apply_status, view_application.id, {} %> 否 認 </h5>
                 </label>
               </div>
             <% elsif view_application.apply_status == "否認" %>
               <b class="text-danger">否認</b>
               <div class="col btn-block" data-toggle="buttons">
                 <label class="btn btn-outline-primary">
-                  <h5><%= f.radio_button :apply_status, 2, checked: true %> 許 可 </h5>
+                  <h5><%= f.radio_button :apply_status, view_application.id, checked: true %> 許 可 </h5>
                 </label>
               </div>
             <% end %>

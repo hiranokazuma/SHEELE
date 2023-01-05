@@ -11,13 +11,14 @@
     <thead class="h5 table-secondary text-center">
       <tr>
         <th style="width: 20%">申請日時</th>
-        <th style="width: 10%">申請ID</th>
+        <!--<th style="width: 10%">申請ID</th>-->
         <th style="width: 60%">申請物件</th>
         <th style="width: 10%"> </th>
       </tr>
     </thead>
     <tbody>
-      <% if @property.user_id == current_user.id && @view_applications.count <= 0 %>
+      <% if @applied_properties.count <= 0 %>
+      <!--@property.user_id == current_user.id && -->
         <tr>
           <td></td>
           <td></td>
@@ -25,36 +26,36 @@
           <td></td>
         </tr>
       <% else %>
-        <% @view_applications.each do |view_application| %>
+        <% @applied_properties.each do |property| %>
           <tr class="h5 text-center">
             <td class="align-middle text-center">
-              <%= view_application.created_at.to_s(:date_jp) %><br>
-              <%= view_application.created_at.to_s(:time_jp) %>
+              <%= property.created_at.to_s(:date_jp) %><br>
+              <%= property.created_at.to_s(:time_jp) %>
               </td>
-            <td class="align-middle text-center"><%= view_application.id %></td>
+            <!--<td class="align-middle text-center"><%#= view_application.id %></td>-->
             <td class="align-middle text-center">
-              <%= view_application.property.sell_category %>&emsp;
-              <%= view_application.property.prefecture %>
-              <%= view_application.property.municipality %>
-              <%= view_application.property.city_block %>&emsp;
-              <%= view_application.property.kind %>&emsp;<br>
-              <%= view_application.property.line %>線&emsp;
-              <%= view_application.property.station %>駅&emsp;
-              徒歩<%= view_application.property.walking_minute %>分<br>
-              <%= view_application.property.price %>万円&emsp;
-              <% if view_application.property.kind == "土地" %>
-                土地面積：<%= view_application.property.land_area %>㎡&emsp;
+              <%= property.sell_category %>&emsp;
+              <%= property.prefecture %>
+              <%= property.municipality %>
+              <%= property.city_block %>&emsp;
+              <%= property.kind %>&emsp;<br>
+              <%= property.line %>線&emsp;
+              <%= property.station %>駅&emsp;
+              徒歩<%= property.walking_minute %>分<br>
+              <%= property.price %>万円&emsp;
+              <% if property.kind == "土地" %>
+                土地面積：<%= property.land_area %>㎡&emsp;
               <% else %>
-                土地面積：<%= view_application.property.land_area %>㎡&emsp;
-                建物面積：<%= view_application.property.building_area %>㎡&emsp;
+                土地面積：<%= property.land_area %>㎡&emsp;
+                建物面積：<%= property.building_area %>㎡&emsp;
               <% end %>
-              <%= view_application.property.right %>&emsp;<br>
-              <%= view_application.property.use_area %>&emsp;
-              建ぺい率<%= view_application.property.building_coverage_ratio %>％&emsp;
-              容積率<%= view_application.property.floor_area_ratio %>％
+              <%= property.right %>&emsp;<br>
+              <%= property.use_area %>&emsp;
+              建ぺい率<%= property.building_coverage_ratio %>％&emsp;
+              容積率<%= property.floor_area_ratio %>％
             </td>
             <td class="align-middle text-center">
-                <%= link_to "詳細", edit_view_application_path(view_application), class: 'btn btn-primary text-light' %>
+                <%= link_to "詳細", property_view_applications_path(property), class: 'btn btn-primary text-light' %>
             </td>
           </tr>
         <% end %>
