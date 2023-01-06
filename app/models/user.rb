@@ -21,7 +21,8 @@ class User < ApplicationRecord
   has_many :replies, dependent: :destroy
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
-
+  has_many :management_notices, dependent: :destroy
+  
   def create_view_application(property)
     view_application = self.view_applications.find_or_create_by(property_id: property.id)
   end

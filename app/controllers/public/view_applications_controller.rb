@@ -3,7 +3,6 @@ class Public::ViewApplicationsController < ApplicationController
 
   def index
     # @view_applications = ViewApplication.where.not(user_id: current_user.id)
-    # @view_applications = ViewApplication.where.not(user_id: current_user.id)
     # @property = Property.find_by(user_id: current_user.id)
     @applied_properties = Property.joins(:view_applications).where(user_id: current_user.id).where.not(view_applications:{user_id: current_user.id}).distinct
     # @view_application = ViewApplication.new

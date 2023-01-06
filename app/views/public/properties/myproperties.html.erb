@@ -218,7 +218,7 @@
         </td>
         <td class="align-middle text-center">
           <% if view_applications.any? {|view_application| view_application.apply_status == "申請中" || view_application.apply_status == "許可"} %>
-            <%= link_to property_view_applications_path(property), class: "btn btn-warning text-light btn-block font-weight-bold" do %>
+            <%= link_to property_view_applications_path(property), class: "btn btn-warning text-light btn-block font-weight-bold", "data-confirm" => "申請を確認しますか？" do %>
             <i class="fa-solid fa-flag text-danger"></i> 申請あり
             <% end %>
           <% else %>

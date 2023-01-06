@@ -5,8 +5,8 @@ class Public::MessagesController < ApplicationController
     ids = Notification.where(visitor_id: current_user).pluck(:id)
     apply_notification = Notification.where(read: :false).where(id: (current_user.passive_notifications.pluck(:id) - ids)).where(notice_type: :apply).first
     reply_notification = Notification.where(read: :false).where(id: (current_user.passive_notifications.pluck(:id) - ids)).where(notice_type: :reply).first
-    management_notice_notification = Notification.where(read: :false).where(notice_type: :management_notice).first
-    # management_notice_notification = Notification.where(read: :false).where(id: (current_user.passive_notifications.pluck(:id) - ids)).where(notice_type: :management_notice).first
+    # management_notice_notification = Notification.where(read: :false).where(notice_type: :management_notice).first
+    management_notice_notification = Notification.where(read: :false).where(id: (current_user.passive_notifications.pluck(:id) - ids)).where(notice_type: :management_notice).first
     @notifications = [apply_notification, reply_notification, management_notice_notification].compact
     # @notifications = Notification.where(read: :false).where(id: (current_user.passive_notifications.pluck(:id) - ids)).page(params[:page]).per(20)
     @q = Message.ransack(params[:q])

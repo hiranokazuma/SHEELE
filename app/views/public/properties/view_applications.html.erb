@@ -91,33 +91,33 @@
                 電話番号：<%= view_application.user.telephone_number %><br>
                 メールアドレス：<%= view_application.user.email %>
           </td>
-        <%= form_with model: @view_application, url: view_application_path(view_application), method: :patch do |f| %>
+        <%= form_with model: view_application, url: view_application_path(view_application), method: :patch do |f| %>
           <td class="align-middle text-center">
               <%= f.hidden_field :user_id, :value => view_application.user.id %>
               <%= f.hidden_field :property_id, :value => @property.id %>
             <% if view_application.apply_status == "申請中" %>
               <div class="col btn-block" data-toggle="buttons">
                 <label class="btn btn-outline-primary">
-                  <h5><%= f.radio_button :apply_status, view_application.id, checked: true %> 許 可 </h5>
+                  <h5><%= f.radio_button :apply_status, :許可, checked: true %> <%= f.label :許可, class: "text-center" %></h5>
                 </label>
               </div>
               <div class="col btn-block" data-toggle="buttons">
                 <label class="btn btn-outline-danger">
-                  <h5><%= f.radio_button :apply_status, view_application.id, {} %> 否 認 </h5>
+                  <h5><%= f.radio_button :apply_status, :否認, {} %>  <%= f.label :否認, class: "text-center" %></h5>
                 </label>
               </div>
             <% elsif view_application.apply_status == "許可" %>
               <b class="text-warning">許可済</b>
               <div class="col btn-block" data-toggle="buttons">
                 <label class="btn btn-outline-danger">
-                  <h5><%= f.radio_button :apply_status, view_application.id, {} %> 否 認 </h5>
+                  <h5><%= f.radio_button :apply_status, :否認, {} %>  <%= f.label :否認, class: "text-center" %></h5>
                 </label>
               </div>
             <% elsif view_application.apply_status == "否認" %>
               <b class="text-danger">否認</b>
               <div class="col btn-block" data-toggle="buttons">
                 <label class="btn btn-outline-primary">
-                  <h5><%= f.radio_button :apply_status, view_application.id, checked: true %> 許 可 </h5>
+                  <h5><%= f.radio_button :apply_status, :許可, checked: true %> <%= f.label :許可, class: "text-center" %></h5>
                 </label>
               </div>
             <% end %>

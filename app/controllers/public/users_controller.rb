@@ -14,6 +14,7 @@ class Public::UsersController < ApplicationController
     @user = current_user
     if @user.update(user_params)
       flash[:notice] = "変更を保存しました。"
+      redirect_to users_information_path(current_user)
     else
       flash[:arlet] = "変更に失敗しました。"
       render :edit

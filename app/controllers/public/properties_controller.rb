@@ -17,7 +17,6 @@ class Public::PropertiesController < ApplicationController
     @view_application = ViewApplication.find_by(id: params[:view_application_id])
     @property = Property.find(params[:id])
     @view_applications = @property.view_applications
-    @users = User.all
   end
 
   def show

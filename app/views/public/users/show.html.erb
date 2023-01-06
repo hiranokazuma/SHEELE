@@ -1,10 +1,10 @@
 <div class="container">
   <div class="d-grid gap-2 col-5 mx-auto text-center">
-    <h2>会員情報編集確認</h2>
+    <h2>会員情報詳細</h2>
   </div>
 <br>
 <br>
-  <div class="form-group row h5">
+  <div class="form-group row h5 justify-content-center">
     <div class="col-sm-3">
       <label for="company_name">会社名</label>
     </div>
@@ -12,7 +12,7 @@
       <%= current_user.company_name %>
     </div>
   </div>
-  <div class="form-group row h5">
+  <div class="form-group row h5 justify-content-center">
     <div class="col-sm-3">
       <label for="location">所在地</label>
     </div>
@@ -20,7 +20,7 @@
       <%= current_user.location %>
     </div>
   </div>
-  <div class="form-group row h5">
+  <div class="form-group row h5 justify-content-center">
     <div class="col-sm-3">
       <label for="licensing_entity">免許主体</label>
     </div>
@@ -28,7 +28,7 @@
       <%= current_user.licensing_entity %>
     </div>
   </div>
-  <div class="form-group row h5">
+  <div class="form-group row h5 justify-content-center">
     <div class="col-sm-3">
       <label for="licensing_region">免許地</label>
     </div>
@@ -36,7 +36,7 @@
       <%= current_user.licensing_region %>
     </div>
   </div>
-  <div class="form-group row h5">
+  <div class="form-group row h5 justify-content-center">
     <div class="col-sm-3">
       <label for="update_number">免許更新数</label>
     </div>
@@ -44,7 +44,7 @@
       (<%= current_user.update_number %>)
     </div>
   </div>
-  <div class="form-group row h5">
+  <div class="form-group row h5 justify-content-center">
     <div class="col-sm-3">
       <label for="license_number">免許番号</label>
     </div>
@@ -52,7 +52,7 @@
       第<%= current_user.license_number %>号
     </div>
   </div>
-  <div class="form-group row h5">
+  <div class="form-group row h5 justify-content-center">
     <div class="col-sm-3">
       <label for="representatives_name">代表者名</label>
     </div>
@@ -60,7 +60,7 @@
       <%= current_user.representatives_name %>
     </div>
   </div>
-  <div class="form-group row h5">
+  <div class="form-group row h5 justify-content-center">
     <div class="col-sm-3">
       <label for="manager_name">担当者名</label>
     </div>
@@ -68,7 +68,7 @@
       <%= current_user.manager_name %>
     </div>
   </div>
-  <div class="form-group row h5">
+  <div class="form-group row h5 justify-content-center">
     <div class="col-sm-3">
       <label for="telephone_number">電話番号(ハイフンなし)</label>
     </div>
@@ -76,7 +76,7 @@
       <%= current_user.telephone_number %>
     </div>
   </div>
-  <div class="form-group row h5">
+  <div class="form-group row h5 justify-content-center">
     <div class="col-sm-3">
       <label for="email">メールアドレス</label>
     </div>
@@ -84,7 +84,7 @@
       <%= current_user.email %>
     </div>
   </div>
-  <div class="form-group row h5">
+  <div class="form-group row h5 justify-content-center">
     <div class="col-sm-3">
       <label for="password">パスワード</label>
     <% if @minimum_password_length %>
@@ -96,7 +96,7 @@
     <!--<%#= f.password_field :password, value: @user.password, readonly: true %>-->
     </div>
   </div>
-  <div class="form-group row h5">
+  <div class="form-group row h5 justify-content-center">
     <div class="col-sm-3">
       <label for="release_status">会員ステータス</label>
     </div>
@@ -110,18 +110,19 @@
   </div>
 <br>
 <br>
+<br>
   <div class="row justify-content-center">
     <div class="col-sm-3">
       <%= link_to  users_mypage_path, class: "btn btn-secondary text-light btn-lg" do %>
       <i class="fa-solid fa-backward-step fa-lg"></i>　マイページへ戻る
       <% end %>
     </div>
-    <div class="col-sm-3">
+    <div class="col-sm-4 ml-5">
       <%= link_to  users_information_edit_path(current_user), class: "btn btn-success text-light btn-lg" do %>
-      <i class="fa-solid fa-user-check fa-lg"></i>　編集を保存する
+      <i class="fa-solid fa-user-check fa-lg"></i>　会員情報を編集する
       <% end %>
     </div>
-<br>
-<br>
-<br>
 </div>
+<br>
+<br>
+<br>

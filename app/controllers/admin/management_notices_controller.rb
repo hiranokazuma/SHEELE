@@ -7,6 +7,7 @@ class Admin::ManagementNoticesController < ApplicationController
   def create
     @management_notice = ManagementNotice.new(management_notice_params)
     @management_notice.admin_id = current_admin.id
+    @users = User.pluck(:id)
     if params[:back] || !@management_notice.save
       render :new
     else
@@ -56,6 +57,6 @@ class Admin::ManagementNoticesController < ApplicationController
   private
 
   def management_notice_params
-    params.require(:management_notice).permit(:admin_id, :title, :content)
+    params.require(:management_notice).permit(:admin_id, :user_id, :title, :content)
   end
 end
