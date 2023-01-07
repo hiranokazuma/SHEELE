@@ -21,7 +21,8 @@ class Public::ViewApplicationsController < ApplicationController
     @view_application = ViewApplication.find(params[:id])
     if @view_application.update(view_application_params)
       flash[:notice] = "変更を保存しました。"
-      redirect_to view_application_path(@view_application)
+      redirect_to request.referer
+      # redirect_to view_application_path(@view_application)
     else
       flash[:arlet] = "変更の保存に失敗しました。"
       render:edit

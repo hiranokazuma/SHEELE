@@ -26,7 +26,7 @@ Rails.application.routes.draw do
 
     get 'view_applications/confirm' => 'view_applications#confirm'
     get 'view_applications/complete' => 'view_applications#complete'
-  resources :view_applications, except: [:new]
+  resources :view_applications, except: [:new, :show]
 
     get 'properties/myproperties' => 'properties#myproperties'
     get 'properties/:id/view_applications' => 'properties#view_applications', as: "property_view_applications"

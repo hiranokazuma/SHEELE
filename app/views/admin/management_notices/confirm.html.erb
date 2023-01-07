@@ -27,8 +27,7 @@
 <br>
 <br>
 <br>
-  <%= form_with model: @management_notice, url: admin_management_notices_path, local: true do |f| %>
-    <%= f.hidden_field :admin_id %>
+  <%= form_with model: @management_notice, url: admin_management_notices_path, method: :post, local: true do |f| %>
     <%= f.hidden_field :title %>
     <%= f.hidden_field :content %>
   <div class="form-group row h5">

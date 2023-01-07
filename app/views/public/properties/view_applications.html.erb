@@ -91,8 +91,8 @@
                 電話番号：<%= view_application.user.telephone_number %><br>
                 メールアドレス：<%= view_application.user.email %>
           </td>
-        <%= form_with model: view_application, url: view_application_path(view_application), method: :patch do |f| %>
           <td class="align-middle text-center">
+            <%= form_with model: view_application, url: view_application_path(view_application), method: :patch, id: "form_#{view_application.id}" do |f| %>
               <%= f.hidden_field :user_id, :value => view_application.user.id %>
               <%= f.hidden_field :property_id, :value => @property.id %>
             <% if view_application.apply_status == "申請中" %>
@@ -121,13 +121,13 @@
                 </label>
               </div>
             <% end %>
+            <% end %>
           </td>
           <td class="align-middle text-center">
-            <%= button_tag type: "submit", data: { confirm: "登録してもよろしいですか？" }, class: "btn btn-lg btn-warning text-light btn-block" do %>
+            <%= button_tag type: "submit", data: { confirm: "登録してもよろしいですか？" }, form: "form_#{view_application.id}", class: "btn btn-lg btn-warning text-light btn-block" do %>
             <i class="fa-solid fa-file-arrow-up"></i> 登録する
             <% end %>
           </td>
-        <% end %>
         </tr>
       <% end %>
     </tbody>
