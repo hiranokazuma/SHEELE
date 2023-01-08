@@ -14,7 +14,8 @@
       <tr>
         <th style="width: 8%">物件ID</th>
         <th style="width: 14%">物件画像</th>
-        <th style="width: 78%">概要</th>
+        <th style="width: 68%">概要</th>
+        <th style="width: 10%"></th>
       </tr>
     </thead>
     <tbody>
@@ -28,27 +29,32 @@
           <% end %>
         </td>
         <td class="align-middle text-center">
-            <%= @property.sell_category %>&emsp;
-            <%= @property.kind %>&emsp;
-            <%= @property.right %>&emsp;<br>
-            <%= @property.prefecture %>
-            <%= @property.municipality %>
-            <%= @property.city_block %>
-            <%= @property.address %>&emsp;<br>
-            <%= @property.line %>線&emsp;
-            <%= @property.station %>駅&emsp;
-            徒歩<%= @property.walking_minute %>分<br>
-            <%= @property.price %>万円&emsp;
-            <% if @property.kind == "土地" %>
-              土地面積：<%= @property.land_area %>㎡&emsp;
-            <% else %>
-              土地面積：<%= @property.land_area %>㎡&emsp;
-              建物面積：<%= @property.building_area %>㎡&emsp;
-            <% end %>
-            <br>
-            <%= @property.use_area %>&emsp;
-            建ぺい率<%= @property.building_coverage_ratio %>％&emsp;
-            容積率<%= @property.floor_area_ratio %>％
+          <%= @property.sell_category %>&emsp;
+          <%= @property.kind %>&emsp;
+          <%= @property.right %>&emsp;<br>
+          <%= @property.prefecture %>
+          <%= @property.municipality %>
+          <%= @property.city_block %>
+          <%= @property.address %>&emsp;<br>
+          <%= @property.line %>線&emsp;
+          <%= @property.station %>駅&emsp;
+          徒歩<%= @property.walking_minute %>分<br>
+          <%= @property.price %>万円&emsp;
+          <% if @property.kind == "土地" %>
+            土地面積：<%= @property.land_area %>㎡&emsp;
+          <% else %>
+            土地面積：<%= @property.land_area %>㎡&emsp;
+            建物面積：<%= @property.building_area %>㎡&emsp;
+          <% end %>
+          <br>
+          <%= @property.use_area %>&emsp;
+          建ぺい率<%= @property.building_coverage_ratio %>％&emsp;
+          容積率<%= @property.floor_area_ratio %>％
+        </td>
+        <td class="align-middle text-center">
+          <%= link_to view_applications_path, class: "btn btn-secondary text-light btn-block" do %>
+          <i class="fa-solid fa-backward-step"></i> 戻る
+          <% end %>
         </td>
       </tr>
     </tbody>
@@ -62,11 +68,11 @@
   <table class="table table-bordered">
     <thead class="h5 table-secondary text-center">
       <tr>
-        <th style="width: 14%">申請日時</th>
+        <th style="width: 16%">申請日時</th>
         <th style="width: 7%">申請ID</th>
         <th style="width: 7%">会員ID</th>
         <th style="width: 42%">概要</th>
-        <th style="width: 15%">操作</th>
+        <th style="width: 13%">操作</th>
         <th style="width: 15%">登録</th>
       </tr>
     </thead>
