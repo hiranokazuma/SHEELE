@@ -8,8 +8,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       t.string :location,               null: false, default: ""
       t.string :licensing_entity,       null: false, default: ""
       t.string :licensing_region,       null: true, default: ""
-      t.integer :update_number,         null: false, default: ""
-      t.integer :license_number,        null: false, default: ""
+      t.integer :update_number
+      t.integer :license_number
       t.string :representatives_name,   null: false, default: ""
       t.string :telephone_number,       null: false, default: ""
       t.string :manager_name,           null: true, default: ""
