@@ -18,7 +18,6 @@
     </thead>
     <tbody>
       <% if @applied_properties.count <= 0 %>
-      <!--@property.user_id == current_user.id && -->
         <tr>
           <td></td>
           <td></td>
@@ -32,7 +31,6 @@
               <%= property.created_at.to_s(:date_jp) %><br>
               <%= property.created_at.to_s(:time_jp) %>
             </td>
-            <!--<td class="align-middle text-center"><%#= view_application.id %></td>-->
             <td class="align-middle text-center">
               <% if property.image.attached? %>
                 <%= image_tag property.image, size: "100x100" %>
