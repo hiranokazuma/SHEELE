@@ -1,22 +1,11 @@
 <div class="container">
   <div class="d-grid gap-2 col-5 mx-auto text-center">
-    <h2>物件情報編集</h2>
+    <h2>物件編集</h2>
   </div>
 <br>
 <br>
-  <% if @property.errors.any? %>
-    <div id="error_explanation">
-      <h3><%= @property.errors.count %>件のエラーがあります:</h3>
-      <ul>
-        <% @property.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
 <%= form_with model: @property, url: property_path(@property), local: true do |f| %>
-<!--<#%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>-->
-  <!--<#%= render "public/shared/error_messages", resource: resource %>-->
+  <%= render 'layouts/error_messages', model: f.object %>
   <%= f.hidden_field :user_id, :value => @property.user_id %>
   <div class="form-group row h5">
     <div class="col-sm-3">
@@ -233,15 +222,14 @@
   </div>
 <br>
 <br>
-<br>
   <div class="row">
     <div class="col-sm-4 mx-auto">
-      <%= link_to properties_myproperties_path, class: "btn btn-secondary text-light btn-lg" do%>
-      <i class="fa-solid fa-backward-step fa-lg"></i>　取扱物件一覧へ戻る
+      <%= link_to property_path(@property), class: "btn btn-secondary text-light btn-lg" do%>
+      <i class="fa-solid fa-backward-step fa-lg"></i>　詳細へ戻る
       <% end %>
     </div>
     <div class="col-sm-4 mx-auto">
-      <%= button_tag type: "submit", class: "btn btn-success btn-lg"do %>
+      <%= button_tag type: "submit", class: "btn btn-success btn-lg" do %>
       <i class="fa-solid fa-file-arrow-up fa-lg"></i>　変更を保存
       <% end %>
     </div>

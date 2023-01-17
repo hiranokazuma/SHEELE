@@ -4,19 +4,8 @@
   </div>
 <br>
 <br>
-  <% if @property.errors.any? %>
-    <div id="error_explanation">
-      <h3><%= @property.errors.count %>件のエラーがあります:</h3>
-      <ul>
-        <% @property.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
 <%= form_with model: @property, url: admin_property_path(@property), local: true do |f| %>
-<!--<#%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>-->
-  <!--<#%= render "public/shared/error_messages", resource: resource %>-->
+  <%= render 'layouts/error_messages', model: f.object %>
   <%= f.hidden_field :user_id, :value => @property.user_id %>
   <div class="form-group row h5">
     <div class="col-sm-3">
@@ -252,5 +241,7 @@
   </div>
 <% end %>
 </div>
+<br>
+<br>
 <br>
 <br>

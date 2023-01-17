@@ -12,7 +12,7 @@
       <label for="kind">物件種別</label>
     </div>
     <div class="col-sm-4">
-      <%= f.select :kind, Property.kinds.keys, {},  {class: 'form-select'} %>
+      <%= f.select :kind, Property.kinds.keys, {include_blank: '選択してください'},  {class: 'form-select'} %>
     </div>
   </div>
   <div class="form-group row h5">
@@ -20,7 +20,7 @@
       <label for="right">権利</label>
     </div>
     <div class="col-sm-4">
-      <%= f.select :right, Property.rights.keys, {},  {class: 'form-select'} %>
+      <%= f.select :right, Property.rights.keys, {include_blank: '選択してください'},  {class: 'form-select'} %>
     </div>
   </div>
   <div class="form-group row h5">
@@ -28,7 +28,7 @@
       <label for="prefecture">都道府県</label>
     </div>
     <div class="col-sm-4">
-      <%= f.select :prefecture, Property.prefectures.keys, {},  {class: 'form-select'} %>
+      <%= f.select :prefecture, Property.prefectures.keys, {include_blank: '選択してください'},  {class: 'form-select'} %>
     </div>
   </div>
   <div class="form-group row h5">
@@ -108,7 +108,7 @@
         <label for="sell_category">売却カテゴリ</label>
     </div>
     <div class="col-sm-4">
-      <%= f.select :sell_category, Property.sell_categories.keys, {},  {class: 'form-select'} %>
+      <%= f.select :sell_category, Property.sell_categories.keys, {include_blank: '選択してください'},  {class: 'form-select'} %>
     </div>
   </div>
   <div class="form-group row h5">
