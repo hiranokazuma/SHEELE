@@ -13,11 +13,8 @@ class Property < ApplicationRecord
   validates :station, presence: true
   validates :walking_minute, presence: true
   validates :land_area, presence: true
-  validates :building_area, presence: true
   validates :price, presence: true
   validates :sell_category, presence: true
-  validates :age, presence: true
-  validates :structure, presence: true
   validates :building_coverage_ratio, presence: true
   validates :floor_area_ratio, presence: true
   validates :condition, presence: true

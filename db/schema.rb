@@ -97,11 +97,11 @@ ActiveRecord::Schema.define(version: 2022_12_14_095036) do
     t.string "station", null: false
     t.integer "walking_minute", null: false
     t.integer "land_area", null: false
-    t.integer "building_area", null: false
+    t.integer "building_area"
     t.integer "price", null: false
     t.integer "sell_category", null: false
-    t.string "age", null: false
-    t.string "structure", null: false
+    t.string "age"
+    t.string "structure"
     t.integer "location_floor"
     t.integer "building_coverage_ratio", null: false
     t.integer "floor_area_ratio", null: false
@@ -130,8 +130,8 @@ ActiveRecord::Schema.define(version: 2022_12_14_095036) do
     t.string "location", default: "", null: false
     t.string "licensing_entity", default: "", null: false
     t.string "licensing_region", default: ""
-    t.integer "update_number", null: false
-    t.integer "license_number", null: false
+    t.integer "update_number"
+    t.integer "license_number"
     t.string "representatives_name", default: "", null: false
     t.string "telephone_number", default: "", null: false
     t.string "manager_name", default: ""
