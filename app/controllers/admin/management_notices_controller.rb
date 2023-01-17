@@ -1,18 +1,18 @@
 class Admin::ManagementNoticesController < ApplicationController
   def new
     @management_notice = ManagementNotice.new
-    # render :new and return if params[:back]
+    render :new and return if params[:back]
   end
 
   def create
 
     users = User.pluck(:id)
-    mt = ManagementNotice.new(management_notice_params)
-    if params[:back] || !mt.save
+    @management_notice = ManagementNotice.new(management_notice_params)
+    if params[:back] || !@management_notice.save
       render :new
     else
       users.each do |user_id|
-        mt.create_notification_admin(current_admin, user_id)
+        @management_notice.create_notification_admin(current_admin, user_id)
       end
       redirect_to admin_management_notices_complete_path
     end
@@ -45,9 +45,10 @@ class Admin::ManagementNoticesController < ApplicationController
 
   def confirm
     @management_notice = ManagementNotice.new(management_notice_params)
-    if !@management_notice.valid?
+    if @management_notice.invalid?
       flash[:arlet] = '入力内容にエラーがあります。'
       render :new
+    return
     end
   end
 
