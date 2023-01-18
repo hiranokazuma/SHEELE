@@ -29,7 +29,7 @@ class Public::MessagesController < ApplicationController
     @message.user_id = current_user.id
     if @message.save
       @message.create_notification_user(current_user, @message.admin_id)
-      flash[:success] = 'メッセージを送信しました。'
+      flash[:notice] = 'メッセージを送信しました。'
       redirect_to messages_path
     else
       flash[:danger] = 'メッセージを送信できませんでした。'
@@ -43,7 +43,7 @@ class Public::MessagesController < ApplicationController
   def destroy
     @message = Message.find(params[:id])
     @message.destroy
-    flash[:success] = 'メッセージを削除しました。'
+    flash[:danger] = 'メッセージを削除しました。'
     redirect_to messages_path
   end
 
