@@ -55,6 +55,11 @@ ja:
         floor_area_ratio: "容積率"
         condition: "現況"
         release_status: "公開ステータス"
+      message:
+        title: "タイトル"
+        content: "本文"
+      reply:
+        content: "本文"
   date:
     abbr_day_names:
     - 日
