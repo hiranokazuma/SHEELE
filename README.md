@@ -63,7 +63,13 @@
 
 
 ## 設計書
-<...>
+- ER図： https://drive.google.com/file/d/1uhRn4yi5IydWGC1xmMAK2IqO8j925oF6/view?usp=sharing
+- ワイヤーフレーム： https://drive.google.com/file/d/1okodA6XkBkgmgMCX89WTjdyTnIaxpKMY/view?usp=sharing
+- 画面遷移図： https://drive.google.com/file/d/16a5sEslqBAHJSWXc6MaADE2-tBycei0R/view?usp=sharing
+- テスト仕様書： https://docs.google.com/spreadsheets/d/1rANBQcdAkpbqd2gc609nfQWfDA1OTDpF/edit?usp=sharing&ouid=102164852019367143384&rtpof=true&sd=true
+- WBS： https://docs.google.com/spreadsheets/d/1HBg-dBRxuEJQLIaKcGXfDwHP7ZXvr8ggGrrO4avo_i0/edit?usp=sharing
+- テーブル定義書： https://docs.google.com/spreadsheets/d/1oTWwYVMQ8HMWYEWEXjIrLLwzhn5HzQ59PIdGb27EqcY/edit?usp=sharing
+- アプリケーション詳細設計書： https://docs.google.com/spreadsheets/d/1lZUQfwzOzt_zNgUyh2yvFltJAwQyG0HZJCV-rXbmFa4/edit?usp=sharing
 
 ## 実装機能リスト
 https://docs.google.com/spreadsheets/d/1x8YGVgQ3AacJWeA9Z76_SSvLIxj_YjwvlASEgNUh9TI/edit?usp=sharing
@@ -76,5 +82,6 @@ https://docs.google.com/spreadsheets/d/1x8YGVgQ3AacJWeA9Z76_SSvLIxj_YjwvlASEgNUh
 - IDE：Cloud9
 
 ## 使用素材
-- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
-- 使用しない場合は、使用素材の項目をREADMEから削除してください。
+- 画像
+- photoAC: https://www.photo-ac.com/
+- illustAC: https://www.ac-illust.com/
