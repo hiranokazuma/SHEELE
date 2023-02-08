@@ -1,4 +1,5 @@
 class Admin::UsersController < ApplicationController
+  before_action :authenticate_admin!, except: [:top]
   def index
     @q = User.ransack(params[:q])
     @users = @q.result(distinct: true).page(params[:page]).per(15)

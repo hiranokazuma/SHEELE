@@ -1,14 +1,17 @@
 class Public::PropertiesController < ApplicationController
+  before_action :authenticate_user!, except: [:top]
+  before_action :ensure_user, only: [:show, :edit, :update, :destroy]
+
   def index
     @q = Property.ransack(params[:q])
-    @properties = @q.result(distinct: true).page(params[:page]).per(15)
+    @properties = @q.result(distinct: true).joins(:user).where(user: { is_deleted: false }).page(params[:page]).per(15)
     @property = Property.new
     @view_applications = ViewApplication.all
   end
 
   def myproperties
     @q = Property.where(user: current_user).ransack(params[:q])
-    @properties = @q.result(distinct: true).page(params[:page]).per(15)
+    @properties = @q.result(distinct: true).joins(:user).where(user: { is_deleted: false }).page(params[:page]).per(15)
     @property = Property.new
     @view_applications = current_user.view_applications.includes(:property)
   end
@@ -20,16 +23,21 @@ class Public::PropertiesController < ApplicationController
   end
 
   def show
-    @property = Property.find(params[:id])
+    # @property = Property.find(params[:id])
+    # unless @property.user_id == current_user.id
+    #   redirect_to  root_path
+    # end
   end
 
   def edit
-    @property = Property.find(params[:id])
-
+    # @property = Property.find(params[:id])
+    # unless @property.user_id == current_user.id
+    #   redirect_to  root_path
+    # end
   end
 
   def update
-    @property = Property.find(params[:id])
+    # @property = Property.find(params[:id])
     if @property.update(property_params)
       flash[:notice] = "変更を保存しました。"
       redirect_to property_path(@property)
@@ -40,7 +48,7 @@ class Public::PropertiesController < ApplicationController
   end
 
   def destroy
-    @property = Property.find(params[:id])
+    # @property = Property.find(params[:id])
     @property.destroy
     redirect_to admin_properties_path, notice: "物件を削除しました。"
   end
@@ -73,6 +81,12 @@ class Public::PropertiesController < ApplicationController
   end
 
   private
+
+  def ensure_user
+    @properties = current_user.properties
+    @property = @properties.find_by(id: params[:id])
+    redirect_to root_path unless @property
+  end
 
   def property_params
     params.require(:property).permit(:user_id, :kind, :right, :prefecture, :municipality,

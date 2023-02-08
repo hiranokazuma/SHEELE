@@ -1,4 +1,6 @@
 class Admin::PropertiesController < ApplicationController
+  before_action :authenticate_admin!, except: [:top]
+
   def index
     @property = Property.new
     # @properties = Property.where(sell_category: params[:q][:sell_category]).page(params[:page]).per(15)

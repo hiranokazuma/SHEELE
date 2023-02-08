@@ -1,4 +1,6 @@
 class Admin::MessagesController < ApplicationController
+  before_action :authenticate_admin!, except: [:top]
+
   def index
     @management_notices = ManagementNotice.all
     ids = Notification.where(visitor_id: @messages).pluck(:id)

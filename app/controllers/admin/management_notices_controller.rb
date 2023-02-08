@@ -1,4 +1,6 @@
 class Admin::ManagementNoticesController < ApplicationController
+  before_action :authenticate_admin!, except: [:top]
+
   def new
     @management_notice = ManagementNotice.new
     render :new and return if params[:back]

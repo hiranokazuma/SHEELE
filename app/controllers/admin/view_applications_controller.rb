@@ -1,4 +1,6 @@
 class Admin::ViewApplicationsController < ApplicationController
+  before_action :authenticate_admin!, except: [:top]
+
   def index
     @view_applications = ViewApplication.all
     @view_application = ViewApplication.new

@@ -1,4 +1,6 @@
 class Admin::RepliesController < ApplicationController
+  before_action :authenticate_admin!, except: [:top]
+
   def new
     @reply = Reply.new
     @message = Message.find(params[:message_id])

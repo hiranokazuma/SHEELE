@@ -1,6 +1,8 @@
 class Public::MessagesController < ApplicationController
+   before_action :authenticate_user!, except: [:top]
+
   def index
-    @replies = Reply.all
+    @replies = Reply.where(user_id: current_user.id)
     @management_notices = ManagementNotice.all
     ids = Notification.where(visitor_id: current_user).pluck(:id)
     apply_notification = Notification.where(read: :false).where(id: (current_user.passive_notifications.pluck(:id) - ids)).where(notice_type: :apply).first

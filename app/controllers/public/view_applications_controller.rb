@@ -1,4 +1,5 @@
 class Public::ViewApplicationsController < ApplicationController
+  before_action :authenticate_user!, except: [:top]
   before_action :set_property, only: [:confirm, :create, :complete]
 
   def index
