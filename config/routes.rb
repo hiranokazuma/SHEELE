@@ -20,6 +20,10 @@ Rails.application.routes.draw do
 
     root to: 'homes#top'
 
+  resources :chats, only: [:create]
+
+  resources :rooms, only: [:create, :show]
+
   resources :notifications, only: [:index, :destroy]
 
   resources :messages
@@ -53,7 +57,7 @@ Rails.application.routes.draw do
 
   end
 
-   namespace :admin do
+  namespace :admin do
     get 'homes/top' => 'homes#top'
 
   resources :notifications, only: [:index, :destroy]
@@ -63,6 +67,8 @@ Rails.application.routes.draw do
       get 'messages/get_users' => 'messages#get_users'
     end
   end
+
+  resources :rooms, only: [:show]
 
   resources :view_applications, only: [:index, :edit, :update, :destroy]
 

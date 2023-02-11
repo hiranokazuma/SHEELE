@@ -49,7 +49,7 @@ class Public::ViewApplicationsController < ApplicationController
   def create
     view_application = current_user.create_view_application(@property)
     view_application.create_notification_user(current_user, @property)
-    flash[:notice] = "申請しました"
+    flash[:notice] = "閲覧申請をしました。"
     redirect_to view_applications_complete_url(property_id: params[:property_id])
   end
 

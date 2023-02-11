@@ -11,8 +11,8 @@ class CreateProperties < ActiveRecord::Migration[6.1]
       t.string :line,                     null: false
       t.string :station,                  null: false
       t.integer :walking_minute,          null: false
-      t.integer :land_area,               null: false
-      t.integer :building_area
+      t.float :land_area,                 null: false
+      t.float :building_area
       t.integer :price,                   null: false
       t.integer :sell_category,           null: false
       t.string :age
