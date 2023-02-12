@@ -9,7 +9,7 @@
       <label for="company_name">会社名</label>
     </div>
     <div class="col-sm-4 d-flex align-items-center">
-      <%= current_user.company_name %>
+      <%= @user.company_name %>
     </div>
   </div>
   <div class="form-group row h5 justify-content-center">
@@ -17,7 +17,7 @@
       <label for="location">所在地</label>
     </div>
     <div class="col-sm-4 d-flex align-items-center">
-      <%= current_user.location %>
+      <%= @user.location %>
     </div>
   </div>
   <div class="form-group row h5 justify-content-center">
@@ -25,7 +25,7 @@
       <label for="licensing_entity">免許主体</label>
     </div>
     <div class="col-sm-4 d-flex align-items-center">
-      <%= current_user.licensing_entity %>
+      <%= @user.licensing_entity %>
     </div>
   </div>
   <div class="form-group row h5 justify-content-center">
@@ -33,7 +33,7 @@
       <label for="licensing_region">免許地</label>
     </div>
     <div class="col-sm-4 d-flex align-items-center">
-      <%= current_user.licensing_region %>
+      <%= @user.licensing_region %>
     </div>
   </div>
   <div class="form-group row h5 justify-content-center">
@@ -41,7 +41,7 @@
       <label for="update_number">免許更新数</label>
     </div>
     <div class="col-sm-4 d-flex align-items-center">
-      (<%= current_user.update_number %>)
+      (<%= @user.update_number %>)
     </div>
   </div>
   <div class="form-group row h5 justify-content-center">
@@ -49,7 +49,7 @@
       <label for="license_number">免許番号</label>
     </div>
     <div class="col-sm-4 d-flex align-items-center">
-      第<%= current_user.license_number %>号
+      第<%= @user.license_number %>号
     </div>
   </div>
   <div class="form-group row h5 justify-content-center">
@@ -57,7 +57,7 @@
       <label for="representatives_name">代表者名</label>
     </div>
     <div class="col-sm-4 d-flex align-items-center">
-      <%= current_user.representatives_name %>
+      <%= @user.representatives_name %>
     </div>
   </div>
   <div class="form-group row h5 justify-content-center">
@@ -65,7 +65,7 @@
       <label for="manager_name">担当者名</label>
     </div>
     <div class="col-sm-4 d-flex align-items-center">
-      <%= current_user.manager_name %>
+      <%= @user.manager_name %>
     </div>
   </div>
   <div class="form-group row h5 justify-content-center">
@@ -73,7 +73,7 @@
       <label for="telephone_number">電話番号(ハイフンなし)</label>
     </div>
     <div class="col-sm-4 d-flex align-items-center">
-      <%= current_user.telephone_number %>
+      <%= @user.telephone_number %>
     </div>
   </div>
   <div class="form-group row h5 justify-content-center">
@@ -81,33 +81,35 @@
       <label for="email">メールアドレス</label>
     </div>
     <div class="col-sm-4 d-flex align-items-center">
-      <%= current_user.email %>
+      <%= @user.email %>
     </div>
   </div>
-  <div class="form-group row h5 justify-content-center">
-    <div class="col-sm-3">
-      <label for="password">パスワード</label>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> 文字以上)</em>
-    <% end %>
-    </div>
-    <div class="col-sm-4">
-      <%= current_user.password %>
-    <!--<%#= f.password_field :password, value: @user.password, readonly: true %>-->
-    </div>
-  </div>
-  <div class="form-group row h5 justify-content-center">
-    <div class="col-sm-3">
-      <label for="release_status">会員ステータス</label>
-    </div>
-    <div class="col-sm-4">
-      <% if current_user.is_deleted %>
-        <b class="text-secondary">退会</b>
-      <% else %>
-        <b class="text-success">有効</b>
+  <% if current_user.id == @user_id %>
+    <div class="form-group row h5 justify-content-center">
+      <div class="col-sm-3">
+        <label for="password">パスワード</label>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> 文字以上)</em>
       <% end %>
+      </div>
+      <div class="col-sm-4">
+        <%= @user.password %>
+      <!--<%#= f.password_field :password, value: @user.password, readonly: true %>-->
+      </div>
     </div>
-  </div>
+    <div class="form-group row h5 justify-content-center">
+      <div class="col-sm-3">
+        <label for="release_status">会員ステータス</label>
+      </div>
+      <div class="col-sm-4">
+        <% if @user.is_deleted %>
+          <b class="text-secondary">退会</b>
+        <% else %>
+          <b class="text-success">有効</b>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
 <br>
 <br>
 <br>
@@ -117,11 +119,13 @@
       <i class="fa-solid fa-backward-step fa-lg"></i>　マイページへ戻る
       <% end %>
     </div>
+  <% if current_user.id == @user_id %>
     <div class="col-sm-4 ml-5">
       <%= link_to  users_information_edit_path(current_user), class: "btn btn-success text-light btn-lg" do %>
       <i class="fa-solid fa-user-gear fa-lg"></i>　会員情報を編集する
       <% end %>
     </div>
+  <% end %>
 </div>
 <br>
 <br>

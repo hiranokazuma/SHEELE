@@ -39,11 +39,11 @@ Rails.application.routes.draw do
   resources :properties
 
     get 'users/mypage' => 'users#top'
-    get 'users/information' => 'users#show'
-    get 'users/information/edit' => 'users#edit'
-    patch 'users/information' => 'users#update'
-    get 'users/unsubscribe' => 'users#unsubscribe'
-    patch 'users/withdraw' => 'users#withdraw'
+    get 'users/information/:id' => 'users#show', as: "users_information"
+    get 'users/information/edit/:id' => 'users#edit', as: "users_information_edit"
+    patch 'users/information/:id' => 'users#update'
+    get 'users/unsubscribe/:id' => 'users#unsubscribe', as: "users_unsubscribe"
+    patch 'users/withdraw/:id' => 'users#withdraw', as: "users_withdraw"
 
   resources :replies, only: [:show, :destroy]
 

@@ -330,6 +330,11 @@
       <i class="fa-solid fa-backward-step fa-lg"></i>　閲覧申請一覧へ戻る
       <% end %>
     </div>
+    <div class="col-sm-4">
+      <%= link_to users_information_path(@property.user_id), class: "btn btn-primary btn-lg" do %>
+      <i class="fa-solid fa-user fa-lg"></i>　元付業者情報
+      <% end %>
+    </div>
   </div>
 <% end %>
 <br>

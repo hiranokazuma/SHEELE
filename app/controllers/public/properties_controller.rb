@@ -1,6 +1,6 @@
 class Public::PropertiesController < ApplicationController
   before_action :authenticate_user!, except: [:top]
-  before_action :ensure_user, only: [:show, :edit, :update, :destroy]
+  before_action :ensure_user, only: [:edit, :update, :destroy]
 
   def index
     @q = Property.ransack(params[:q])
@@ -23,7 +23,7 @@ class Public::PropertiesController < ApplicationController
   end
 
   def show
-    # @property = Property.find(params[:id])
+    @property = Property.find(params[:id])
     # unless @property.user_id == current_user.id
     #   redirect_to  root_path
     # end
