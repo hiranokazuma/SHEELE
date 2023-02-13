@@ -1,2 +1,51 @@
-<h1>Public::Rooms#show</h1>
-<p>Find me in app/views/public/rooms/show.html.erb</p>
+<div class="container">
+  <div class="chat-room">
+    <div class="d-grid gap-2 col-5 mx-auto text-center">
+      <h2>会員間チャット</h2>
+    </div>
+<br>
+<br>
+  <!-- ルーム内のユーザー表示部分-->
+  <% @RoomUsers.each do |r| %>
+    <div class="user-name">
+      <strong>
+        <a class="rooms-user-link" href="/users/<%= r.user.id %>">
+          <%= r.user.company_name %>さん
+        </a>
+      </strong>
+    </div>
+  <% end %>
+  <!-- //ルーム内のユーザー表示部分-->
+<hr>
+  <!-- メッセージ表示部分-->
+  <div class="chat">
+    <% if @chats.present? %>
+      <% @chats.each do |chat| %>
+        <div class="chat-box">
+          <div class="chat-text">
+            <%= chat.text %>
+            <%= chat.created_at.strftime("%Y-%m-%d %H:%M") %>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <p>メッセージはまだありません</p>
+    <% end %>
+  </div>
+  <!-- //メッセージ表示部分-->
+  <!-- メッセージ投稿部分-->
+  <div class="posts">
+    <%= form_with model: @chat, local: true do |f| %>
+      <%= f.text_field :text, placeholder: "メッセージを入力してください" %>
+      <%= f.hidden_field :room_id, value: @room.id %>
+      <%= button_tag type: "submit", class: "btn btn-success btn-lg" do %>
+      <i class="fa-solid fa-reply fa-lg"></i>　送信する
+      <% end %>
+    <% end %>
+  </div>
+  <!-- //メッセージ投稿部分-->
+  </div>
+</div>
+<br>
+<br>
+<br>

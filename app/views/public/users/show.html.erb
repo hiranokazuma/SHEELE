@@ -126,6 +126,20 @@
       <% end %>
     </div>
   <% end %>
+  <% unless @user.id == current_user.id %>  <!--現在ログインしているユーザーではない場合-->
+    <% if @haveRoom == true %>  <!--既にルームが作成されている場合は-->
+      <% link_to "ダイレクトメッセージ", room_path %>  <!--そのチャットルームに遷移するボタンを表示-->
+    <% else %>
+      <%= form_with model: @room, local: true do |f| %>  <!--roomsテーブルに情報を送信-->
+        <%= fields_for @RoomUser do |r| %>  <!--room_usersテーブルに情報を送信-->
+          <%= r.hidden_field :user_id, value: @user.id %>  <!--room_usersテーブルにuser_idを含める-->
+        <% end %>
+        <%= button_tag type: "submit", class: "btn btn-success btn-lg btn-block" do %>
+        <i class="fa-solid fa-message fa-lg"></i>　チャットを始める
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
 </div>
 <br>
 <br>
