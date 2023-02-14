@@ -119,16 +119,18 @@
       <i class="fa-solid fa-backward-step fa-lg"></i>　マイページへ戻る
       <% end %>
     </div>
-  <% if current_user.id == @user_id %>
+  <% if current_user.id == @user.id %>
     <div class="col-sm-4 ml-5">
       <%= link_to  users_information_edit_path(current_user), class: "btn btn-success text-light btn-lg" do %>
       <i class="fa-solid fa-user-gear fa-lg"></i>　会員情報を編集する
       <% end %>
     </div>
   <% end %>
-  <% unless @user.id == current_user.id %>  <!--現在ログインしているユーザーではない場合-->
+  <% unless current_user.id == @user.id %>  <!--現在ログインしているユーザーではない場合-->
     <% if @haveRoom == true %>  <!--既にルームが作成されている場合は-->
-      <% link_to "ダイレクトメッセージ", room_path %>  <!--そのチャットルームに遷移するボタンを表示-->
+      <%= link_to room_path(@RoomId), class: "btn btn-success btn-lg" do %>  <!--そのチャットルームに遷移するボタンを表示-->
+      <i class="fa-solid fa-message fa-lg"></i> ダイレクトメッセージ
+      <% end %>
     <% else %>
       <%= form_with model: @room, local: true do |f| %>  <!--roomsテーブルに情報を送信-->
         <%= fields_for @RoomUser do |r| %>  <!--room_usersテーブルに情報を送信-->
