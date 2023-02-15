@@ -7,12 +7,12 @@
 <br>
   <!-- ルーム内のユーザー表示部分-->
   <% @RoomUsers.each do |r| %>
-    <div class="user-name d-grid gap-2 col-5 mx-auto text-center">
-      <strong>
-        <a class="rooms-user-link" href="/users/<%= r.user.id %>">
+    <div class="user-name d-grid gap-2 col-5 mx-auto mb-3 text-center">
+      <div class="row justify-content-center">
+        <%= link_to users_information_path(r.user.id), class: "btn btn-success btn-lg btn-block" do %>
           <%= r.user.company_name %>さん
-        </a>
-      </strong>
+        <% end %>
+      </div>
     </div>
   <% end %>
   <!-- //ルーム内のユーザー表示部分-->
