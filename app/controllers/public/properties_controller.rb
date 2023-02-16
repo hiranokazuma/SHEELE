@@ -24,9 +24,11 @@ class Public::PropertiesController < ApplicationController
 
   def show
     @property = Property.find(params[:id])
-    # unless @property.user_id == current_user.id
-    #   redirect_to  root_path
-    # end
+    unless @property.user_id == current_user.id ||
+      current_user.view_applications.where(property_id: @property, apply_status: '許可') &&
+      @property.view_applications.where(property_id: @property, apply_status: '許可')
+      redirect_to  root_path
+    end
   end
 
   def edit

@@ -36,7 +36,7 @@
   <!-- メッセージ投稿部分-->
   <div class="posts d-grid gap-2 col-5 mx-auto mt-5 text-center">
     <%= form_with model: @chat, local: true do |f| %>
-      <%= f.text_area :text, placeholder: "メッセージを入力してください", size: "50x2" %>
+      <%= f.text_area :content, placeholder: "メッセージを入力してください", size: "50x4" %>
       <%= f.hidden_field :room_id, value: @room.id %>
 <br>
     <div class="form-group row h5">
