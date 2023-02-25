@@ -17,8 +17,7 @@ jobs:
         HOST_NAME: ${{ secrets.HOST_NAME }}
       run: |
         echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-        cat private_key
-        ssh -o StrictHostKeyChecking=no -i private_key ec2-user@52.69.158.2 'cd SHEELE &&
+        ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOST_NAME} 'cd SHEELE &&
         git pull origin main &&
         ~/.rbenv/shims/bundle install &&
         ~/.rbenv/shims/bundle exec rails assets:precompile RAILS_ENV=production &&
