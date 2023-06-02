@@ -30,7 +30,7 @@
 そして、業者間同士が利用できるような早期売買を目的としたクローズドなサービスというのは、現状普及していません。<br>
 
 そこで、早期売買を目的とした案件に特化して、不動産買取(仕入れ)業者と元付業者が接点を持つきっかけとなる一次サービスがあれば、一部の不動産仲介業の生産性と不動産流通の効率を向上させることが期待できると考え、テーマとして取り組むこととしました。<br>
-テスト１
+
 
 
 ### ターゲットユーザ
@@ -78,7 +78,7 @@
 https://docs.google.com/spreadsheets/d/1x8YGVgQ3AacJWeA9Z76_SSvLIxj_YjwvlASEgNUh9TI/edit?usp=sharing
 
 ## 開発環境
-- OS：Linux(CentOS
+- OS：Linux(AmazonLinux2)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
