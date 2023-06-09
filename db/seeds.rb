@@ -9,3 +9,5 @@ Admin.create!(
   email: 'admin@admin',
   password: 'administrator'
   )
+#　管理者ログインページ
+# https://sheele.site/admin/sign_in
