@@ -22,3 +22,13 @@ users = User.create!(
     representatives_name: "天川太郎",telephone_number: "0987654321", manager_name: "天川次郎", email: 'milkyway-re@test.com', password: 'password'}
   ]
 )
+Property.create!(
+  [
+    {user_id: users[0].id, kind: "土地", right: "所有権", prefecture: "東京都", municipality: "港区", city_block: "南青山０丁目", address: "１－１", line: "半蔵門線", station: "表参道駅",
+    walking_minute: 6, land_area: 123.45, price: 29800, sell_category: "相続", building_coverage_ratio: 100 , floor_area_ratio: 500, city_planning: "市街化区域", use_area: "商業地域",
+    legal_restriction: "防火地域", road_contact: "北西側公道約25m", condition: "上物あり", comment: "相続案件のため、売主は早期売却希望です。ご連絡はEメールにてお願いいたします。",
+    image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-property1.jpg"), filename:"sample-property1.jpg") },
+    {shop_name: '和食屋せん', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post2.jpg"), filename:"sample-post2.jpg"), caption: '日本料理は美しい！', user_id: users[1].id },
+    {shop_name: 'ShoreditchBar', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post3.jpg"), filename:"sample-post3.jpg"), caption: 'メキシコ料理好きな方にオススメ！', user_id: users[2].id }
+  ]
+)
