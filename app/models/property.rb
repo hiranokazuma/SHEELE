@@ -12,11 +12,8 @@ class Property < ApplicationRecord
   validates :line, presence: true
   validates :station, presence: true
   validates :walking_minute, presence: true
-  validates :land_area, presence: true
   validates :price, presence: true
   validates :sell_category, presence: true
-  validates :building_coverage_ratio, presence: true
-  validates :floor_area_ratio, presence: true
   validates :condition, presence: true
   validates :release_status, inclusion: { in: [true, false] }
 

@@ -91,10 +91,10 @@ class Public::PropertiesController < ApplicationController
   end
 
   def property_params
-    params.require(:property).permit(:user_id, :kind, :right, :prefecture, :municipality,
+    params.require(:property).permit(:user_id, :kind, :right, :building_name, :prefecture, :municipality,
                                       :city_block, :address, :line, :station, :walking_minute,
-                                      :land_area, :building_area, :price, :sell_category, :age,
-                                      :structure, :location_floor, :building_coverage_ratio,
+                                      :land_area, :land_of_co_ownership, :building_area, :floor_plan, :price,
+                                      :sell_category, :age, :structure, :location_floor, :building_coverage_ratio,
                                       :floor_area_ratio, :city_planning, :use_area, :legal_restriction,
                                       :road_contact, :condition, :release_status, :comment, :image)
   end
