@@ -15,8 +15,8 @@ ActiveRecord::Schema.define(version: 2023_02_11_120108) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
-    t.integer "record_id", null: false
-    t.integer "blob_id", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2023_02_11_120108) do
   end
 
   create_table "active_storage_variant_records", force: :cascade do |t|
-    t.integer "blob_id", null: false
+    t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
@@ -97,6 +97,7 @@ ActiveRecord::Schema.define(version: 2023_02_11_120108) do
     t.integer "user_id", null: false
     t.integer "kind", null: false
     t.integer "right", null: false
+    t.string "building_name"
     t.integer "prefecture", null: false
     t.string "municipality", null: false
     t.string "city_block", null: false
@@ -104,15 +105,17 @@ ActiveRecord::Schema.define(version: 2023_02_11_120108) do
     t.string "line", null: false
     t.string "station", null: false
     t.integer "walking_minute", null: false
-    t.float "land_area", null: false
+    t.float "land_area"
+    t.string "land_of_co_ownership"
     t.float "building_area"
+    t.string "floor_plan"
     t.integer "price", null: false
     t.integer "sell_category", null: false
     t.string "age"
     t.string "structure"
     t.integer "location_floor"
-    t.integer "building_coverage_ratio", null: false
-    t.integer "floor_area_ratio", null: false
+    t.integer "building_coverage_ratio"
+    t.integer "floor_area_ratio"
     t.string "city_planning"
     t.string "use_area"
     t.string "legal_restriction"
@@ -146,17 +149,17 @@ ActiveRecord::Schema.define(version: 2023_02_11_120108) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "company_name", default: "", null: false
-    t.string "location", default: "", null: false
-    t.string "licensing_entity", default: "", null: false
-    t.string "licensing_region", default: ""
+    t.string "company_name", null: false
+    t.string "location", null: false
+    t.string "licensing_entity", null: false
+    t.string "licensing_region"
     t.integer "update_number"
     t.integer "license_number"
-    t.string "representatives_name", default: "", null: false
-    t.string "telephone_number", default: "", null: false
-    t.string "manager_name", default: ""
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
+    t.string "representatives_name", null: false
+    t.string "telephone_number", null: false
+    t.string "manager_name"
+    t.string "email", null: false
+    t.string "encrypted_password", null: false
     t.boolean "is_deleted", default: false, null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
