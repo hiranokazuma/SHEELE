@@ -32,14 +32,14 @@ class Public::PropertiesController < ApplicationController
   end
 
   def edit
-    # @property = Property.find(params[:id])
-    # unless @property.user_id == current_user.id
-    #   redirect_to  root_path
-    # end
+    @property = Property.find(params[:id])
+    unless @property.user_id == current_user.id
+      redirect_to  root_path
+    end
   end
 
   def update
-    # @property = Property.find(params[:id])
+    @property = Property.find(params[:id])
     if @property.update(property_params)
       flash[:notice] = "変更を保存しました。"
       redirect_to property_path(@property)
@@ -50,7 +50,7 @@ class Public::PropertiesController < ApplicationController
   end
 
   def destroy
-    # @property = Property.find(params[:id])
+    @property = Property.find(params[:id])
     @property.destroy
     redirect_to admin_properties_path, notice: "物件を削除しました。"
   end

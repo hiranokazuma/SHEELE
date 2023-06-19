@@ -24,9 +24,9 @@ users = User.create!(
 )
 Property.create!(
   [
-    {user_id: users[0].id, kind: "土地", right: "所有権", prefecture: "東京都", municipality: "港区", city_block: "南青山０丁目", address: "１－１", line: "半蔵門線", station: "表参道駅",
-    walking_minute: 6, land_area: 123.45, price: 29800, sell_category: "相続", building_coverage_ratio: 100 , floor_area_ratio: 500, city_planning: "市街化区域", use_area: "商業地域",
-    legal_restriction: "防火地域", road_contact: "北西側公道約25m", condition: "更地", comment: "＊テスト投稿＊ \n相続案件のため、売主は早期売却希望です。\nご連絡はEメールにてお願いいたします。",
+    {user_id: users[0].id, kind: "土地", right: "所有権", prefecture: "東京都", municipality: "港区", city_block: "白金０丁目", address: "１－１", line: "南北線", station: "白金高輪駅",
+    walking_minute: 10, land_area: 123.45, price: 29800, sell_category: "相続", building_coverage_ratio: 60 , floor_area_ratio: 300, city_planning: "市街化区域", use_area: "第一種中高層住居専用地域",
+    legal_restriction: "準防火地域", road_contact: "北西側公道約25m", condition: "更地", comment: "＊テスト投稿＊ \n相続案件のため、売主は早期売却希望です。\nご連絡はEメールにてお願いいたします。",
     image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-property1.jpg"), filename:"sample-property1.jpg") },
     {user_id: users[1].id, kind: "戸建て", right: "所有権", prefecture: "東京都", municipality: "渋谷区", city_block: "松濤０丁目", address: "１－１", line: "京王井の頭線", station: "神泉駅",
     walking_minute: 5, land_area: 111.22, building_area: 150.15, floor_plan: "4LDK", price: 38000, age: "2007年12月", structure: "木造２階建", sell_category: "財産分与",

@@ -29,6 +29,7 @@
         </td>
         <td class="align-middle text-center">
           <%= @view_application.property.sell_category %>&emsp;
+          <%= @view_application.property.building_name %>&emsp;
           <%= @view_application.property.prefecture %>
           <%= @view_application.property.municipality %>
           <%= @view_application.property.city_block %>&emsp;
@@ -42,6 +43,7 @@
             <% else %>
               土地面積：<%= @view_application.property.land_area %>㎡&emsp;
               建物面積：<%= @view_application.property.building_area %>㎡&emsp;
+              <%= @view_application.property.floor_plan %>&emsp;
             <% end %>
           <%= @view_application.property.right %>&emsp;
           <%= @view_application.property.use_area %><br>

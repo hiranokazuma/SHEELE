@@ -25,6 +25,14 @@
   </div>
   <div class="form-group row h5">
     <div class="col-sm-3">
+      <label for="building_name">建物名称<br>(ビル/マンションのみ)</label>
+    </div>
+    <div class="col-sm-4">
+      <%= f.text_field :building_name, autofocus: true, placeholder: "建物名称", autocomplete: "building_name", size: "40" %>
+    </div>
+  </div>
+  <div class="form-group row h5">
+    <div class="col-sm-3">
       <label for="prefecture">都道府県</label>
     </div>
     <div class="col-sm-4">
@@ -49,10 +57,10 @@
   </div>
   <div class="form-group row h5">
     <div class="col-sm-3">
-      <label for="address">番地</label>
+      <label for="address">番地－号</label>
     </div>
     <div class="col-sm-4">
-      <%= f.text_field :address, autofocus: true, placeholder: "番地", autocomplete: "address", size: "30" %>
+      <%= f.text_field :address, autofocus: true, placeholder: "〇－〇", autocomplete: "address", size: "30" %>
     </div>
   </div>
   <div class="form-group row h5">
@@ -65,7 +73,7 @@
   </div>
   <div class="form-group row h5">
     <div class="col-sm-3">
-      <label for="station">駅名</label>
+      <label for="station">最寄駅名</label>
     </div>
     <div class="col-sm-4">
       <%= f.text_field :station,  placeholder: "駅名", size: "30" %>駅
@@ -89,10 +97,26 @@
   </div>
   <div class="form-group row h5">
     <div class="col-sm-3">
+      <label for="land_of_co_ownership">土地持分割合<br>(区分マンションのみ/半角数字)</label>
+    </div>
+    <div class="col-sm-4">
+      <%= f.text_field :land_of_co_ownership, placeholder: "○○○○/○○○○", size: "30" %>
+    </div>
+  </div>
+  <div class="form-group row h5">
+    <div class="col-sm-3">
       <label for="building_area">建物面積(半角数字)</label>
     </div>
     <div class="col-sm-4">
       <%= f.text_field :building_area,  size: "10" %>㎡
+    </div>
+  </div>
+  <div class="form-group row h5">
+    <div class="col-sm-3">
+      <label for="floor_plan">間取り<br>(戸建/区分マンションのみ/半角英数字)</label>
+    </div>
+    <div class="col-sm-4">
+      <%= f.text_field :floor_plan,  size: "10" %>
     </div>
   </div>
   <div class="form-group row h5">

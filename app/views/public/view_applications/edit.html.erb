@@ -27,6 +27,14 @@
   </div>
   <div class="form-group row h5 justify-content-center">
     <div class="col-sm-3">
+      <label for="building_name">建物名称</label>
+    </div>
+    <div class="col-sm-4 d-flex align-items-center">
+      <%= @property.building_name %>
+    </div>
+  </div>
+  <div class="form-group row h5 justify-content-center">
+    <div class="col-sm-3">
       <label for="prefecture">都道府県</label>
     </div>
     <div class="col-sm-4">
@@ -51,7 +59,7 @@
   </div>
   <div class="form-group row h5 justify-content-center">
     <div class="col-sm-3">
-      <label for="address">番地</label>
+      <label for="address">番地－号</label>
     </div>
     <div class="col-sm-4">
       <%= @property.address %>
@@ -67,7 +75,7 @@
   </div>
   <div class="form-group row h5 justify-content-center">
     <div class="col-sm-3">
-      <label for="station">駅名</label>
+      <label for="station">最寄駅名</label>
     </div>
     <div class="col-sm-4">
       <%= @property.station %>駅
@@ -91,10 +99,26 @@
   </div>
   <div class="form-group row h5 justify-content-center">
     <div class="col-sm-3">
+      <label for="land_of_co_ownership">土地持分割合</label>
+    </div>
+    <div class="col-sm-4 d-flex align-items-center">
+      <%= @property.land_of_co_ownership %>
+    </div>
+  </div>
+  <div class="form-group row h5 justify-content-center">
+    <div class="col-sm-3">
       <label for="building_area">建物面積(半角数字)</label>
     </div>
     <div class="col-sm-4">
       <%= @property.building_area %>㎡
+    </div>
+  </div>
+  <div class="form-group row h5 justify-content-center">
+    <div class="col-sm-3">
+      <label for="floor_plan">間取り</label>
+    </div>
+    <div class="col-sm-4 d-flex align-items-center">
+      <%= @property.floor_plan %>
     </div>
   </div>
   <div class="form-group row h5 justify-content-center">

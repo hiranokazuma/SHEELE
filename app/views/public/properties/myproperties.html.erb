@@ -22,6 +22,36 @@
         <%= f.search_field :id_eq , class: "form-control", style: "width:60%" %>
       </div>
     </div>
+     <div class="form-group row h5">
+      <div class="col-sm-3">
+      </div>
+      <div class="col-sm-2">
+        <%= f.label :kind_eq, "物件種別" %>
+      </div>
+      <div class="col-sm-4">
+        <%= f.select :kind_eq, Property.kinds, {include_blank: '選択'},  {class: 'form-select'} %>
+      </div>
+    </div>
+    <div class="form-group row h5">
+      <div class="col-sm-3">
+      </div>
+      <div class="col-sm-2">
+        <%= f.label :sell_category_eq, "売却カテゴリ" %>
+      </div>
+      <div class="col-sm-4">
+        <%= f.select :sell_category_eq, Property.sell_categories, {include_blank: '選択'},  {class: 'form-select'} %>
+      </div>
+    </div>
+    <div class="form-group row h5">
+      <div class="col-sm-3">
+      </div>
+      <div class="col-sm-2">
+        <%= f.label :building_name_cont, "建物名称" %>
+      </div>
+      <div class="col-sm-4">
+        <%= f.search_field :building_name_cont, class: "form-control", style: "width:60%" %>
+      </div>
+    </div>
     <div class="form-group row h5">
       <div class="col-sm-3">
       </div>
@@ -40,26 +70,6 @@
       </div>
       <div class="col-sm-4">
         <%= f.search_field :municipality_cont, class: "form-control", style: "width:60%" %>
-      </div>
-    </div>
-    <div class="form-group row h5">
-      <div class="col-sm-3">
-      </div>
-      <div class="col-sm-2">
-        <%= f.label :kind_eq, "物件種別" %>
-      </div>
-      <div class="col-sm-4">
-        <%= f.select :kind_eq, Property.kinds, {include_blank: '選択'},  {class: 'form-select'} %>
-      </div>
-    </div>
-    <div class="form-group row h5">
-      <div class="col-sm-3">
-      </div>
-      <div class="col-sm-2">
-        <%= f.label :sell_category_eq, "売却カテゴリ" %>
-      </div>
-      <div class="col-sm-4">
-        <%= f.select :sell_category_eq, Property.sell_categories, {include_blank: '選択'},  {class: 'form-select'} %>
       </div>
     </div>
     <div class="form-group row h5">
@@ -118,7 +128,7 @@
         <p class="align-middle">万円〜</p>
       </div>
       <div class="col-sm-3">
-        <%= f.number_field :price_lteq, class: "form-control", style: "width:60%" ,min:0 %>
+        <%= f.number_field :price_lteq, class: "form-control", style: "width:60%" ,min:1 %>
         <p class="align-middle">万円以下</p>
       </div>
     </div>
@@ -129,11 +139,11 @@
         <%= f.label :building_coverage_ratio, "建ぺい率" %>
       </div>
       <div class="col-sm-3">
-        <%= f.number_field :building_coverage_ratio_gteq, class: "form-control", style: "width:50%" ,min:0 %>
+        <%= f.number_field :building_coverage_ratio_gteq, class: "form-control", style: "width:50%" ,min:1 %>
         <p class="align-middle">％〜</p>
       </div>
       <div class="col-sm-3">
-        <%= f.number_field :building_coverage_ratio_lteq, class: "form-control", style: "width:50%" ,min:0 %>
+        <%= f.number_field :building_coverage_ratio_lteq, class: "form-control", style: "width:50%" ,min:1 %>
         <p class="align-middle">％以下</p>
       </div>
     </div>
@@ -144,11 +154,11 @@
         <%= f.label :floor_area_ratio, "容積率" %>
       </div>
       <div class="col-sm-3">
-        <%= f.number_field :floor_area_ratio_gteq, class: "form-control", style: "width:50%" ,min:0 %>
+        <%= f.number_field :floor_area_ratio_gteq, class: "form-control", style: "width:50%" ,min:1 %>
         <p class="align-middle">％〜</p>
       </div>
       <div class="col-sm-3">
-        <%= f.number_field :floor_area_ratio_lteq, class: "form-control", style: "width:50%" ,min:0 %>
+        <%= f.number_field :floor_area_ratio_lteq, class: "form-control", style: "width:50%" ,min:1 %>
         <p class="align-middle">％以下</p>
       </div>
     </div>
@@ -198,6 +208,7 @@
         <td class="align-middle text-center">
           <%= link_to property_path(property) do %>
             <%= property.sell_category %>&emsp;
+            <%= property.building_name %>&emsp;
             <%= property.prefecture %>
             <%= property.municipality %>
             <%= property.city_block %>&emsp;
@@ -211,6 +222,7 @@
             <% else %>
               土地面積：<%= property.land_area %>㎡&emsp;
               建物面積：<%= property.building_area %>㎡&emsp;
+              <%= property.floor_plan %>&emsp;
             <% end %>
             <%= property.right %>&emsp;<br>
             <%= property.use_area %>&emsp;
