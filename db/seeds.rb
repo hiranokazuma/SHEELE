@@ -24,16 +24,16 @@ users = User.create!(
 )
 Property.create!(
   [
-    {user_id: users[0].id, kind: "土地", right: "所有権", prefecture: "東京都", municipality: "港区", city_block: "白金０丁目", address: "１－１", line: "南北線", station: "白金高輪駅",
+    {user_id: users[0].id, kind: "土地", right: "所有権", prefecture: "東京都", municipality: "港区", city_block: "白金０丁目", address: "１－１", line: "南北", station: "白金高輪",
     walking_minute: 10, land_area: 123.45, price: 29800, sell_category: "相続", building_coverage_ratio: 60 , floor_area_ratio: 300, city_planning: "市街化区域", use_area: "第一種中高層住居専用地域",
     legal_restriction: "準防火地域", road_contact: "北西側公道約25m", condition: "更地", comment: "＊テスト投稿＊ \n相続案件のため、売主は早期売却希望です。\nご連絡はEメールにてお願いいたします。",
     image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample_property1.jpg"), filename:"sample-property1.jpg") },
-    {user_id: users[1].id, kind: "戸建て", right: "所有権", prefecture: "東京都", municipality: "渋谷区", city_block: "松濤０丁目", address: "１－１", line: "京王井の頭線", station: "神泉駅",
+    {user_id: users[1].id, kind: "戸建て", right: "所有権", prefecture: "東京都", municipality: "渋谷区", city_block: "松濤０丁目", address: "１－１", line: "京王井の頭", station: "神泉",
     walking_minute: 5, land_area: 111.22, building_area: 150.15, floor_plan: "4LDK", price: 38000, age: "2007年12月", structure: "木造２階建", sell_category: "財産分与",
     building_coverage_ratio: 60 , floor_area_ratio: 150, city_planning: "市街化区域", use_area: "第一種低層住居専用地域", legal_restriction: "準防火地域、第一種高度地区",
     road_contact: "南東側公道約6.0m", condition: "居住中", comment: "＊テスト投稿＊ \n離婚による財産分与のため、売主は早期売却希望です。\nご連絡はEメールにてお願いいたします。",
     image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample_property2.jpg"), filename:"sample-property2.jpg") },
-    {user_id: users[2].id, kind: "区分マンション", right: "所有権", building_name: "レシェール代官山", prefecture: "東京都", municipality: "渋谷区", city_block: "鴬谷町", address: "０－０", line: "東急東横線", station: "代官山駅",
+    {user_id: users[2].id, kind: "区分マンション", right: "所有権", building_name: "レシェール代官山", prefecture: "東京都", municipality: "渋谷区", city_block: "鴬谷町", address: "０－０", line: "東急東横", station: "代官山",
     walking_minute: 10, land_of_co_ownership: "12345/456789", building_area: 198.76, floor_plan: "5LDK", price: 39800, age: "2010年9月", structure: "鉄筋コンクリート造地上7階、地下1階", sell_category: "債務整理", location_floor: 5,
     building_coverage_ratio: 60 , floor_area_ratio: 200, city_planning: "市街化区域", use_area: "第一種低層住居専用地域", legal_restriction: "準防火地域、第二種高度地区",
     road_contact: "南東側公道約5.0m", condition: "居住中", comment: "＊テスト投稿＊ \n債務整理のため、売主は早期売却希望です。\nご質問はEメールにてお願いいたします。",
