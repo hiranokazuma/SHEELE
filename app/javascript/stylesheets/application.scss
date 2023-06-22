@@ -116,8 +116,14 @@ nav {
     padding: 0.5rem 1rem;
 }
 
-.h2, h2 {
-    font-size: 3rem;
+
+.main-title {
+    display: block;
+    font-size: 4.5em;
+    margin-block-end: 1.0em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
 }
 
 h1 {
@@ -346,28 +352,20 @@ thead {
 
 	}
 
-// 	.menu-box{
-// 		width: 40px;
-// 		height: 40px;
-// 		margin-right: 5%;
-// 		border: 1px solid #FAFAFA;
-// 		margin-top: 5px;
-// 		margin-bottom: 5px;
-// 		margin-left: auto;
-// 	}
+.main-title {
+    display: block;
+    font-size: 3.5em;
+    margin-block-start: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
 
-// 	.list-bar{
-// 		display: block;
-// 		width: 25px;
-// 		height: 2px;
-// 		margin: 5px auto;
-// 		background-color: #FAFAFA;
-// 	}
-
-// 	.list-bar:first-child{
-// 		margin-top: 10px;
-// 	}
-
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    margin-bottom: .5rem;
+    font-size: 1.5em;
+    font-weight: 500;
+    line-height: 1.2;
+}
 // 	.nav-list{
 // 		display: none;
 // 		width: 100%;
@@ -406,4 +404,20 @@ thead {
 	/* =====================
 	  Footer
 	===================== */
+}
+@media(max-width: 425px){
+
+  .main-title {
+    display: block;
+    font-size: 1.75em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    margin-bottom: .5rem;
+    font-size: 1.0em;
+    font-weight: 500;
+    line-height: 1.2;
+}
 }
